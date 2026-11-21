@@ -1,0 +1,65 @@
+[codex] Starting Codex task thread.
+[codex] Thread ready (01a16a50-edf5-7762-9b35-d11feb4fa2a0).
+[codex] Turn started (01a16a50-eecc-7393-9c1c-708a3e045b91).
+[codex] Assistant message captured: I’m using the review skill to check the formal claims, experimental design, and cited evidenc...
+[codex] Running command: /bin/zsh -lc "pwd && rg --files -g 'AGENTS.md' -g 'proposal.md' -g '*context*' -g '*.md' | he...
+[codex] Command completed: /bin/zsh -lc "pwd && rg --files -g 'AGENTS.md' -g 'proposal.md' -g '*context*' -g '*.md' | he... (exit 0)
+[codex] Running command: /bin/zsh -lc 'cat /Users/theodoremui/.codex/skills/gstack-review/SKILL.md'
+[codex] Command completed: /bin/zsh -lc 'cat /Users/theodoremui/.codex/skills/gstack-review/SKILL.md' (exit 0)
+[codex] Running command: /bin/zsh -lc 'cat /Users/theodoremui/.codex/skills/gstack/review/checklist.md'
+[codex] Running command: /bin/zsh -lc "nl -ba proposal.md | sed -n '40,220p'"
+[codex] Command completed: /bin/zsh -lc 'cat /Users/theodoremui/.codex/skills/gstack/review/checklist.md' (exit 0)
+[codex] Command completed: /bin/zsh -lc "nl -ba proposal.md | sed -n '40,220p'" (exit 0)
+[codex] Running command: /bin/zsh -lc 'rg --files context && cat README.md && cat context/prior-codex-v07.md'
+[codex] Command completed: /bin/zsh -lc 'rg --files context && cat README.md && cat context/prior-codex-v07.md' (exit 0)
+[codex] Searching:
+[codex] Running command: /bin/zsh -lc "rg -n '112|14|confirm|test|zero|sixteen|16|penalt|failure|mirror' context/jepa-...
+[codex] Command completed: /bin/zsh -lc "rg -n '112|14|confirm|test|zero|sixteen|16|penalt|failure|mirror' context/jepa-... (exit 0)
+[codex] Assistant message captured: The split rules cover mirror twins and counterfactual branches well. I’m checking two deeper ...
+[codex] Running command: /bin/zsh -lc "nl -ba proposal.md | sed -n '95,165p;240,290p;390,438p'"
+[codex] Command completed: /bin/zsh -lc "nl -ba proposal.md | sed -n '95,165p;240,290p;390,438p'" (exit 0)
+[codex] Searching:
+[codex] Searching:
+[codex] Running command: /bin/zsh -lc "nl -ba proposal.md | sed -n '250,288p;390,438p' && sed -n '287,316p' context/je...
+[codex] Command completed: /bin/zsh -lc "nl -ba proposal.md | sed -n '250,288p;390,438p' && sed -n '287,316p' context/je... (exit 0)
+[codex] Assistant message captured: I found a reversed sign in the registered H3 test, a missing experimental factor in its compu...
+[codex] Running command: /bin/zsh -lc "nl -ba proposal.md | sed -n '60,90p;350,362p' && git status --short"
+[codex] Command completed: /bin/zsh -lc "nl -ba proposal.md | sed -n '60,90p;350,362p' && git status --short" (exit 0)
+[codex] Searching:
+[codex] Assistant message captured: { "verdict": "needs-attention", "summary": "Do not register this protocol yet. H3 has a rever...
+[codex] Turn completed.
+# Codex Adversarial Review
+
+Target: working tree diff
+Verdict: needs-attention
+
+Do not register this protocol yet. H3 has a reversed decision rule and an incomplete experiment budget; several proposed results would not establish their claimed mechanisms or population-level conclusions.
+
+Findings:
+- [high] H3's registered contrast has the wrong sign (proposal.md:405)
+  H3 predicts that latent prediction gains an advantage under low-predictability distractors. In skill units, (reconstruction minus latent prediction) should therefore become more negative in the low condition. The registered low-minus-high interaction is negative under the hypothesized result, yet Section 11 requires a positive lower bound. The procedure would reject the intended result and could support its opposite.
+  Recommendation: Register the explicit contrast (S_latent,low − S_reconstruction,low) − (S_latent,high − S_reconstruction,high), and verify its sign with a synthetic example before freezing the analysis.
+- [high] Temporally independent distractors do not establish the proposed capacity mechanism (proposal.md:108-110)
+  For future-target squared-error prediction, an independent white-noise channel contributes E[f(H)^2] + Var(noise); its optimal prediction is zero. Its large raw variance does not occupy a predictable direction in Proposition 2. Shuffled backgrounds therefore do not instantiate the claimed competition merely by being high-variance and unpredictable. A measured degradation could instead reflect input corruption, finite-sample fitting, or optimization. If reconstruction sees the current target observation, that is a different information pathway that must be specified. The cited [Littwin analysis](https://arxiv.org/html/2407.03475v1) distinguishes cross-covariance from regression coefficient.
+  Recommendation: Define both objectives' exact input/target timing. Include distractors with low but nonzero regression coefficients and sufficiently large predictable variance, alongside independent-noise controls; restrict conclusions from shuffled backgrounds to the mechanisms those controls distinguish.
+- [high] The cart inventory omits H3's essential experimental factor (proposal.md:428)
+  The H2/H3 inventory varies variance, width and objective, but never distractor predictability. Consequently its 120 primary fits cannot estimate the registered objective × predictability interaction. Crossing the three coefficient levels advertised in Section 6 would require 360 primary fits, adding approximately 60 GPU-hours before additional tuning and raising the stated total from 365 to 425 hours. The current budget therefore cannot support the advertised full design under its 400-hour cap.
+  Recommendation: Create an explicit condition-by-condition manifest containing every factor needed by each estimator. Recalculate compute and preregister a reduced design or increased budget before claiming H3 is covered.
+- [high] Separate seed and family intervals do not give population-level coverage (proposal.md:256)
+  Every seed is evaluated on the same test families, so families are crossed with seeds. A seed-only t interval conditions on that test set and omits a method-by-family effect shared across seeds. For differences d_sf = μ + a_s + b_f, the family-average term shifts every seed equally and disappears from the estimated seed variance. Reporting a separate family bootstrap does not incorporate that uncertainty into the decision interval. The coverage simulation may detect this, but the proposed fallback of adding seeds cannot repair it.
+  Recommendation: Use a crossed seed/family estimator or jointly resample seeds and families, retaining method pairing and shared family draws. Alternatively, explicitly restrict the estimand to these fixed test bodies. Stress-test coverage with nonzero shared family effects.
+- [high] Improving the original pose decoder does not demonstrate retained information (proposal.md:165)
+  The proposed inference can succeed with completely uninformative frozen features. A readout can learn a constant prediction and beat the original decoder because the source study already reports that zero change beats every trained variant under its failure penalties. Merely including zero change in the results does not fix a success criterion that only requires beating the original decoder. A direct scalar readout can also avoid the geometric measurement failures that penalize the original pipeline.
+  Recommendation: Require out-of-sample improvement over training-fitted featureless predictors and matched readouts using shuffled or constant features. Separate scalar-response decoding from pose-restoration failure costs, and attribute retained information only to the incremental benefit of the actual features.
+- [high] The baseline contract cannot preserve the promised comparators (proposal.md:201-214)
+  An uncompressed full-history transformer cannot retain hundreds of observations within 80 stored values; replaying externally stored history still uses persistent storage. Meanwhile, imposing identical losses on reconstruction, JEPA and published-style baselines either removes their defining objective differences or contradicts the contract. These ambiguities allow a nominally strong baseline to be materially weakened while results are described as comparisons with published practice.
+  Recommendation: Separate native-method baselines, controlled shared-backbone experiments, and unrestricted information references. Specify each model's retained history, latent storage, native and added losses, tuning allocation and compute; exempt the full-history reference explicitly from the storage-matched comparison.
+- [medium] The claimed distinction from VariBAD is unsupported (proposal.md:66)
+  The assertion that these methods require relevant evidence to keep arriving does not hold for VariBAD. Its [original formulation](https://arxiv.org/html/1910.08348v2) maintains a posterior over task-constant dynamics from accumulated history and trains that posterior to decode past and future trajectories. Continually informative observations are not an assumption. This precedent directly overlaps the proposal's persistent-context and memory-training motivation, even though the proposed symmetry-controlled benchmark may still be distinct.
+  Recommendation: Remove the blanket assumption claim. State the narrower novelty in symmetry-controlled diagnosis, and specify a VariBAD comparator retaining its history-conditioned belief and trajectory-reconstruction objective rather than only a generic task-embedding head.
+
+Next steps:
+- Correct H3's estimand and construct a fully costed experimental manifest.
+- Specify crossed inference and executable baseline contracts before registration.
+- Add featureless readout controls and narrow the mechanism and novelty claims.
+exit: 0

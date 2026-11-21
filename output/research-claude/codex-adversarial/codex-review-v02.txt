@@ -1,0 +1,75 @@
+[codex] Starting Codex task thread.
+[codex] Thread ready (01a16a2a-f262-7251-bcb9-0d39450528bb).
+[codex] Turn started (01a16a2a-f4c5-7a23-8142-3b75f7ca0eeb).
+[codex] Assistant message captured: I’m using the review skill to check the proposal’s formal arguments, experimental controls, s...
+[codex] Running command: /bin/zsh -lc 'cat /Users/theodoremui/.codex/skills/gstack-review/SKILL.md'
+[codex] Command completed: /bin/zsh -lc 'cat /Users/theodoremui/.codex/skills/gstack-review/SKILL.md' (exit 0)
+[codex] Running command: /bin/zsh -lc "pwd; rg --files -g 'AGENTS.md' -g 'proposal.md' -g '*context*'; ls -la"
+[codex] Command completed: /bin/zsh -lc "pwd; rg --files -g 'AGENTS.md' -g 'proposal.md' -g '*context*'; ls -la" (exit 0)
+[codex] Running command: /bin/zsh -lc "cat /Users/theodoremui/.codex/skills/gstack/review/checklist.md; sed -n '350,54...
+[codex] Command completed: /bin/zsh -lc "cat /Users/theodoremui/.codex/skills/gstack/review/checklist.md; sed -n '350,54... (exit 0)
+[codex] Running command: /bin/zsh -lc 'rg --files context; cat README.md; nl -ba proposal.md'
+[codex] Command completed: /bin/zsh -lc 'rg --files context; cat README.md; nl -ba proposal.md' (exit 0)
+[codex] Searching:
+[codex] Running command: /bin/zsh -lc 'wc -l context/*; cat context/prior-codex-v07.md; cat context/original-proposal....
+[codex] Command completed: /bin/zsh -lc 'wc -l context/*; cat context/prior-codex-v07.md; cat context/original-proposal.... (exit 0)
+[codex] Running command: /bin/zsh -lc "rg -n 'asymmetr|sixteen|16|zero|penalt|JEPA|world model|Littwin|Chen|Sandilya' ...
+[codex] Command completed: /bin/zsh -lc "rg -n 'asymmetr|sixteen|16|zero|penalt|JEPA|world model|Littwin|Chen|Sandilya' ... (exit 0)
+[codex] Searching:
+[codex] Running command: /bin/zsh -lc "sed -n '1,110p' context/urtc-draft.txt; sed -n '1,145p' context/jepa-asymmetry-...
+[codex] Running command: /bin/zsh -lc "sed -n '100,205p' proposal.md | nl -ba -v100; rg -n 'penalt|zero-response|zero....
+[codex] Command completed: /bin/zsh -lc "sed -n '100,205p' proposal.md | nl -ba -v100; rg -n 'penalt|zero-response|zero.... (exit 0)
+[codex] Command completed: /bin/zsh -lc "sed -n '1,110p' context/urtc-draft.txt; sed -n '1,145p' context/jepa-asymmetry-... (exit 0)
+[codex] Assistant message captured: The primary endpoint has a concrete flaw: scaling up the Bayesian prediction increases the pr...
+[codex] Searching:
+[codex] Searching:
+[codex] Assistant message captured: The current experiments also conflate several mechanisms. Smaller asymmetry weakens the evide...
+[codex] Assistant message captured: { "verdict": "needs-attention", "summary": "Do not proceed to confirmatory runs. The primary ...
+[codex] Turn completed.
+# Codex Adversarial Review
+
+Target: working tree diff
+Verdict: needs-attention
+
+Do not proceed to confirmatory runs. The primary score can reward worse predictions, and several experiments cannot distinguish their claimed mechanisms from simpler explanations.
+
+Findings:
+- [high] The primary endpoint rewards amplification rather than information retention (proposal.md:60-62)
+  For a model predicting c times the Bayesian conditional mean, rho equals c without any additional information. Setting c=1.2 therefore beats an optimal Bayesian baseline on the proposed endpoint while increasing query MSE. The decision rule accepts this because it has no upper calibration bound and its next-step guardrail covers hold/probe predictions. Conversely, zero slope can describe uncorrelated, nonzero predictions rather than collapse to symmetry.
+  Recommendation: Use paired query prediction risk or excess risk over the Bayesian predictor as the primary endpoint. Retain slope as a calibration diagnostic alongside residual error, and revise the superiority rule accordingly.
+- [high] The stochastic symmetry experiment lacks an objective that learns distributions (proposal.md:76-78)
+  The specified squared-error objectives do not reward the proposed two-cluster predictions. For an independent stochastic rollout, conditional MSE includes the rollout's variance, so sampling opposite responses is penalized relative to predicting their mean. Scoring only the mixture mean instead leaves its spread unidentified. Moreover, passive histories provide neither model with information about the actual sign: stochastic samples cannot improve signed retention, and the Bayesian slope denominator is zero.
+  Recommendation: Separate uncertainty representation from retention. Specify a likelihood or proper distributional score, a prior supporting the expected modes, and one shared latent-body draw across paired query branches. Evaluate passive histories with distributional accuracy rather than rho.
+- [high] E3 confounds capacity loss with weaker evidence (proposal.md:82-86)
+  Reducing |b| at fixed sensor noise reduces probe signal-to-noise ratio, so even the Bayesian predictor's fidelity slope falls. That produces the advertised collapse signature without any representation loss; the beta_Bayes >= 0.8 restriction applies only to the primary analysis. Also, for fixed query schedules in the core cart, predictable trajectories depend on only g and b, giving rank at most two. Widths of two or more do not create the claimed competition among many predictable directions.
+  Recommendation: Match information availability across magnitude conditions and report Bayesian-normalized risk in every E3 cell. Explicitly test widths one and two, or introduce controlled predictable distractors with a known spectrum to create a genuine capacity bottleneck.
+- [high] The cited JEPA result does not establish the proposed ordering (proposal.md:84)
+  Physical consequence per unit asymmetry is not the input-to-target regression coefficient used by Littwin et al. For probe evidence X=s*b+noise and response Y=t*b, that coefficient is s*t*Var(b)/(s^2*Var(b)+Var(noise)); it approaches zero as asymmetry shrinks. Thus the asserted preferential preservation need not follow and can face the opposite pressure. The cited analysis also assumes specific deep-linear objectives and covariance structure, unlike the proposed recurrent EMA/regularized setup. See [Littwin et al., equations 4–5 and Assumption 4.1](https://arxiv.org/html/2407.03475v1).
+  Recommendation: Derive the relevant covariance and regression coefficients for the actual training pairs. Add a controlled linear experiment satisfying the cited assumptions, and frame the nonlinear JEPA advantage as an empirical hypothesis rather than a theoretical prediction.
+- [high] Next-step training already supplies a delayed memory signal (proposal.md:90-92)
+  Section 9.3 trains through the entire query with full backpropagation. Next-step prediction losses during that query depend on b and therefore reward retaining probe evidence across the hold, even without an additional query-response loss. E4 consequently changes loss weighting or prediction horizon, not necessarily the presence of memory supervision. Observed improvement would not establish the claimed absence-of-reward mechanism.
+  Recommendation: Write the losses and temporal masks explicitly. Distinguish hold-only loss, whole-episode next-step loss, and an additional query loss; include a query-weight-matched control and restrict the zero-gradient claim to hold losses.
+- [high] The additive-decoder theorem does not cover action-conditioned rollouts (proposal.md:96-98)
+  The proof is valid for a separable decoder applied to a fixed origin state. In the proposed recurrent world models, however, an action-conditioned transition can first write b*u into an even latent coordinate; an additive decoder can then read that coordinate and produce nonzero contrast. Such a result would not refute the theorem, although E5 labels it a refutation. Likewise, adding embeddings before a nonlinear network is not the output separability assumed here.
+  Recommendation: Specify every state/action interaction along the rollout. Test the theorem using a frozen origin representation and a directly separable response head, and separately compare ordinary nonlinear concatenation/addition with explicit multiplicative fusion.
+- [high] The walker replication has no defined endpoint or information denominator (proposal.md:140-142)
+  The walker predicts joint angles and two foot forces, but no scalar response, paired query construction, or parity convention defines its r. E6 nevertheless requires rho on both tiers. Replacing the Bayesian reference with a learned transformer also changes the estimand: an underfit transformer can inflate the ratio, and failed recent-window prediction does not establish that information is unavailable.
+  Recommendation: Define the walker response functional, units, query pair and reflection law before training. Use absolute prediction risk and explicit learned-reference comparisons; do not interpret their ratio as a fraction of available information or a certified information gap.
+- [medium] The cart's negative augmentation control is identical to correct augmentation (proposal.md:149)
+  The cart's predicted observation channels—position, velocity and total force—are all reflection-even. Correctly reflecting an episode therefore already leaves these targets unchanged. Reflecting inputs while retaining those targets produces the valid augmented example, not a damaging control. Any claimed difference between these arms would arise from some other implementation difference.
+  Recommendation: Use the invariant history encoder with an unreflected query described in Section 3 as the negative control. Explicitly define transformations for trajectory targets and query-indexed contrast targets.
+- [medium] The recent-window reference includes diagnostic evidence at short holds (proposal.md:56)
+  A two-second window at a hold between one and two seconds includes the probe itself. At a two-second hold it includes the initial activation-decay transient that Section 2 explicitly identifies as informative. H1 nevertheless requires chance performance at every hold longer than one second. The reference can correctly recover the sign and trigger redesign even when the later hold is uninformative.
+  Recommendation: Require the entire reference window to occur after the washout period—for example, holds of at least three seconds for a two-second window and one-second washout—or shorten and mask the window consistently. Update H1 accordingly.
+- [medium] Latent swapping does not isolate use of stored asymmetry (proposal.md:66)
+  Unconstrained models have no defined odd latent subspace. For exactly mirrored equivariant states, flipping the complete odd block forces the contrast to flip algebraically, even if that block stores probe-command sign rather than inferred b. For independently generated twins, swapping only part of the state can instead create an incompatible state. These outcomes do not establish the proposed causal interpretation.
+  Recommendation: Define interventions separately for each representation class. Use matched-command/noise body pairs, validate the manipulated quantity with trained readouts, and add sham and nuisance swaps. Treat reflection consistency separately from causal evidence of asymmetry use.
+- [medium] Increasing test families cannot guarantee the stated confidence precision (proposal.md:192-194)
+  The intervals include training-seed variation, but sample sizing changes only the number of test families while fixing five seeds. Seed-level variation creates a precision floor that additional families cannot remove. For example, a seed-level standard deviation of 0.1 leaves an approximate 95% half-width of 0.088 even with infinitely many test families, exceeding the promised 0.03.
+  Recommendation: Estimate family and seed variance separately in the pilot and jointly size both dimensions. Specify a crossed bootstrap preserving method pairing, plus an insufficient-precision outcome when the compute cap prevents the target; alternatively condition inference explicitly on the fitted seeds.
+
+Next steps:
+- Replace the primary endpoint and freeze explicit loss, rollout and uncertainty-scoring definitions.
+- Redesign mechanism controls to separate evidence strength, capacity, supervision and decoder expressivity.
+- Specify the walker endpoint and a complete configuration-by-seed compute budget before confirmatory training.
+exit: 0

@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1080" viewBox="0 0 1600 1080" role="img" aria-labelledby="figure-title figure-description">
+  <title id="figure-title">Training world models to retain mechanical asymmetry</title>
+  <desc id="figure-description">Six numbered stages preserve immutable episodes with side labels and timestamps, split families before forming windows, construct causal cart-observation and control tensors without side averaging or time warping, and expose a diagnostic interaction followed by a delay and a known query. A recurrent belief updates changing state from real observations and retains diagnostic context, sampling context once per forecast rollout. It predicts physical trajectories and obtains impulse by integrating force. Only measured training branch targets feed a composite trajectory score and impulse CRPS objective and parameter updates. A separate locked test lane applies the model with frozen weights to held-out bodies and command schedules, assessing response error, calibration, and memory. State filtering continues according to the declared protocol. Mirrored and branched trajectories remain in one split.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 2 2 L 10 6 L 2 10" fill="none" stroke="#60758B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="teal-arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 2 2 L 10 6 L 2 10" fill="none" stroke="#147D79" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      text {font-family: Arial, Helvetica, sans-serif; fill: #172C46;}
+      .title {font-size: 35px; font-weight: 700; letter-spacing: -.5px;}
+      .subtitle {font-size: 23px; fill: #5B6D80;}
+      .heading {font-size: 27px; font-weight: 700; letter-spacing: -.3px;}
+      .body {font-size: 22px; fill: #3F536A;}
+      .small {font-size: 20px; fill: #53677D;}
+      .tag {font-size: 19px; font-weight: 700; letter-spacing: 1.3px;}
+      .number {font-size: 20px; font-weight: 700; fill: #FFFFFF; text-anchor: middle;}
+      .pill {font-size: 18px; font-weight: 700; text-anchor: middle;}
+      .rule {fill: none; stroke: #60758B; stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow);}
+      .train-rule {fill: none; stroke: #147D79; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#teal-arrow);}
+      .card {fill: #FFFFFF; stroke: #D5DFE8; stroke-width: 1.8;}
+    </style>
+  </defs>
+
+  <rect width="1600" height="1080" fill="#FFFFFF"/>
+  <text x="64" y="57" class="title">Training world models to retain mechanical asymmetry</text>
+  <text x="64" y="96" class="subtitle">Training pipeline for persistent bilateral mechanics</text>
+
+  <!-- Preserve anatomical and temporal structure before forming any examples. -->
+  <g id="stage-1-immutable-episodes">
+    <rect x="64" y="141" width="432" height="189" rx="16" class="card"/>
+    <circle cx="99" cy="178" r="16" fill="#172C46"/>
+    <text x="99" y="185" class="number">1</text>
+    <text x="127" y="187" class="heading">Immutable episodes</text>
+    <text x="88" y="232" class="body">Side labels and original timestamps</text>
+    <text x="88" y="264" class="body">Measured observations + controls</text>
+    <text x="88" y="304" class="small">Keep side labels and full chronology.</text>
+  </g>
+  <path d="M 503 235 H 535" class="rule"/>
+
+  <g id="stage-2-family-split">
+    <rect x="544" y="141" width="512" height="189" rx="16" class="card"/>
+    <circle cx="579" cy="178" r="16" fill="#172C46"/>
+    <text x="579" y="185" class="number">2</text>
+    <text x="607" y="187" class="heading">Split families before windows</text>
+    <rect x="568" y="212" width="109" height="34" rx="17" fill="#E4F3F1"/>
+    <text x="622.5" y="235" class="pill" fill="#147D79">TRAIN</text>
+    <rect x="689" y="212" width="151" height="34" rx="17" fill="#EFF3F7"/>
+    <text x="764.5" y="235" class="pill">VALIDATION</text>
+    <rect x="852" y="212" width="180" height="34" rx="17" fill="#FFF3DD"/>
+    <text x="942" y="235" class="pill" fill="#91621F">LOCKED TEST</text>
+    <text x="568" y="278" class="body">All mirrors and intervention branches</text>
+    <text x="568" y="307" class="body">of a family stay in the same partition.</text>
+  </g>
+  <path d="M 1063 235 H 1095" class="rule"/>
+
+  <g id="stage-3-causal-tensors">
+    <rect x="1104" y="141" width="432" height="189" rx="16" class="card"/>
+    <circle cx="1139" cy="178" r="16" fill="#172C46"/>
+    <text x="1139" y="185" class="number">3</text>
+    <text x="1167" y="187" class="heading">Causal tensor view</text>
+    <text x="1128" y="229" class="body" font-weight="700">Observations [B, T, 3]</text>
+    <text x="1128" y="260" class="body" font-weight="700">Controls [B, T, 2] + masks</text>
+    <text x="1128" y="289" class="small">No side averaging or time warping</text>
+    <text x="1128" y="316" class="small">Fit preprocessing on training data.</text>
+  </g>
+
+  <!-- The loop routes only the training partition into the training path. -->
+  <path d="M 1320 337 V 364 Q 1320 376 1308 376 H 346 Q 334 376 334 388 V 430" class="rule"/>
+  <rect x="544" y="356" width="560" height="39" rx="19" fill="#FFFFFF"/>
+  <text x="824" y="383" class="small" text-anchor="middle">Training histories; the same view rules apply at test</text>
+
+  <g id="stage-4-diagnostic-delay-query">
+    <rect x="64" y="438" width="540" height="213" rx="16" fill="#F4FAF9" stroke="#BEDDD9" stroke-width="1.8"/>
+    <circle cx="99" cy="475" r="16" fill="#147D79"/>
+    <text x="99" y="482" class="number">4</text>
+    <text x="127" y="484" class="heading">Diagnostic interaction to query</text>
+    <rect x="88" y="513" width="174" height="45" rx="8" fill="#DDEFEA"/>
+    <text x="175" y="542" class="body" text-anchor="middle" font-weight="700">Diagnostic</text>
+    <path d="M 270 535 H 294" class="train-rule"/>
+    <rect x="302" y="513" width="108" height="45" rx="8" fill="#EEF2F5"/>
+    <text x="356" y="542" class="body" text-anchor="middle">Delay</text>
+    <path d="M 418 535 H 442" class="train-rule"/>
+    <rect x="450" y="513" width="129" height="45" rx="8" fill="#FFF1D8"/>
+    <text x="514.5" y="542" class="body" text-anchor="middle" font-weight="700">Query</text>
+    <text x="88" y="597" class="body">Diagnostic evidence is in the past.</text>
+    <text x="88" y="629" class="small">Only scheduled future commands are supplied.</text>
+  </g>
+  <path d="M 612 545 H 646" class="train-rule"/>
+
+  <g id="stage-5-recurrent-belief">
+    <rect x="656" y="438" width="420" height="213" rx="16" fill="#F4FAF9" stroke="#BEDDD9" stroke-width="1.8"/>
+    <circle cx="691" cy="475" r="16" fill="#147D79"/>
+    <text x="691" y="482" class="number">5</text>
+    <text x="719" y="484" class="heading">Recurrent belief</text>
+    <rect x="680" y="512" width="372" height="42" rx="8" fill="#FFFFFF" stroke="#C8DEDA"/>
+    <text x="866" y="540" class="body" text-anchor="middle">State: update from real data</text>
+    <rect x="680" y="565" width="372" height="42" rx="8" fill="#FFFFFF" stroke="#C8DEDA"/>
+    <text x="866" y="593" class="body" text-anchor="middle">Context: retain after diagnosis</text>
+    <text x="680" y="635" class="small">Hold sampled context through rollout.</text>
+  </g>
+  <path d="M 1084 545 H 1118" class="train-rule"/>
+
+  <g id="stage-6-physical-response">
+    <rect x="1128" y="438" width="408" height="213" rx="16" fill="#F4FAF9" stroke="#BEDDD9" stroke-width="1.8"/>
+    <circle cx="1163" cy="475" r="16" fill="#147D79"/>
+    <text x="1163" y="482" class="number">6</text>
+    <text x="1191" y="484" class="heading">Physical response</text>
+    <text x="1152" y="534" class="body">Predict trajectory + uncertainty</text>
+    <text x="1152" y="571" class="body">Integrate force to obtain impulse</text>
+    <text x="1152" y="612" class="small">Same query schedules for all models</text>
+  </g>
+
+  <!-- Training-only supervision. Test targets never enter these losses. -->
+  <path d="M 1332 658 V 680 Q 1332 692 1320 692 H 831 Q 819 692 819 704 V 738" class="train-rule"/>
+  <rect x="884" y="676" width="247" height="32" fill="#FFFFFF"/>
+  <text x="1007.5" y="699" class="small" text-anchor="middle">Training predictions</text>
+
+  <g id="training-objectives">
+    <rect x="64" y="746" width="1472" height="104" rx="14" fill="#F4FAF9"/>
+    <rect x="64" y="746" width="6" height="104" rx="3" fill="#147D79"/>
+    <text x="89" y="775" class="tag" fill="#147D79">TRAIN ONLY</text>
+    <text x="89" y="814" class="body" font-weight="700">Measured branch targets</text>
+    <path d="M 406 803 H 464" class="train-rule"/>
+    <text x="491" y="789" class="body" font-weight="700">Trajectory score</text>
+    <text x="491" y="824" class="body" font-weight="700">+ impulse CRPS</text>
+    <path d="M 855 803 H 913" class="train-rule"/>
+    <text x="940" y="809" class="body" font-weight="700">Update training weights</text>
+    <text x="1227" y="791" class="small">Validation selects</text>
+    <text x="1227" y="821" class="small">the final checkpoint.</text>
+  </g>
+
+  <!-- Isolated final evaluation lane. -->
+  <g id="locked-test-evaluation">
+    <rect x="64" y="896" width="1472" height="128" rx="14" fill="#F6F8FA" stroke="#D5DFE8" stroke-width="1.5"/>
+    <rect x="64" y="896" width="6" height="128" rx="3" fill="#B37B2C"/>
+    <text x="89" y="928" class="tag" fill="#91621F">LOCKED TEST</text>
+    <text x="89" y="965" class="body" font-weight="700">Held-out bodies + schedules</text>
+    <text x="89" y="998" class="small">All branches remain within family.</text>
+    <path d="M 445 964 H 503" class="rule"/>
+    <text x="531" y="957" class="body" font-weight="700">Frozen weights</text>
+    <text x="531" y="991" class="small">State filtering continues</text>
+    <path d="M 756 964 H 814" class="rule"/>
+    <text x="843" y="957" class="body" font-weight="700">Response error · calibration · memory probe</text>
+    <text x="843" y="991" class="small">Evaluate by independent family, not by frame.</text>
+  </g>
+
+  <text x="64" y="1060" class="small">B: batch · T: ordered time. Observation columns: x, v, F_total. Control columns: a, u.</text>
+  <text x="1536" y="1060" class="small" text-anchor="end">No test targets enter training.</text>
+</svg>

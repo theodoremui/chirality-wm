@@ -1,0 +1,88 @@
+[codex] Starting Codex task thread.
+[codex] Thread ready (01a16a49-869d-7140-b8a2-b2e393852e0a).
+[codex] Turn started (01a16a49-894b-79a1-8f48-03380f05a410).
+[codex] Assistant message captured: I’m using the review skill to check the proposal’s formal claims, experimental design, and so...
+[codex] Running command: /bin/zsh -lc "pwd && rg --files -g 'AGENTS.md' -g 'proposal.md' -g 'SKILL.md' -g 'context/**'"
+[codex] Command completed: /bin/zsh -lc "pwd && rg --files -g 'AGENTS.md' -g 'proposal.md' -g 'SKILL.md' -g 'context/**'" (exit 0)
+[codex] Running command: /bin/zsh -lc 'cat /Users/theodoremui/.codex/skills/gstack-review/SKILL.md'
+[codex] Command completed: /bin/zsh -lc 'cat /Users/theodoremui/.codex/skills/gstack-review/SKILL.md' (exit 0)
+[codex] Running command: /bin/zsh -lc "ls -la && wc -l context/* && rg -n 'locked|confirmation|112|14|leak|sixteen|zer...
+[codex] Command completed: /bin/zsh -lc "ls -la && wc -l context/* && rg -n 'locked|confirmation|112|14|leak|sixteen|zer... (exit 0)
+[codex] Running command: /bin/zsh -lc "sed -n '450,820p' /Users/theodoremui/.codex/skills/gstack-review/SKILL.md && ca...
+[codex] Command completed: /bin/zsh -lc "sed -n '450,820p' /Users/theodoremui/.codex/skills/gstack-review/SKILL.md && ca... (exit 0)
+[codex] Running command: /bin/zsh -lc "nl -ba proposal.md | sed -n '1,220p'"
+[codex] Command completed: /bin/zsh -lc "nl -ba proposal.md | sed -n '1,220p'" (exit 0)
+[codex] Running command: /bin/zsh -lc 'git status --short && wc -l proposal.md && cat README.md && cat context/prior-c...
+[codex] Command completed: /bin/zsh -lc 'git status --short && wc -l proposal.md && cat README.md && cat context/prior-c... (exit 0)
+[codex] Running command: /bin/zsh -lc 'cat /Users/theodoremui/.codex/skills/gstack/review/checklist.md'
+[codex] Command completed: /bin/zsh -lc 'cat /Users/theodoremui/.codex/skills/gstack/review/checklist.md' (exit 0)
+[codex] Running command: /bin/zsh -lc "nl -ba proposal.md | sed -n '217,390p'"
+[codex] Command completed: /bin/zsh -lc "nl -ba proposal.md | sed -n '217,390p'" (exit 0)
+[codex] Assistant message captured: The main concern so far is causal attribution: several proposed results could occur without t...
+[codex] Searching:
+[codex] Running command: /bin/zsh -lc "sed -n '110,150p' context/jepa-asymmetry-paper.txt && sed -n '470,493p' context...
+[codex] Command completed: /bin/zsh -lc "sed -n '110,150p' context/jepa-asymmetry-paper.txt && sed -n '470,493p' context... (exit 0)
+[codex] Searching:
+[codex] Searching:
+[codex] Running command: /bin/zsh -lc "rg -n -i 'mirror|chang|edit|degree' context/jepa-asymmetry-paper.txt | head -45...
+[codex] Command completed: /bin/zsh -lc "rg -n -i 'mirror|chang|edit|degree' context/jepa-asymmetry-paper.txt | head -45... (exit 0)
+[codex] Running command: /bin/zsh -lc "sed -n '116,145p' context/jepa-asymmetry-paper.txt && sed -n '177,190p' context...
+[codex] Command completed: /bin/zsh -lc "sed -n '116,145p' context/jepa-asymmetry-paper.txt && sed -n '177,190p' context... (exit 0)
+[codex] Searching:
+[codex] Assistant message captured: The source audit found a direct contradiction: the pose paper explicitly says physical mirror...
+[codex] Searching:
+[codex] Running command: /bin/zsh -lc "python3 -B -c 'import math; tau=.1; A=.25; T=2.; h=T/2; d1=2*A*(1-math.exp(-h/t...
+[codex] Command completed: /bin/zsh -lc "python3 -B -c 'import math; tau=.1; A=.25; T=2.; h=T/2; d1=2*A*(1-math.exp(-h/t... (exit 0)
+[codex] Assistant message captured: I’m making the final pass through the equations and analysis rules. A balanced command pulse ...
+[codex] Running command: /bin/zsh -lc "git diff --numstat && nl -ba proposal.md | sed -n '194,215p' && nl -ba proposal...
+[codex] Command completed: /bin/zsh -lc "git diff --numstat && nl -ba proposal.md | sed -n '194,215p' && nl -ba proposal... (exit 0)
+[codex] Searching:
+[codex] Assistant message captured: { "verdict": "needs-attention", "summary": "Do not register this version yet. Key experiments...
+[codex] Turn completed.
+# Codex Adversarial Review
+
+Target: working tree diff
+Verdict: needs-attention
+
+Do not register this version yet. Key experiments cannot identify their claimed mechanisms, the pose extension contradicts its source, and the replication plan exceeds the stated design and budget.
+
+Findings:
+- [high] Stochastic backbone defeats the unimodal output-family control (proposal.md:137-147)
+  B4 retains stochastic latents. A Gaussian decoder conditional on those latents can yield a multimodal marginal predictive distribution; recurrent latents can also create temporal persistence despite independent decoder noise. Thus changing only the output head does not isolate unimodality or persistent-body uncertainty, invalidating the intended H2/H2b interpretation.
+  Recommendation: Define each ablation's complete joint predictive law. Use a shared deterministic history encoder with all sampling confined to the controlled distribution module, and retain faithful stochastic B4 as a separate baseline.
+- [high] Width interaction does not distinguish capacity from optimization (proposal.md:54)
+  Increasing width changes optimization as well as representational capacity. A narrow model trapped at a poor stationary point under high-variance losses, while a wider model optimizes successfully, satisfies H3n and the plateau requirement without any capacity-driven information loss. Gradient norms and plateaus do not establish comparable optima.
+  Recommendation: Add optimization interventions at fixed width and objective, including independent restarts, learning-rate tuning and an extended-training control. Demonstrate the proposed feature tradeoff with frozen readouts; otherwise describe H3n as width-dependent interference rather than identified capacity competition.
+- [high] Memory attenuation is not evidence of information loss (proposal.md:58)
+  The proposition permits z_D = r^D b, which preserves b exactly for finite D and nonzero r. A decoder trained across delays can fail because the code changes scale or orientation, even when delay-specific decoding succeeds. The specified frozen-state test does not distinguish this from forgetting or establish that the missing hold reward caused the loss.
+  Recommendation: Measure probe-end recoverability and fit both shared and delay-specific readouts with matched budgets. Include an invertible contracting-code control, and restrict negative results to information usable by the tested decoder classes.
+- [high] H6 confounds objective, architecture and background predictability (proposal.md:203)
+  The planned B1-versus-B2 comparison changes stochastic architecture, target learning and regularization, with only moving backgrounds budgeted. A win therefore need not arise from the proposed coefficient mechanism. Moreover, the cited suite deliberately uses smoothly evolving video; task irrelevance does not imply low temporal predictability. [Distracting Control Suite](https://arxiv.org/html/2101.02722#S3.SS3)
+  Recommendation: Use a shared backbone and readout in an objective-by-background-predictability factorial experiment, measuring predictability at the actual training horizon. Otherwise label H6 a descriptive model comparison and remove its mechanism and objective-choice conclusions.
+- [high] Pixel-tier Bayes reference is not specified for pixel information (proposal.md:92-96)
+  The reference grid supplies noiseless physical trajectories, but the camera tier introduces occlusion, quantization and random video backgrounds. No image likelihood or nuisance marginalization defines the posterior given the model's actual inputs. Reusing the joint-sensor posterior would grant the reference different information and invalidate pixel skill's interpretation as performance relative to what those images allow.
+  Recommendation: Specify and validate a pixel-conditioned reference, including background nuisance variables. If infeasible, label the sensor reference privileged, report raw pixel prediction risk, and remove the exact-information and Bayes-normalized claims for that tier.
+- [high] Physical mirroring does not establish pose-response sign balance (proposal.md:100)
+  The source explicitly contradicts this assumption. Section 2.1 of context/jepa-asymmetry-paper.txt states that physical mirroring followed by projection need not exchange excursions exactly and is not assumed to reverse the response sign. Balancing edited anatomical sides therefore does not establish a balanced distribution of the measured ΔA.
+  Recommendation: Recompute ΔA from projected references for every mirrored pair, audit the resulting sign distribution, and distinguish anatomical edit balance from response-sign balance. Do not generate mirrored labels by negating the original response.
+- [high] Pose readout results cannot localize the earlier failure as claimed (proposal.md:102)
+  Failed linear and two-layer readouts do not prove that information is absent from the representation. Conversely, positive skill on a new cohort cannot localize an earlier development-cohort failure without rescoring the original decoder on the same cases. The source used absolute response error and geometric failure penalties, whereas the new risk and scalar-readout comparison are not specified equivalently.
+  Recommendation: Compare original decoders, new readouts and zero response on identical locked-cohort cases, with matched inputs, risk definitions and hierarchical weights. Report recoverability by readout class; remove the binary representation-versus-decoding verdict and unsupported capacity attribution.
+- [high] The belief specification cannot represent its continuous magnitude uncertainty (proposal.md:122-126)
+  The specified network outputs one magnitude per sign, defining at most two body values for a fixed history. The passive prior instead has continuous magnitude on [0.1, 0.3]. The later instruction to draw a magnitude supplies no sampling law, so the proposed model cannot yet support its calibration claims or the claimed matched continuous uncertainty against B5.
+  Recommendation: Define a component-conditioned continuous magnitude distribution, its equivariant parameterization and sampling procedure. Specify how continuous expectations and energy-score pair terms are estimated, and give comparator families equivalent uncertainty capacity.
+- [high] Walker inventory cannot deliver the registered replication (proposal.md:253-259)
+  Five joint-sensor models at one configuration do not provide the output-family, variance-by-width, loss-arm or fusion-by-data-size contrasts needed to replicate H2–H5. Both walker tiers also budget five seeds despite the stated ten-seed inference procedure. Merely raising these existing runs to ten seeds adds 110 GPU-hours, taking 356 to 466 before adding missing mechanism comparisons.
+  Recommendation: Enumerate walker fits by hypothesis and controlled contrast, specify tier-specific inference and coverage checks, and recost them. Reduce the confirmatory claims or other work before registration to satisfy the 400-hour cap.
+- [medium] Balanced commands do not guarantee the stated balanced statistic (proposal.md:296)
+  With actuator lag, equal positive and negative command area does not imply zero activation-difference area. Integrating the stated dynamics gives ∫d dt = 2∫u dt − τ[d(T)−d(0)]. A balanced command starting at d(0)=0 generally leaves d(T) nonzero, so the common-gain term need not vanish. This undermines the proposed nuisance-free linear diagnostic.
+  Recommendation: Define balance explicitly as the sampled condition Σd_t=0 and construct pulses that satisfy it under the simulator discretization, or residualize the activation regressor against the intercept and estimate g and b jointly.
+- [medium] The decision rule does not establish a meaningful effect (proposal.md:209)
+  An estimate above δ with a lower bound merely above zero can be classified as supported while the interval admits effects arbitrarily smaller than δ. Bonferroni adjustment controls directional false positives; it does not turn this rule into evidence that the meaningful-effect threshold was reached.
+  Recommendation: Require the simultaneous lower bound to exceed δ for meaningful-effect support, or explicitly label the existing outcome as directional evidence with a point estimate above δ and keep magnitude unresolved.
+
+Next steps:
+- Repair the mechanism-identification controls and source-dependent pose claims before registration.
+- Specify complete predictive distributions, observation-matched references and tier-specific inference.
+- Rebuild the fit inventory around the actual confirmatory contrasts and enforce the compute cap.
+exit: 0

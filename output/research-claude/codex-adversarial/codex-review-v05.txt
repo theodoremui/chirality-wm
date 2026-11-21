@@ -1,0 +1,90 @@
+[codex] Starting Codex task thread.
+[codex] Thread ready (01a16a41-a842-7a73-a28d-f74a493f7aff).
+[codex] Turn started (01a16a41-ab09-7510-8942-b5e7cab5890c).
+[codex] Assistant message captured: I’m using the review skill to check the proposal’s formal claims, experimental design, and ci...
+[codex] Running command: /bin/zsh -lc 'cat /Users/theodoremui/.codex/skills/gstack-review/SKILL.md'
+[codex] Command completed: /bin/zsh -lc 'cat /Users/theodoremui/.codex/skills/gstack-review/SKILL.md' (exit 0)
+[codex] Running command: /bin/zsh -lc "pwd; rg --files -g 'AGENTS.md' -g '*proposal*' -g 'context/**' -g 'CLAUDE.md'"
+[codex] Command completed: /bin/zsh -lc "pwd; rg --files -g 'AGENTS.md' -g '*proposal*' -g 'context/**' -g 'CLAUDE.md'" (exit 0)
+[codex] Running command: /bin/zsh -lc 'cat /Users/theodoremui/.codex/skills/gstack/review/checklist.md'
+[codex] Command completed: /bin/zsh -lc 'cat /Users/theodoremui/.codex/skills/gstack/review/checklist.md' (exit 0)
+[codex] Running command: /bin/zsh -lc 'nl -ba proposal.md'
+[codex] Command completed: /bin/zsh -lc 'nl -ba proposal.md' (exit 0)
+[codex] Running command: /bin/zsh -lc "rg -n 'asymmetr|leak|sixteen|16 |zero|test|train|video|SymPE|SWAP|Littwin' cont...
+[codex] Command completed: /bin/zsh -lc "rg -n 'asymmetr|leak|sixteen|16 |zero|test|train|video|SymPE|SWAP|Littwin' cont... (exit 0)
+[codex] Running command: /bin/zsh -lc "rg --files -g 'AGENTS.md' -g 'CLAUDE.md' -g 'README*'; git status --short"
+[codex] Command completed: /bin/zsh -lc "rg --files -g 'AGENTS.md' -g 'CLAUDE.md' -g 'README*'; git status --short" (exit 0)
+[codex] Running command: /bin/zsh -lc 'cat README.md; cat context/prior-codex-v07.md'
+[codex] Command completed: /bin/zsh -lc 'cat README.md; cat context/prior-codex-v07.md' (exit 0)
+[codex] Running command: /bin/zsh -lc "sed -n '95,290p' proposal.md | nl -ba -v 95"
+[codex] Command completed: /bin/zsh -lc "sed -n '95,290p' proposal.md | nl -ba -v 95" (exit 0)
+[codex] Running command: /bin/zsh -lc "sed -n '1,200p' /Users/theodoremui/.codex/skills/gstack/review/checklist.md"
+[codex] Command completed: /bin/zsh -lc "sed -n '1,200p' /Users/theodoremui/.codex/skills/gstack/review/checklist.md" (exit 0)
+[codex] Assistant message captured: Several core claims need closer checking: the hold may retain physical evidence of the asymme...
+[codex] Searching:
+[codex] Running command: /bin/zsh -lc "nl -ba proposal.md | sed -n '103,190p'"
+[codex] Command completed: /bin/zsh -lc "nl -ba proposal.md | sed -n '103,190p'" (exit 0)
+[codex] Searching:
+[codex] Running command: /bin/zsh -lc "nl -ba proposal.md | sed -n '191,227p'; rg -n 'every test|all test|overlap|leak...
+[codex] Command completed: /bin/zsh -lc "nl -ba proposal.md | sed -n '191,227p'; rg -n 'every test|all test|overlap|leak... (exit 0)
+[codex] Searching:
+[codex] Assistant message captured: I found a concrete baseline problem: DreamerV3 is placed in the “unimodal” class, but its sto...
+[codex] Running command: /bin/zsh -lc "python3 -c 'import numpy as np; import itertools; rng=np.random.default_rng(202...
+[codex] Command completed: /bin/zsh -lc "python3 -c 'import numpy as np; import itertools; rng=np.random.default_rng(202... (exit 0)
+[codex] Searching:
+[codex] Running command: /bin/zsh -lc "python3 -c 'import math; print({\"underestimate_28pct_relative_miss\":abs(1/0.7...
+[codex] Command completed: /bin/zsh -lc "python3 -c 'import math; print({\"underestimate_28pct_relative_miss\":abs(1/0.7... (exit 0)
+[codex] Searching:
+[codex] Assistant message captured: The uncertainty plan also fails a simple stress test. When variation comes only from five tra...
+[codex] Assistant message captured: { "verdict": "needs-attention", "summary": "Do not freeze this protocol yet. Physical leakage...
+[codex] Turn completed.
+# Codex Adversarial Review
+
+Target: working tree diff
+Verdict: needs-attention
+
+Do not freeze this protocol yet. Physical leakage, misclassified baselines, non-identifying experiments, and under-covering confidence intervals could produce convincing but invalid mechanism claims.
+
+Findings:
+- [high] A finite washout does not remove the hidden body's physical signal (proposal.md:38-40)
+  The fixture resets position, but no reset of motor activations is specified. The stated dynamics give d(D)=d(0)exp(-D/tau), so force still contains b*d(D) after one second. Balancing the probe sum does not ensure d(0)=0. A model could retain only the probe sign and recover b from residual force instead of remembering its estimate. A recent-window sign audit without the earlier probe sign can miss this route. The individual impulse formula also omits the residual-activation term, although it cancels in the contrast.
+  Recommendation: Reset the complete physical state, explicitly including q_L=q_R=a, before the hold. Verify conditional independence using identical post-reset noise across different b values, and derive the query formula from that reset.
+- [high] The baseline classes misrepresent existing stochastic world models (proposal.md:123-142)
+  B1 and B3 are classified as unimodal, but DreamerV3 uses categorical stochastic latents and autoregressive recurrence; its marginal predictive distribution need not be unimodal. B4 also removes stochastic latents present in SWAP. Consequently, either H2 compares incorrectly labeled classes or the implementation weakens the cited baselines precisely along the proposed remedy's dimension. See the original [Dreamer architecture](https://arxiv.org/html/2301.04104v2#S3) and [SWAP architecture](https://arxiv.org/html/2606.19928v1).
+  Recommendation: Include faithful stochastic RSSM versions of Dreamer and SWAP. Label deterministic/Gaussian restrictions as controlled ablations, and define M1 classes by their complete marginal rollout distributions.
+- [high] The fixed query pair does not identify difficulty learning a product (proposal.md:58)
+  Every query uses the same magnitude and horizon. A branch-pair decoder can therefore predict J_plus=C+K*b_hat and J_minus=C-K*b_hat with a linear map, where K=2*u_star*kappa is constant. This is equivariant under branch exchange and needs no learned state-command multiplication. Thus H5 can measure a convenient parameterization of a fixed response rather than the claimed difficulty composing hidden mechanics with a new command.
+  Recommendation: Vary query amplitude and temporal schedule independently of body and probe, hold out combinations, and compare fusion heads on the same frozen encoder. Include the fixed-pair linear decoder as a shortcut control.
+- [high] H3n cannot distinguish capacity competition from optimization failure (proposal.md:205-206)
+  Increasing distractor variance under raw squared loss changes gradient magnitudes and conditioning while training remains limited to identical updates. Contrast skill can fall in an adequate-capacity model simply because optimization becomes harder. H3n tests only width 16, so this alternative can receive a 'supported M2' verdict and explain Loop 1 despite no evidence of a binding capacity constraint. The linear rank theorem does not establish the nonlinear mechanism.
+  Recommendation: Require a variance-by-capacity interaction, an adequate-capacity control, and convergence/gradient diagnostics. Preserve the raw-loss manipulation, but distinguish finite-training optimization effects from capacity effects in the decision rule.
+- [high] Five-seed percentile intervals can substantially under-cover (proposal.md:221-223)
+  When uncertainty is dominated by training seeds, resampling more test families adds no independent information. In a review-time simulation of 20,000 zero-effect experiments with five Gaussian seed effects, enumerating all 5^5 bootstrap resamples produced nominal 95% percentile intervals that excluded zero 16.12% of the time. This is an admissible limiting case of the proposed crossed design. Interval-width sizing and more bootstrap draws do not repair coverage, and Holm correction requires valid underlying inference.
+  Recommendation: Validate coverage and family-wise error with simulated crossed effects before registration. Use sufficiently many seeds or a justified small-sample model; alternatively condition conclusions on the fitted seeds. Specify the exact simultaneous-interval construction.
+- [medium] Parity normalization is undefined for the primary constant targets (proposal.md:117)
+  Under the stated query formula with known g, J_plus+J_minus=4gaH is constant; canonical-reset force trajectory sums are likewise constant across b. Dividing these physical targets by their training standard deviation therefore divides by zero. The proposal already acknowledges the constant branch sum in M2, but supplies no handling for it in the remedy loss. An arbitrary tiny epsilon would instead give these channels arbitrarily large weight.
+  Recommendation: Specify fixed physical scales or a preregistered nonzero scale floor, including treatment of deterministic channels. Test normalization on the known-g, noise-free target condition before training.
+- [medium] H2 measures non-Gaussianity without establishing bimodality (proposal.md:202-203)
+  Neither Assumption S nor the sampling contract specifies a magnitude prior that creates two modes. For example, b uniform on [-B,B] with g>B satisfies S, but passive contrast is uniform and unimodal. A mixture can beat a Gaussian by fitting bounded support or tails, yielding a positive H2 without the claimed two-body mechanism. Matching a Gaussian's moments also does not make it the optimal Gaussian under energy score.
+  Recommendation: Freeze the body and noise distributions, demonstrate separated predictive modes, and optimize the Gaussian reference under the actual score. Include a flexible unimodal control and an output-family-only comparison.
+- [medium] Passive histories need not be fixed points of reflection (proposal.md:269)
+  Proposition 1 requires Mh=h, but passive histories containing odd distractors are not fixed points. Neither are walker histories with independently noisy left/right channels. Equivariance alone then permits nonzero odd outputs: distributional symmetry is insufficient for the claimed per-history zero contrast or exactly half mixture weights. The formal implication cannot be transferred unchanged to these benchmark inputs.
+  Recommendation: Restrict the pathwise proposition to reflection-fixed inputs and create a separate exact control satisfying that condition. For general passive inputs, test posterior calibration and distributional symmetry rather than asserting zero outputs.
+- [medium] Posterior-mean convergence does not certify the Bayesian references (proposal.md:85-87)
+  On symmetric passive histories, the posterior mean of b is exactly zero on any symmetric grid, including a grossly inaccurate one. The stopping rule can therefore pass while posterior variance, energy scores, and the H2 reference gap remain wrong. For the nonlinear walker, convergence of E[b] would not establish convergence of E[r(b)] either. These numerical errors feed directly into skill, validity gates, and effect thresholds.
+  Recommendation: Converge predictive contrast means, second moments, Bayes risks, and distributional reference scores separately. Bound numerical error relative to each meaningful effect; add effective-sample-size and repeatability checks for importance sampling.
+- [medium] H5 has no defined endpoint when a model never reaches the threshold (proposal.md:208)
+  Only five training-data sizes are budgeted. A model may never reach skill 0.8, or cross and recross it across sizes and seeds. The proposal defines neither censoring nor interpolation, so 'episodes to reach' and its bootstrap difference can be undefined or depend on an analyst's later choice. The endpoint is an absolute episode difference while its meaningful effect is expressed as a percentage.
+  Recommendation: Preregister the data-size grid, crossing estimator, percentage denominator, and treatment of non-reaching runs. Prefer a bounded learning-curve endpoint or explicitly censored time-to-threshold analysis.
+- [medium] The claimed control interpretation does not justify the skill margin (proposal.md:101-103)
+  Without clipping, achieved impulse is DeltaJ*gamma/gamma_hat; it equals -DeltaJ only for an equal-magnitude sign reversal. A 28% underestimate causes a 38.9% target miss, while a 28% overestimate causes 21.9%. More fundamentally, an aggregate excess-MSE increment of 0.08*R0 is not a per-body 28% relative coefficient error. Small gains and clipping can change control cost substantially, so the asserted quarter-target interpretation does not follow.
+  Recommendation: Remove the universal control conversion. Calibrate the margin on pilot control-risk distributions with fixed target, clipping, and threshold rules; evaluate learned posterior-moment controllers using the same decision rule as the Bayesian reference.
+- [medium] The walker inventory violates the stated tuning budget and compute cap (proposal.md:253-257)
+  Five walker models with eight tuning configurations and five final seeds require 65 fits, not 45. At two GPU-hours per fit, the missing 20 fits add 40 hours, raising the stated total from 271 to 311 before pilot work, extra seeds, or inference. The current inventory therefore cannot deliver the promised matched budgets within the cap.
+  Recommendation: Reconcile every model-condition-tuning-seed combination and include pilot, readout, scoring, and seed-expansion costs. Select a feasible primary scope before registration and profile the actual longest-sequence training configuration.
+
+Next steps:
+- Repair the simulator reset and executable data/loss contracts.
+- Redesign mechanism tests around matched interventions and faithful stochastic baselines.
+- Validate statistical coverage and reconcile the full compute inventory before preregistration.
+exit: 0

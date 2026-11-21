@@ -1,0 +1,44 @@
+[codex] Starting Codex task thread.
+[codex] Thread ready (01a16a56-03b8-7b50-b7d7-8a9dfa29b43b).
+[codex] Turn started (01a16a56-062d-7f50-b94a-382eb12464d0).
+[codex] Assistant message captured: I’m using the review skill to check each prior finding, then look for new issues that could i...
+[codex] Running command: /bin/zsh -lc 'cat /Users/theodoremui/.codex/skills/gstack-review/SKILL.md'
+[codex] Command completed: /bin/zsh -lc 'cat /Users/theodoremui/.codex/skills/gstack-review/SKILL.md' (exit 0)
+[codex] Running command: /bin/zsh -lc "pwd; rg --files -g 'AGENTS.md' -g 'README.md' -g 'proposal.md' -g 'context/**'"
+[codex] Command completed: /bin/zsh -lc "pwd; rg --files -g 'AGENTS.md' -g 'README.md' -g 'proposal.md' -g 'context/**'" (exit 0)
+[codex] Running command: /bin/zsh -lc "sed -n '440,620p' /Users/theodoremui/.codex/skills/gstack-review/SKILL.md"
+[codex] Command completed: /bin/zsh -lc "sed -n '440,620p' /Users/theodoremui/.codex/skills/gstack-review/SKILL.md" (exit 0)
+[codex] Running command: /bin/zsh -lc 'cat /Users/theodoremui/.codex/skills/gstack/review/checklist.md; cat README.md;...
+[codex] Command completed: /bin/zsh -lc 'cat /Users/theodoremui/.codex/skills/gstack/review/checklist.md; cat README.md;... (exit 0)
+[codex] Running command: /bin/zsh -lc "nl -ba proposal.md | sed -n '100,190p;250,293p;398,442p'; rg -n 'test|confirmat...
+[codex] Command completed: /bin/zsh -lc "nl -ba proposal.md | sed -n '100,190p;250,293p;398,442p'; rg -n 'test|confirmat... (exit 0)
+[codex] Assistant message captured: The revision addresses the seven earlier findings at the design level. I’m checking whether t...
+[codex] Running command: /bin/zsh -lc "nl -ba proposal.md | sed -n '104,175p;249,265p;398,442p'"
+[codex] Command completed: /bin/zsh -lc "nl -ba proposal.md | sed -n '104,175p;249,265p;398,442p'" (exit 0)
+[codex] Running command: /bin/zsh -lc "git status --short; rg -n 'AGENTS|skill|review' README.md; sed -n '680,840p' /U...
+[codex] Command completed: /bin/zsh -lc "git status --short; rg -n 'AGENTS|skill|review' README.md; sed -n '680,840p' /U... (exit 0)
+[codex] Running command: /bin/zsh -lc "nl -ba proposal.md | sed -n '60,91p;175,218p;327,370p'"
+[codex] Command completed: /bin/zsh -lc "nl -ba proposal.md | sed -n '60,91p;175,218p;327,370p'" (exit 0)
+[codex] Assistant message captured: I found two new problems: the linear capacity check cannot predict the contrast under randomi...
+[codex] Running command: /bin/zsh -lc "python3 -B -c 'import itertools; rows=[(b,u,b*u) for b,u in itertools.product((...
+[codex] Command completed: /bin/zsh -lc "python3 -B -c 'import itertools; rows=[(b,u,b*u) for b,u in itertools.product((... (exit 0)
+[codex] Assistant message captured: { "verdict": "needs-attention", "summary": "Do not register yet: two new identification probl...
+[codex] Turn completed.
+# Codex Adversarial Review
+
+Target: working tree diff
+Verdict: needs-attention
+
+Do not register yet: two new identification problems remain. Prior findings, in order: (1) Resolved—H3’s sign is corrected (proposal.md:408). (2) Resolved—objective timing, nonzero predictable distractors and independent-noise controls are specified (112, 165). (3) Resolved—the H3 inventory explicitly includes coefficient × objective (432). (4) Resolved—crossed seed/family inference includes shared family variation (257, 415). (5) Resolved—featureless/shuffled controls replace decoder superiority as evidence, and scalar scores are separated from pose failures (169–173). (6) Resolved at the proposal level—native methods, controlled experiments and unrestricted references have separate contracts (211–215). (7) Resolved—VariBAD’s persistent belief and trajectory objective are acknowledged and retained (66, 211).
+
+Findings:
+- [high] H3 can pass while latent prediction is worse in both conditions (proposal.md:408)
+  The corrected interaction does not establish the headline hypothesis that latent prediction keeps asymmetry where reconstruction loses it (line 84). For example, low-condition skills of 0.2 versus 0.3 and high-condition skills of 0.5 versus 0.9 give the registered interaction +0.3. With sufficiently precise intervals, H3 is meaningfully supported even though latent prediction is inferior in both conditions and both models deteriorate under low-coefficient distractors. The decision rule therefore permits the claimed objective advantage without observing it.
+  Recommendation: Require a positive low-condition latent-minus-reconstruction simple effect alongside the interaction, and specify what establishes retention versus loss. Alternatively, narrow H3 and the outcome claims to differential sensitivity, which the interaction actually identifies.
+- [high] Randomized queries eliminate the linear check’s predictable asymmetry direction (proposal.md:108)
+  The linear experiment supplies a probe statistic proportional to b, but its registered endpoint is query contrast (line 411). Under the randomized query signs in lines 138 and 336, that contrast is r=b·A(q), with A(q) centered and independent of b. Consequently Cov(b,r)=0; adding the query as another linear input does not help because Cov(A(q),r)=0 too. As written, even unrestricted linear regression predicts zero contrast at every width. This would measure missing multiplicative coupling, not the capacity boundary attributed to Proposition 2. Appendix B’s separate latent-factor study does not specify an exception for this cart check.
+  Recommendation: Explicitly register a fixed nonzero query for the reduced-rank cart check, or canonicalize its target to b by dividing contrast by the known nonzero query integral. Derive the covariance spectrum for that exact input/target pair and verify that full-rank regression recovers the asymmetry before testing rank truncation.
+
+Next steps:
+- Amend H3’s success rule and the linear check’s input/target definition before registration.
+exit: 0

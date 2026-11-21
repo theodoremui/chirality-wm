@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="740" height="274" viewBox="0 0 740 274" role="img" aria-labelledby="title desc">
+  <title id="title">Physical and optical interventions</title>
+  <desc id="desc">A fixed body and a reversible rig load generate the physical motion. Two camera settings magnify the left or right displacement in the same recorded motion.</desc>
+  <rect width="740" height="274" rx="12" fill="#f7f9fa"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#162e3a">
+    <text x="24" y="38" font-size="26" font-weight="700">One physical run, two camera readings</text>
+    <g fill="none" stroke="#465e6b" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M218 107 H234 Q243 107 243 116 V140 Q243 149 252 149 H270"/>
+      <path d="M218 208 H234 Q243 208 243 199 V176 Q243 167 252 167 H270"/>
+      <path d="M473 149 H489 Q498 149 498 140 V116 Q498 107 507 107 H521"/>
+      <path d="M473 167 H489 Q498 167 498 176 V199 Q498 208 507 208 H521"/>
+    </g>
+    <g fill="#465e6b">
+      <path d="M262 143 L273 149 L262 155 Z M262 161 L273 167 L262 173 Z"/>
+      <path d="M513 101 L524 107 L513 113 Z M513 202 L524 208 L513 214 Z"/>
+    </g>
+    <rect x="24" y="71" width="194" height="72" rx="9" fill="#fff" stroke="#708189" stroke-width="1.5"/>
+    <text x="39" y="100" font-size="20" font-weight="700">Same body</text>
+    <text x="39" y="125" font-size="17">Fixed motor gains</text>
+    <rect x="24" y="172" width="194" height="72" rx="9" fill="#f8eddf" stroke="#956137" stroke-width="1.5"/>
+    <text x="39" y="201" font-size="20" font-weight="700">Rig setting</text>
+    <text x="39" y="226" font-size="17">Spring loads L or R</text>
+    <rect x="273" y="109" width="200" height="98" rx="9" fill="#233f50"/>
+    <text x="373" y="142" text-anchor="middle" font-size="20" font-weight="700" fill="#fff">Physical motion</text>
+    <path d="M300 181 C318 181 319 151 332 157 S354 189 369 179 S384 162 396 170 S411 179 420 177 S433 172 446 175" fill="none" stroke="#9bdbda" stroke-width="3" stroke-linecap="round"/>
+    <rect x="525" y="71" width="191" height="72" rx="9" fill="#e2f1ef" stroke="#4d827d" stroke-width="1.5"/>
+    <text x="540" y="100" font-size="20" font-weight="700">Camera +</text>
+    <text x="540" y="125" font-size="17">Magnify left arm</text>
+    <rect x="525" y="172" width="191" height="72" rx="9" fill="#e2f1ef" stroke="#4d827d" stroke-width="1.5"/>
+    <text x="540" y="201" font-size="20" font-weight="700">Camera −</text>
+    <text x="540" y="226" font-size="17">Magnify right arm</text>
+  </g>
+</svg>

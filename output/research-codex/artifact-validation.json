@@ -1,0 +1,502 @@
+{
+  "status": "passed",
+  "canonical_proposals": [
+    {
+      "version": 1,
+      "path": "docs/ideas-codex/v01_from_pose_restoration_to_mechanical_memory.md",
+      "word_count": 1204,
+      "sha256": "bcbd58de0796c6886deef4134c4e356cdbaec76d2c1bb9889b428cc4d7757bf5"
+    },
+    {
+      "version": 2,
+      "path": "docs/ideas-codex/v02_observability_before_memory.md",
+      "word_count": 1567,
+      "sha256": "54d6e0a973fbc4309343d0aff1bafc3b297e7e17e43119aecfc878c3ac30f55a"
+    },
+    {
+      "version": 3,
+      "path": "docs/ideas-codex/v03_a_parity_consistent_belief_that_can_remain_uncertain.md",
+      "word_count": 1656,
+      "sha256": "f77117cb27b5ae08bdcc787877195fb1249aef3a9b5de88566ef503bef6b4854"
+    },
+    {
+      "version": 4,
+      "path": "docs/ideas-codex/v04_auditable_dynamics_and_data_contract.md",
+      "word_count": 1793,
+      "sha256": "57083b6515e7738b7e221719cf30bcef012792acdb0160afa4fd1ee4d0e27172"
+    },
+    {
+      "version": 5,
+      "path": "docs/ideas-codex/v05_matched_objectives_and_defeating_baselines.md",
+      "word_count": 2275,
+      "sha256": "d5846602b8858d94715a0d5669a337ac688972e685d2a193564c1493792a4400"
+    },
+    {
+      "version": 6,
+      "path": "docs/ideas-codex/v06_locked_inference_and_generality_gates.md",
+      "word_count": 2539,
+      "sha256": "daa16814c646955df1d8d60988b8e13d516a25c5a390c94011dcad6273294252"
+    },
+    {
+      "version": 7,
+      "path": "docs/ideas-codex/v07_predictive_memory_for_asymmetric_mechanics.md",
+      "word_count": 2448,
+      "sha256": "0f85f0f786dbfaa5a7240d4330a95c5636b720ff5e165011e4731c6656c065d8"
+    }
+  ],
+  "scores": [
+    {
+      "version": 0,
+      "design_score": 66.6,
+      "dimensions": [
+        {
+          "name": "Significance",
+          "weight": 12.0,
+          "score_out_of_5": 4.0
+        },
+        {
+          "name": "Novelty",
+          "weight": 18.0,
+          "score_out_of_5": 2.0
+        },
+        {
+          "name": "Conceptual/mathematical correctness",
+          "weight": 12.0,
+          "score_out_of_5": 4.5
+        },
+        {
+          "name": "Method specificity",
+          "weight": 12.0,
+          "score_out_of_5": 3.0
+        },
+        {
+          "name": "Identification/causal validity",
+          "weight": 10.0,
+          "score_out_of_5": 4.0
+        },
+        {
+          "name": "Data fidelity/leakage",
+          "weight": 10.0,
+          "score_out_of_5": 4.0
+        },
+        {
+          "name": "Experiments/baselines",
+          "weight": 10.0,
+          "score_out_of_5": 3.5
+        },
+        {
+          "name": "Statistics/falsifiability",
+          "weight": 8.0,
+          "score_out_of_5": 3.0
+        },
+        {
+          "name": "Feasibility",
+          "weight": 4.0,
+          "score_out_of_5": 2.0
+        },
+        {
+          "name": "Clarity",
+          "weight": 4.0,
+          "score_out_of_5": 3.0
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "design_score": 70.8,
+      "dimensions": [
+        {
+          "name": "Significance",
+          "weight": 12.0,
+          "score_out_of_5": 4.0
+        },
+        {
+          "name": "Novelty",
+          "weight": 18.0,
+          "score_out_of_5": 2.5
+        },
+        {
+          "name": "Conceptual/mathematical correctness",
+          "weight": 12.0,
+          "score_out_of_5": 4.5
+        },
+        {
+          "name": "Method specificity",
+          "weight": 12.0,
+          "score_out_of_5": 3.0
+        },
+        {
+          "name": "Identification/causal validity",
+          "weight": 10.0,
+          "score_out_of_5": 4.0
+        },
+        {
+          "name": "Data fidelity/leakage",
+          "weight": 10.0,
+          "score_out_of_5": 4.0
+        },
+        {
+          "name": "Experiments/baselines",
+          "weight": 10.0,
+          "score_out_of_5": 3.5
+        },
+        {
+          "name": "Statistics/falsifiability",
+          "weight": 8.0,
+          "score_out_of_5": 3.0
+        },
+        {
+          "name": "Feasibility",
+          "weight": 4.0,
+          "score_out_of_5": 3.5
+        },
+        {
+          "name": "Clarity",
+          "weight": 4.0,
+          "score_out_of_5": 4.5
+        }
+      ]
+    },
+    {
+      "version": 2,
+      "design_score": 76.2,
+      "dimensions": [
+        {
+          "name": "Significance",
+          "weight": 12.0,
+          "score_out_of_5": 4.0
+        },
+        {
+          "name": "Novelty",
+          "weight": 18.0,
+          "score_out_of_5": 2.5
+        },
+        {
+          "name": "Conceptual/mathematical correctness",
+          "weight": 12.0,
+          "score_out_of_5": 4.5
+        },
+        {
+          "name": "Method specificity",
+          "weight": 12.0,
+          "score_out_of_5": 3.5
+        },
+        {
+          "name": "Identification/causal validity",
+          "weight": 10.0,
+          "score_out_of_5": 4.5
+        },
+        {
+          "name": "Data fidelity/leakage",
+          "weight": 10.0,
+          "score_out_of_5": 4.5
+        },
+        {
+          "name": "Experiments/baselines",
+          "weight": 10.0,
+          "score_out_of_5": 4.0
+        },
+        {
+          "name": "Statistics/falsifiability",
+          "weight": 8.0,
+          "score_out_of_5": 3.5
+        },
+        {
+          "name": "Feasibility",
+          "weight": 4.0,
+          "score_out_of_5": 4.0
+        },
+        {
+          "name": "Clarity",
+          "weight": 4.0,
+          "score_out_of_5": 4.5
+        }
+      ]
+    },
+    {
+      "version": 3,
+      "design_score": 77.0,
+      "dimensions": [
+        {
+          "name": "Significance",
+          "weight": 12.0,
+          "score_out_of_5": 4.0
+        },
+        {
+          "name": "Novelty",
+          "weight": 18.0,
+          "score_out_of_5": 2.5
+        },
+        {
+          "name": "Conceptual/mathematical correctness",
+          "weight": 12.0,
+          "score_out_of_5": 4.0
+        },
+        {
+          "name": "Method specificity",
+          "weight": 12.0,
+          "score_out_of_5": 4.0
+        },
+        {
+          "name": "Identification/causal validity",
+          "weight": 10.0,
+          "score_out_of_5": 4.5
+        },
+        {
+          "name": "Data fidelity/leakage",
+          "weight": 10.0,
+          "score_out_of_5": 4.5
+        },
+        {
+          "name": "Experiments/baselines",
+          "weight": 10.0,
+          "score_out_of_5": 4.0
+        },
+        {
+          "name": "Statistics/falsifiability",
+          "weight": 8.0,
+          "score_out_of_5": 4.0
+        },
+        {
+          "name": "Feasibility",
+          "weight": 4.0,
+          "score_out_of_5": 4.0
+        },
+        {
+          "name": "Clarity",
+          "weight": 4.0,
+          "score_out_of_5": 4.5
+        }
+      ]
+    },
+    {
+      "version": 4,
+      "design_score": 80.2,
+      "dimensions": [
+        {
+          "name": "Significance",
+          "weight": 12.0,
+          "score_out_of_5": 4.0
+        },
+        {
+          "name": "Novelty",
+          "weight": 18.0,
+          "score_out_of_5": 2.5
+        },
+        {
+          "name": "Conceptual/mathematical correctness",
+          "weight": 12.0,
+          "score_out_of_5": 4.5
+        },
+        {
+          "name": "Method specificity",
+          "weight": 12.0,
+          "score_out_of_5": 4.0
+        },
+        {
+          "name": "Identification/causal validity",
+          "weight": 10.0,
+          "score_out_of_5": 4.5
+        },
+        {
+          "name": "Data fidelity/leakage",
+          "weight": 10.0,
+          "score_out_of_5": 5.0
+        },
+        {
+          "name": "Experiments/baselines",
+          "weight": 10.0,
+          "score_out_of_5": 4.5
+        },
+        {
+          "name": "Statistics/falsifiability",
+          "weight": 8.0,
+          "score_out_of_5": 4.0
+        },
+        {
+          "name": "Feasibility",
+          "weight": 4.0,
+          "score_out_of_5": 4.0
+        },
+        {
+          "name": "Clarity",
+          "weight": 4.0,
+          "score_out_of_5": 4.5
+        }
+      ]
+    },
+    {
+      "version": 5,
+      "design_score": 81.8,
+      "dimensions": [
+        {
+          "name": "Significance",
+          "weight": 12.0,
+          "score_out_of_5": 4.0
+        },
+        {
+          "name": "Novelty",
+          "weight": 18.0,
+          "score_out_of_5": 2.5
+        },
+        {
+          "name": "Conceptual/mathematical correctness",
+          "weight": 12.0,
+          "score_out_of_5": 4.5
+        },
+        {
+          "name": "Method specificity",
+          "weight": 12.0,
+          "score_out_of_5": 4.5
+        },
+        {
+          "name": "Identification/causal validity",
+          "weight": 10.0,
+          "score_out_of_5": 4.5
+        },
+        {
+          "name": "Data fidelity/leakage",
+          "weight": 10.0,
+          "score_out_of_5": 5.0
+        },
+        {
+          "name": "Experiments/baselines",
+          "weight": 10.0,
+          "score_out_of_5": 4.5
+        },
+        {
+          "name": "Statistics/falsifiability",
+          "weight": 8.0,
+          "score_out_of_5": 4.0
+        },
+        {
+          "name": "Feasibility",
+          "weight": 4.0,
+          "score_out_of_5": 4.5
+        },
+        {
+          "name": "Clarity",
+          "weight": 4.0,
+          "score_out_of_5": 4.5
+        }
+      ]
+    },
+    {
+      "version": 6,
+      "design_score": 82.6,
+      "dimensions": [
+        {
+          "name": "Significance",
+          "weight": 12.0,
+          "score_out_of_5": 4.0
+        },
+        {
+          "name": "Novelty",
+          "weight": 18.0,
+          "score_out_of_5": 2.5
+        },
+        {
+          "name": "Conceptual/mathematical correctness",
+          "weight": 12.0,
+          "score_out_of_5": 4.5
+        },
+        {
+          "name": "Method specificity",
+          "weight": 12.0,
+          "score_out_of_5": 4.5
+        },
+        {
+          "name": "Identification/causal validity",
+          "weight": 10.0,
+          "score_out_of_5": 4.5
+        },
+        {
+          "name": "Data fidelity/leakage",
+          "weight": 10.0,
+          "score_out_of_5": 5.0
+        },
+        {
+          "name": "Experiments/baselines",
+          "weight": 10.0,
+          "score_out_of_5": 4.5
+        },
+        {
+          "name": "Statistics/falsifiability",
+          "weight": 8.0,
+          "score_out_of_5": 4.5
+        },
+        {
+          "name": "Feasibility",
+          "weight": 4.0,
+          "score_out_of_5": 4.5
+        },
+        {
+          "name": "Clarity",
+          "weight": 4.0,
+          "score_out_of_5": 4.5
+        }
+      ]
+    },
+    {
+      "version": 7,
+      "design_score": 83.0,
+      "dimensions": [
+        {
+          "name": "Significance",
+          "weight": 12.0,
+          "score_out_of_5": 4.0
+        },
+        {
+          "name": "Novelty",
+          "weight": 18.0,
+          "score_out_of_5": 2.5
+        },
+        {
+          "name": "Conceptual/mathematical correctness",
+          "weight": 12.0,
+          "score_out_of_5": 4.5
+        },
+        {
+          "name": "Method specificity",
+          "weight": 12.0,
+          "score_out_of_5": 4.5
+        },
+        {
+          "name": "Identification/causal validity",
+          "weight": 10.0,
+          "score_out_of_5": 4.5
+        },
+        {
+          "name": "Data fidelity/leakage",
+          "weight": 10.0,
+          "score_out_of_5": 5.0
+        },
+        {
+          "name": "Experiments/baselines",
+          "weight": 10.0,
+          "score_out_of_5": 4.5
+        },
+        {
+          "name": "Statistics/falsifiability",
+          "weight": 8.0,
+          "score_out_of_5": 4.5
+        },
+        {
+          "name": "Feasibility",
+          "weight": 4.0,
+          "score_out_of_5": 4.5
+        },
+        {
+          "name": "Clarity",
+          "weight": 4.0,
+          "score_out_of_5": 5.0
+        }
+      ]
+    }
+  ],
+  "local_links_checked": 98,
+  "source_pdfs_unchanged": true,
+  "svg_is_original_vector_with_accessibility_metadata": true,
+  "scope": "Document consistency and source hashes only. No neural model or human experiment was executed.",
+  "errors": []
+}

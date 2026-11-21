@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="740" height="319" viewBox="0 0 740 319" role="img" aria-labelledby="title desc"><title id="title">A signed pulse preserves an association</title><desc id="desc">A noiseless, simultaneous example. Half the posterior mass lies on each diagonal cell after a pulse. A physical side marker places all mass on the upper-left cell.</desc>
+<rect width="740" height="319" rx="14" fill="#f8fafc"/><g font-family="Arial, Helvetica, sans-serif">
+<text x="24" y="35" text-anchor="start" fill="#172c45" font-size="24" font-weight="700">One pulse, two possible explanations</text>
+<text x="22" y="78" text-anchor="start" fill="#1d537f" font-size="19" font-weight="700">After the pulse</text>
+<text x="22" y="101" text-anchor="start" fill="#40576c" font-size="17" font-weight="400">Channel one moves farther.</text>
+<text x="22" y="143" text-anchor="start" fill="#40576c" font-size="16" font-weight="400">Stronger</text>
+<text x="22" y="163" text-anchor="start" fill="#40576c" font-size="16" font-weight="400">actuator</text>
+<text x="189" y="140" text-anchor="middle" fill="#40576c" font-size="15" font-weight="400">Physical side in channel one</text>
+<text x="137" y="165" text-anchor="middle" fill="#172c45" font-size="16" font-weight="700">Left</text>
+<text x="232" y="165" text-anchor="middle" fill="#172c45" font-size="16" font-weight="700">Right</text>
+<text x="22" y="205" text-anchor="start" fill="#172c45" font-size="17" font-weight="700">Left</text>
+<rect x="94" y="178" width="90" height="40" rx="6" fill="#cce9e5"/>
+<text x="139" y="205" text-anchor="middle" fill="#172c45" font-size="23" font-weight="700">½</text>
+<rect x="190" y="178" width="90" height="40" rx="6" fill="#e9eef2"/>
+<text x="235" y="205" text-anchor="middle" fill="#172c45" font-size="23" font-weight="400">0</text>
+<text x="22" y="253" text-anchor="start" fill="#172c45" font-size="17" font-weight="700">Right</text>
+<rect x="94" y="226" width="90" height="40" rx="6" fill="#e9eef2"/>
+<text x="139" y="253" text-anchor="middle" fill="#172c45" font-size="23" font-weight="400">0</text>
+<rect x="190" y="226" width="90" height="40" rx="6" fill="#cce9e5"/>
+<text x="235" y="253" text-anchor="middle" fill="#172c45" font-size="23" font-weight="700">½</text>
+<text x="412" y="78" text-anchor="start" fill="#1d537f" font-size="19" font-weight="700">After a trusted marker</text>
+<text x="412" y="101" text-anchor="start" fill="#40576c" font-size="17" font-weight="400">Channel one is the physical left.</text>
+<text x="412" y="143" text-anchor="start" fill="#40576c" font-size="16" font-weight="400">Stronger</text>
+<text x="412" y="163" text-anchor="start" fill="#40576c" font-size="16" font-weight="400">actuator</text>
+<text x="579" y="140" text-anchor="middle" fill="#40576c" font-size="15" font-weight="400">Physical side in channel one</text>
+<text x="527" y="165" text-anchor="middle" fill="#172c45" font-size="16" font-weight="700">Left</text>
+<text x="622" y="165" text-anchor="middle" fill="#172c45" font-size="16" font-weight="700">Right</text>
+<text x="412" y="205" text-anchor="start" fill="#172c45" font-size="17" font-weight="700">Left</text>
+<rect x="484" y="178" width="90" height="40" rx="6" fill="#087064"/>
+<text x="529" y="205" text-anchor="middle" fill="#ffffff" font-size="23" font-weight="700">1</text>
+<rect x="580" y="178" width="90" height="40" rx="6" fill="#e9eef2"/>
+<text x="625" y="205" text-anchor="middle" fill="#172c45" font-size="23" font-weight="400">0</text>
+<text x="412" y="253" text-anchor="start" fill="#172c45" font-size="17" font-weight="700">Right</text>
+<rect x="484" y="226" width="90" height="40" rx="6" fill="#e9eef2"/>
+<text x="529" y="253" text-anchor="middle" fill="#172c45" font-size="23" font-weight="400">0</text>
+<rect x="580" y="226" width="90" height="40" rx="6" fill="#e9eef2"/>
+<text x="625" y="253" text-anchor="middle" fill="#172c45" font-size="23" font-weight="400">0</text>
+<line x1="328" y1="203" x2="376" y2="203" stroke="#1d537f" stroke-width="2.5"/>
+<path d="m367 196 10 7-10 7" fill="none" stroke="#1d537f" stroke-width="2.5"/>
+<text x="24" y="300" text-anchor="start" fill="#40576c" font-size="17" font-weight="400">Cell values give the joint probability of body side and channel order.</text></g></svg>

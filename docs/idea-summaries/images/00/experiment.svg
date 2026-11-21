@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="740" height="336" viewBox="0 0 740 336" role="img" aria-labelledby="title desc"><title id="title">Follow one pulse through the experiment</title><desc id="desc">Body and rig determine physical response. The camera and detector measure and name it. The recurrent code stores some of this history for the next decision. Repeating a physical pulse and rerendering the same motion provide different evidence.</desc><rect x="0" y="0" width="740" height="336" rx="12" fill="#f7fafb"/><g font-family="Arial, Helvetica, sans-serif"><text x="24" y="37" font-size="24" fill="#172f43" font-weight="700" text-anchor="start">Follow one pulse through the experiment</text>
+<rect x="24" y="75" width="149" height="103" rx="7" fill="#e5eef5"/>
+<text x="35" y="103" font-size="19" fill="#172f43" font-weight="700" text-anchor="start">Actuate</text>
+<text x="35" y="139" font-size="16" fill="#172f43" font-weight="400" text-anchor="start">Body and rig</text>
+<text x="35" y="161" font-size="16" fill="#172f43" font-weight="400" text-anchor="start">set the motion.</text>
+<rect x="205" y="75" width="149" height="103" rx="7" fill="#dceeea"/>
+<text x="216" y="103" font-size="19" fill="#172f43" font-weight="700" text-anchor="start">Measure</text>
+<text x="216" y="139" font-size="16" fill="#172f43" font-weight="400" text-anchor="start">Camera and</text>
+<text x="216" y="161" font-size="16" fill="#172f43" font-weight="400" text-anchor="start">detector name it.</text>
+<rect x="386" y="75" width="149" height="103" rx="7" fill="#e5eef5"/>
+<text x="397" y="103" font-size="19" fill="#172f43" font-weight="700" text-anchor="start">Remember</text>
+<text x="397" y="139" font-size="16" fill="#172f43" font-weight="400" text-anchor="start">Store a limited</text>
+<text x="397" y="161" font-size="16" fill="#172f43" font-weight="400" text-anchor="start">history.</text>
+<rect x="567" y="75" width="149" height="103" rx="7" fill="#f7ebdb"/>
+<text x="578" y="103" font-size="19" fill="#172f43" font-weight="700" text-anchor="start">Decide</text>
+<text x="578" y="139" font-size="16" fill="#172f43" font-weight="400" text-anchor="start">Choose which</text>
+<text x="578" y="161" font-size="16" fill="#172f43" font-weight="400" text-anchor="start">arm to assist.</text>
+<path d="M175 125 H196" fill="none" stroke="#455d70" stroke-width="2.5"/><path d="M194 120 L202 125 L194 130 Z" fill="#455d70"/>
+<path d="M356 125 H377" fill="none" stroke="#455d70" stroke-width="2.5"/><path d="M375 120 L383 125 L375 130 Z" fill="#455d70"/>
+<path d="M537 125 H558" fill="none" stroke="#455d70" stroke-width="2.5"/><path d="M556 120 L564 125 L556 130 Z" fill="#455d70"/>
+<path d="M24 217 L716 217" stroke="#a0b2bd" fill="none" stroke-width="1.5"/>
+<text x="24" y="252" font-size="19" fill="#147169" font-weight="700" text-anchor="start">Repeat from a reset</text>
+<text x="24" y="282" font-size="18" fill="#455d70" font-weight="400" text-anchor="start">A new physical trial can test a new pulse. A new camera view of the same</text>
+<text x="24" y="307" font-size="18" fill="#455d70" font-weight="400" text-anchor="start">motion can isolate a sensor effect. The first yields a new physical response.</text></g></svg>

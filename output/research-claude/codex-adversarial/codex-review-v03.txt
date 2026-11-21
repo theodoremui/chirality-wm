@@ -1,0 +1,76 @@
+[codex] Starting Codex task thread.
+[codex] Thread ready (01a16a34-117d-7270-a33e-d28fa945c78a).
+[codex] Turn started (01a16a34-125e-7bf0-afd3-73c0c741983e).
+[codex] Assistant message captured: I’m using the review skill to check the formal claims, experiment design, and source support,...
+[codex] Running command: /bin/zsh -lc "pwd && rg --files -g 'AGENTS.md' -g 'proposal.md' -g '*context*' -g '*.md'"
+[codex] Command completed: /bin/zsh -lc "pwd && rg --files -g 'AGENTS.md' -g 'proposal.md' -g '*context*' -g '*.md'" (exit 0)
+[codex] Running command: /bin/zsh -lc 'cat /Users/theodoremui/.codex/skills/gstack-review/SKILL.md'
+[codex] Command completed: /bin/zsh -lc 'cat /Users/theodoremui/.codex/skills/gstack-review/SKILL.md' (exit 0)
+[codex] Running command: /bin/zsh -lc "rg --files --hidden -g '"'! .git'"' context && cat README.md && nl -ba proposal...
+[codex] Command completed: /bin/zsh -lc "rg --files --hidden -g '"'! .git'"' context && cat README.md && nl -ba proposal... (exit 0)
+[codex] Running command: /bin/zsh -lc 'cat context/prior-codex-v07.md && cat /Users/theodoremui/.codex/skills/gstack/r...
+[codex] Command completed: /bin/zsh -lc 'cat context/prior-codex-v07.md && cat /Users/theodoremui/.codex/skills/gstack/r... (exit 0)
+[codex] Running command: /bin/zsh -lc "wc -l context/* && rg -n 'zero|sixteen|16 |penalt|asymmetr|Table|Littwin|SWAP|r...
+[codex] Command completed: /bin/zsh -lc "wc -l context/* && rg -n 'zero|sixteen|16 |penalt|asymmetr|Table|Littwin|SWAP|r... (exit 0)
+[codex] Running command: /bin/zsh -lc "nl -ba proposal.md | sed -n '125,255p'"
+[codex] Command completed: /bin/zsh -lc "nl -ba proposal.md | sed -n '125,255p'" (exit 0)
+[codex] Searching:
+[codex] Assistant message captured: Several central comparisons appear to confound the proposed mechanism with another factor: M1...
+[codex] Searching:
+[codex] Running command: /bin/zsh -lc "sed -n '175,240p' proposal.md && sed -n '180,225p' context/original-proposal.tx...
+[codex] Command completed: /bin/zsh -lc "sed -n '175,240p' proposal.md && sed -n '180,225p' context/original-proposal.tx... (exit 0)
+[codex] Searching:
+[codex] Running command: /bin/zsh -lc "nl -ba proposal.md | sed -n '145,237p'"
+[codex] Command completed: /bin/zsh -lc "nl -ba proposal.md | sed -n '145,237p'" (exit 0)
+[codex] Searching:
+[codex] Assistant message captured: Two mathematical problems are now clear: the calibration slope can label a Bayes-optimal pred...
+[codex] Running command: /bin/zsh -lc "python3 -c 'import math; r=.9; print([(n,r**n,n*r**(n-1),n/r) for n in (1,10,10...
+[codex] Command completed: /bin/zsh -lc "python3 -c 'import math; r=.9; print([(n,r**n,n*r**(n-1),n/r) for n in (1,10,10... (exit 0)
+[codex] Running command: /bin/zsh -lc "git diff --check && git status --short && sed -n '475,495p' context/jepa-asymme...
+[codex] Command completed: /bin/zsh -lc "git diff --check && git status --short && sed -n '475,495p' context/jepa-asymme... (exit 0)
+[codex] Assistant message captured: { "verdict": "needs-attention", "summary": "Do not freeze this protocol yet. Several primary ...
+[codex] Turn completed.
+# Codex Adversarial Review
+
+Target: working tree diff
+Verdict: needs-attention
+
+Do not freeze this protocol yet. Several primary tests cannot identify their claimed mechanisms, and the scoring and formal guarantees contain consequential errors.
+
+Findings:
+- [high] M1 confounds latent stochasticity with output-family expressiveness (proposal.md:67-69)
+  A deterministic latent state can parameterize an equivariant mixture over the joint branch pair, reproducing the same distribution as a sampled latent body. Restricting its competitor to a Gaussian makes H2 diagnose that restriction, not a need for stochastic context. Moreover, with continuously distributed |b| and uncertain g, the passive predictive distribution is not the asserted two-point, perfectly anticorrelated distribution.
+  Recommendation: Add a deterministic-context joint-mixture head with the same components, supervision and sampling budget. Derive the passive predictive law under the actual continuous prior; reserve the two-point illustration for fixed, known magnitude and common gain.
+- [high] Define a predictive mean for contrast skill (proposal.md:53-57)
+  Line 57 constructs the stochastic model's contrast using one sampled body, while Section 5 evaluates squared error against the Bayes mean. If that sampled contrast is scored directly, even an exact posterior sampler has risk 2R_Bayes. At the permitted information fraction of 80%, its expected skill is only 0.75, so a correct probabilistic model fails the 0.9 success criterion.
+  Recommendation: Explicitly define the point prediction as the posterior predictive mean. Share each sampled body across its two branches, then average contrasts across samples. Lock a common Monte Carlo accuracy criterion before testing; retain individual samples for distributional scores.
+- [high] The advertised exact capacity boundary does not follow for the specified models (proposal.md:73-75)
+  Proposition 2 concerns the best linear prediction from s under squared error. Line 75 substitutes Var(E[b|H]), which requires that this posterior mean be linearly recoverable from the chosen s. No such statistic is specified. With randomized probe sign, raw observations and commands can each have zero covariance with b even though their interaction identifies it. Additionally, Section 7 trains Gaussian NLL plus energy score, whose bottleneck optimum need not follow the stated squared-error spectrum.
+  Recommendation: Specify the linear experiment's input statistic, target vector, centering, distractor covariance and fixed loss metric. Derive its actual C and verify the boundary using reduced-rank regression under squared error. Treat NLL/energy-score nonlinear results as separate empirical experiments.
+- [high] The JEPA advantage is not implied by an unchanged asymmetry coefficient (proposal.md:79-85)
+  Showing that the asymmetry coefficient approaches t/s does not establish that it outranks the distractors. The proposed predictable slow oscillations may have equal or larger regression coefficients. Littwin et al. also retain dependence on cross-covariance in learning times; their result does not imply that low variance plus an unchanged coefficient produces the H3b ordering. See [Littwin et al., Section 4.2](https://arxiv.org/html/2407.03475v1#S4.SS2).
+  Recommendation: Derive cross-covariances and regression coefficients for every feature after the actual preprocessing. Specify depth, initialization and training horizon, and calculate the predicted ordering. Include controls with distractor coefficients below, equal to and above the asymmetry coefficient.
+- [high] Chance recent-window accuracy does not establish fixed information (proposal.md:127-131)
+  The cart has unknown g and b. Hold observations measure g through 2ga; when the probe posterior couples g and b, those measurements refine b even though the hold alone cannot classify its sign. Thus H1 and Loop 0 can pass while longer holds change the available information. Neither Assumption S nor the unspecified alternating probe guarantees posterior factorization.
+  Recommendation: Audit the incremental information in the hold conditional on the probe, using posterior changes and Bayes risk across delays. For the clean memory experiment, fix g as known or establish noise-weighted orthogonality and prior factorization that make the hold conditionally uninformative.
+- [high] The memory ablation also removes training of the response head (proposal.md:199-201)
+  Arm A removes both query losses. For the separate direct response head allowed by Section 7, no remaining specified loss trains its query mapping. Poor contrast skill can therefore reflect an untrained decoder or a decoder that cannot read a changing state code, even when memory retains b. Comparing this arm with query-supervised arms does not isolate retention.
+  Recommendation: Train matched response readouts on frozen representations for every arm and delay, or train the query head with gradients stopped at origin memory. Compare these with end-to-end query gradients, using the existing shared and delay-specific readout diagnostics to distinguish retention from decoding.
+- [high] H5 is a construction check rather than evidence explaining baseline failure (proposal.md:170-173)
+  An equivariant additive head has zero contrast by Proposition 4, hence S=0 regardless of data quality or memory retention. H5 will therefore pass even if all standard nonlinear rollout models use asymmetry perfectly. Loop 2 would nevertheless retain coupling as an explanation for their losses, although the proposition explicitly excludes those models.
+  Recommendation: Keep H5 as an implementation negative control. Make the mechanism's primary experiment a matched comparison of generic concatenation and multiplicative fusion in the actual baseline architecture, with fixed representations or measured recoverability and a preregistered sample-efficiency endpoint.
+- [high] Failure to reject is incorrectly treated as ruling out a mechanism (proposal.md:205-209)
+  Loop 2 declares mechanisms ruled out when their tests fail Holm adjustment. A real effect can fail because of seed variance, weak power or conservative multiplicity correction. The precision target in Section 10 covers contrast skill, not every primary endpoint, particularly the energy-score contrast. H1's assertion of chance accuracy likewise needs an equivalence criterion rather than an ordinary nonsignificance result.
+  Recommendation: Distinguish supported, excluded above a prespecified meaningful effect, and inconclusive outcomes. Define equivalence margins and power or precision requirements for each endpoint, including H1 and H2, and specify how their tests enter Holm adjustment.
+- [medium] The calibration slope labels Bayes-optimal uncertainty as shrinkage (proposal.md:153-154)
+  For the Bayes prediction m(H)=E[r|H], the proposed population slope is E[m(H)r]/E[r²]=E[m(H)²]/E[r²]=1−R_Bayes/R0. It is below one whenever uncertainty remains, including 0.8 at the allowed information threshold. The diagnostic therefore reports shrinkage for a perfectly calibrated Bayes predictor.
+  Recommendation: For calibration, regress outcomes on predictions with an intercept. For attenuation relative to available information, compare predictions with the Bayes conditional mean and report prediction error separately.
+- [medium] Spectral radius does not imply the stated finite-delay decay bound (proposal.md:248)
+  The proof claims ||A_o^n||≤c r^n from spectral radius r<1. For A_o=[[r,1],[0,r]], the off-diagonal entry of A_o^n is n r^(n−1), so no constant c supplies that bound for all n. Nonnormal updates can also transiently amplify memory and gradients, undermining the claimed finite-delay signature.
+  Recommendation: Assume an operator-norm contraction ||A_o||≤r<1 for the stated bound, or include Jordan polynomial factors and transient amplification. Measure transition/Jacobian norms when connecting the theorem to finite-duration experiments.
+
+Next steps:
+- Repair the mechanism controls and mathematical claims before preregistration.
+- Specify predictive-mean scoring, the exact linear experiment and conditional-information audits.
+- Lock endpoint-specific inference rules and a costed experiment manifest after the pilot.
+exit: 0

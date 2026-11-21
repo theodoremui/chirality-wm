@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="740" height="288" viewBox="0 0 740 288" role="img" aria-labelledby="title desc"><title id="title">One trial, one physical observation</title><desc id="desc">Choose a mirrored pair of pulses and fix the score using the past. Randomize the orientation and run one fresh pulse. Score the result and its reflection before choosing the next trial.</desc><rect x="0" y="0" width="740" height="288" rx="12" fill="#f7fafb"/><g font-family="Arial, Helvetica, sans-serif"><text x="24" y="38" font-size="24" fill="#172f43" font-weight="700" text-anchor="start">One trial, one physical observation</text>
+<rect x="24" y="79" width="207" height="118" rx="7" fill="#e5eef5"/>
+<text x="40" y="108" font-size="20" fill="#172f43" font-weight="700" text-anchor="start">Use past trials</text>
+<text x="40" y="147" font-size="18" fill="#172f43" font-weight="400" text-anchor="start">Choose pulse pair</text>
+<text x="40" y="174" font-size="18" fill="#172f43" font-weight="400" text-anchor="start">and fix the score.</text>
+<rect x="264" y="79" width="203" height="118" rx="7" fill="#dceeea"/>
+<text x="280" y="108" font-size="20" fill="#172f43" font-weight="700" text-anchor="start">Reset and act</text>
+<text x="280" y="147" font-size="18" fill="#172f43" font-weight="400" text-anchor="start">Reset, toss a coin,</text>
+<text x="280" y="174" font-size="18" fill="#172f43" font-weight="400" text-anchor="start">run its chosen pulse.</text>
+<rect x="500" y="79" width="216" height="118" rx="7" fill="#f7ebdb"/>
+<text x="516" y="108" font-size="20" fill="#172f43" font-weight="700" text-anchor="start">Update evidence</text>
+<text x="516" y="147" font-size="18" fill="#172f43" font-weight="400" text-anchor="start">Score the response</text>
+<text x="516" y="174" font-size="18" fill="#172f43" font-weight="400" text-anchor="start">and its reflection.</text>
+<path d="M233 138 H255" fill="none" stroke="#455d70" stroke-width="2.5"/><path d="M253 133 L261 138 L253 143 Z" fill="#455d70"/>
+<path d="M469 138 H491" fill="none" stroke="#455d70" stroke-width="2.5"/><path d="M489 133 L497 138 L489 143 Z" fill="#455d70"/>
+<path d="M24 226 L716 226" stroke="#a0b2bd" fill="none" stroke-width="1.5"/>
+<text x="24" y="260" font-size="18" fill="#147169" font-weight="700" text-anchor="start">Next trial</text>
+<text x="128" y="260" font-size="17" fill="#172f43" font-weight="400" text-anchor="start">The completed response can now change the policy and score.</text></g></svg>

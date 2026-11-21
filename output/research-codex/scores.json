@@ -1,0 +1,454 @@
+{
+  "rubric": "Proposal design, 0\u20135 dimensions; not empirical performance or acceptance probability",
+  "weights_total": 100,
+  "versions": [
+    {
+      "version": 0,
+      "rows": [
+        [
+          "Significance",
+          12.0,
+          4.0
+        ],
+        [
+          "Novelty",
+          18.0,
+          2.0
+        ],
+        [
+          "Conceptual/mathematical correctness",
+          12.0,
+          4.5
+        ],
+        [
+          "Method specificity",
+          12.0,
+          3.0
+        ],
+        [
+          "Identification/causal validity",
+          10.0,
+          4.0
+        ],
+        [
+          "Data fidelity/leakage",
+          10.0,
+          4.0
+        ],
+        [
+          "Experiments/baselines",
+          10.0,
+          3.5
+        ],
+        [
+          "Statistics/falsifiability",
+          8.0,
+          3.0
+        ],
+        [
+          "Feasibility",
+          4.0,
+          2.0
+        ],
+        [
+          "Clarity",
+          4.0,
+          3.0
+        ]
+      ],
+      "total": 66.6
+    },
+    {
+      "version": 1,
+      "rows": [
+        [
+          "Significance",
+          12.0,
+          4.0
+        ],
+        [
+          "Novelty",
+          18.0,
+          2.5
+        ],
+        [
+          "Conceptual/mathematical correctness",
+          12.0,
+          4.5
+        ],
+        [
+          "Method specificity",
+          12.0,
+          3.0
+        ],
+        [
+          "Identification/causal validity",
+          10.0,
+          4.0
+        ],
+        [
+          "Data fidelity/leakage",
+          10.0,
+          4.0
+        ],
+        [
+          "Experiments/baselines",
+          10.0,
+          3.5
+        ],
+        [
+          "Statistics/falsifiability",
+          8.0,
+          3.0
+        ],
+        [
+          "Feasibility",
+          4.0,
+          3.5
+        ],
+        [
+          "Clarity",
+          4.0,
+          4.5
+        ]
+      ],
+      "total": 70.8
+    },
+    {
+      "version": 2,
+      "rows": [
+        [
+          "Significance",
+          12.0,
+          4.0
+        ],
+        [
+          "Novelty",
+          18.0,
+          2.5
+        ],
+        [
+          "Conceptual/mathematical correctness",
+          12.0,
+          4.5
+        ],
+        [
+          "Method specificity",
+          12.0,
+          3.5
+        ],
+        [
+          "Identification/causal validity",
+          10.0,
+          4.5
+        ],
+        [
+          "Data fidelity/leakage",
+          10.0,
+          4.5
+        ],
+        [
+          "Experiments/baselines",
+          10.0,
+          4.0
+        ],
+        [
+          "Statistics/falsifiability",
+          8.0,
+          3.5
+        ],
+        [
+          "Feasibility",
+          4.0,
+          4.0
+        ],
+        [
+          "Clarity",
+          4.0,
+          4.5
+        ]
+      ],
+      "total": 76.2
+    },
+    {
+      "version": 3,
+      "rows": [
+        [
+          "Significance",
+          12.0,
+          4.0
+        ],
+        [
+          "Novelty",
+          18.0,
+          2.5
+        ],
+        [
+          "Conceptual/mathematical correctness",
+          12.0,
+          4.0
+        ],
+        [
+          "Method specificity",
+          12.0,
+          4.0
+        ],
+        [
+          "Identification/causal validity",
+          10.0,
+          4.5
+        ],
+        [
+          "Data fidelity/leakage",
+          10.0,
+          4.5
+        ],
+        [
+          "Experiments/baselines",
+          10.0,
+          4.0
+        ],
+        [
+          "Statistics/falsifiability",
+          8.0,
+          4.0
+        ],
+        [
+          "Feasibility",
+          4.0,
+          4.0
+        ],
+        [
+          "Clarity",
+          4.0,
+          4.5
+        ]
+      ],
+      "total": 77.0
+    },
+    {
+      "version": 4,
+      "rows": [
+        [
+          "Significance",
+          12.0,
+          4.0
+        ],
+        [
+          "Novelty",
+          18.0,
+          2.5
+        ],
+        [
+          "Conceptual/mathematical correctness",
+          12.0,
+          4.5
+        ],
+        [
+          "Method specificity",
+          12.0,
+          4.0
+        ],
+        [
+          "Identification/causal validity",
+          10.0,
+          4.5
+        ],
+        [
+          "Data fidelity/leakage",
+          10.0,
+          5.0
+        ],
+        [
+          "Experiments/baselines",
+          10.0,
+          4.5
+        ],
+        [
+          "Statistics/falsifiability",
+          8.0,
+          4.0
+        ],
+        [
+          "Feasibility",
+          4.0,
+          4.0
+        ],
+        [
+          "Clarity",
+          4.0,
+          4.5
+        ]
+      ],
+      "total": 80.2
+    },
+    {
+      "version": 5,
+      "rows": [
+        [
+          "Significance",
+          12.0,
+          4.0
+        ],
+        [
+          "Novelty",
+          18.0,
+          2.5
+        ],
+        [
+          "Conceptual/mathematical correctness",
+          12.0,
+          4.5
+        ],
+        [
+          "Method specificity",
+          12.0,
+          4.5
+        ],
+        [
+          "Identification/causal validity",
+          10.0,
+          4.5
+        ],
+        [
+          "Data fidelity/leakage",
+          10.0,
+          5.0
+        ],
+        [
+          "Experiments/baselines",
+          10.0,
+          4.5
+        ],
+        [
+          "Statistics/falsifiability",
+          8.0,
+          4.0
+        ],
+        [
+          "Feasibility",
+          4.0,
+          4.5
+        ],
+        [
+          "Clarity",
+          4.0,
+          4.5
+        ]
+      ],
+      "total": 81.8
+    },
+    {
+      "version": 6,
+      "rows": [
+        [
+          "Significance",
+          12.0,
+          4.0
+        ],
+        [
+          "Novelty",
+          18.0,
+          2.5
+        ],
+        [
+          "Conceptual/mathematical correctness",
+          12.0,
+          4.5
+        ],
+        [
+          "Method specificity",
+          12.0,
+          4.5
+        ],
+        [
+          "Identification/causal validity",
+          10.0,
+          4.5
+        ],
+        [
+          "Data fidelity/leakage",
+          10.0,
+          5.0
+        ],
+        [
+          "Experiments/baselines",
+          10.0,
+          4.5
+        ],
+        [
+          "Statistics/falsifiability",
+          8.0,
+          4.5
+        ],
+        [
+          "Feasibility",
+          4.0,
+          4.5
+        ],
+        [
+          "Clarity",
+          4.0,
+          4.5
+        ]
+      ],
+      "total": 82.6
+    },
+    {
+      "version": 7,
+      "rows": [
+        [
+          "Significance",
+          12.0,
+          4.0
+        ],
+        [
+          "Novelty",
+          18.0,
+          2.5
+        ],
+        [
+          "Conceptual/mathematical correctness",
+          12.0,
+          4.5
+        ],
+        [
+          "Method specificity",
+          12.0,
+          4.5
+        ],
+        [
+          "Identification/causal validity",
+          10.0,
+          4.5
+        ],
+        [
+          "Data fidelity/leakage",
+          10.0,
+          5.0
+        ],
+        [
+          "Experiments/baselines",
+          10.0,
+          4.5
+        ],
+        [
+          "Statistics/falsifiability",
+          8.0,
+          4.5
+        ],
+        [
+          "Feasibility",
+          4.0,
+          4.5
+        ],
+        [
+          "Clarity",
+          4.0,
+          5.0
+        ]
+      ],
+      "total": 83.0
+    }
+  ]
+}
