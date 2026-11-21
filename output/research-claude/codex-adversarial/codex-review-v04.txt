@@ -1,0 +1,78 @@
+[codex] Starting Codex task thread.
+[codex] Thread ready (01a16a3a-e6f3-7fd2-ac91-09f72f7fb735).
+[codex] Turn started (01a16a3a-e991-7b50-bb54-2a90f50a2c8f).
+[codex] Assistant message captured: I’m using the review skill to check the proposal’s formal claims, experimental identification...
+[codex] Running command: /bin/zsh -lc "pwd; rg --files -g 'AGENTS.md' -g 'proposal.md' -g '*context*'; cat /Users/theo...
+[codex] Command completed: /bin/zsh -lc "pwd; rg --files -g 'AGENTS.md' -g 'proposal.md' -g '*context*'; cat /Users/theo... (exit 0)
+[codex] Running command: /bin/zsh -lc "sed -n '430,700p' /Users/theodoremui/.codex/skills/gstack-review/SKILL.md; cat ...
+[codex] Command completed: /bin/zsh -lc "sed -n '430,700p' /Users/theodoremui/.codex/skills/gstack-review/SKILL.md; cat ... (exit 0)
+[codex] Running command: /bin/zsh -lc 'ls -la; rg --files context; nl -ba proposal.md'
+[codex] Command completed: /bin/zsh -lc 'ls -la; rg --files context; nl -ba proposal.md' (exit 0)
+[codex] Searching:
+[codex] Running command: /bin/zsh -lc "nl -ba proposal.md | sed -n '120,285p'"
+[codex] Command completed: /bin/zsh -lc "nl -ba proposal.md | sed -n '120,285p'" (exit 0)
+[codex] Running command: /bin/zsh -lc "cat README.md; cat context/prior-codex-v07.md; rg -n 'asymmetr|penalt|sixteen|1...
+[codex] Command completed: /bin/zsh -lc "cat README.md; cat context/prior-codex-v07.md; rg -n 'asymmetr|penalt|sixteen|1... (exit 0)
+[codex] Assistant message captured: Two issues stand out so far: the proposed controller does not invert the stated contrast form...
+[codex] Searching:
+[codex] Running command: /bin/zsh -lc "nl -ba proposal.md | sed -n '122,177p'; rg -n 'penalt|zero|MAE|sixteen|16|basel...
+[codex] Command completed: /bin/zsh -lc "nl -ba proposal.md | sed -n '122,177p'; rg -n 'penalt|zero|MAE|sixteen|16|basel... (exit 0)
+[codex] Searching:
+[codex] Searching:
+[codex] Running command: /bin/zsh -lc "git status --short; git diff --stat; nl -ba proposal.md | sed -n '174,202p'; se...
+[codex] Command completed: /bin/zsh -lc "git status --short; git diff --stat; nl -ba proposal.md | sed -n '174,202p'; se... (exit 0)
+[codex] Searching:
+[codex] Assistant message captured: The citation check found a substantive baseline problem: SymPE supports input-conditioned sym...
+[codex] Searching:
+[codex] Running command: /bin/zsh -lc "nl -ba proposal.md | sed -n '280,341p'; rg -n '"'^#|capacity|symmetry|memory|di...
+[codex] Command completed: /bin/zsh -lc "nl -ba proposal.md | sed -n '280,341p'; rg -n '"'^#|capacity|symmetry|memory|di... (exit 0)
+[codex] Assistant message captured: The main risks concern identification and comparator fairness. Some proposed results would sh...
+[codex] Assistant message captured: { "verdict": "needs-attention", "summary": "Do not freeze this protocol yet. Several experime...
+[codex] Turn completed.
+# Codex Adversarial Review
+
+Target: working tree diff
+Verdict: needs-attention
+
+Do not freeze this protocol yet. Several experiments cannot identify their claimed mechanisms, important baselines are weakened, and mathematical errors can reverse the control-task ranking.
+
+Findings:
+- [high] SymPE is weakened by removing its input-conditioned symmetry breaking (proposal.md:224)
+  The claimed distinction from SymPE is unsupported. SymPE uses an input-dependent inversion kernel and explicitly permits distributions proportional to exp(-E(g^-1 x)/T). For the two-element reflection group, this already permits evidence-dependent sign weights. Calling SymPE a uniform coin excludes the feature presented as the candidate's advantage and undermines both fairness and novelty. See [SymPE, Sections 3–5](https://arxiv.org/html/2503.21985v1).
+  Recommendation: Add input-conditioned SymPE with persistent sampling and matched continuous uncertainty; compare it with and without the same evidence slot. Describe learned sign weights as an existing construction.
+- [high] Per-step mixture sampling does not imply switching bodies (proposal.md:63-65)
+  A recurrent mixture head can condition its weights and outputs on previously generated states. It can sample a side at the first informative query step and preserve that side through subsequent conditional predictions, despite sampling a component index at every step. Body switching follows only from additional independence restrictions. H2b could therefore demonstrate an artificially factorized baseline's weakness rather than a need for persistent latent draws.
+  Recommendation: Specify each model's trajectory factorization. Compare independent per-step mixtures, autoregressive mixtures with access to generated history, and persistent draws under the same trajectory loss and state budget.
+- [high] Passive distributional superiority cannot explain probed contrast-skill loss (proposal.md:247-251)
+  Loop 2 promotes supported mechanisms into explanations of Loop 1's contrast-skill failures. But H2 and H2b test passive distributional scores, where a zero mean is Bayes-optimal. A unimodal model can have the correct predictive mean and poor energy score; conversely, a persistent bimodal model can have a wrong mean after probing. Supporting these hypotheses does not identify the cause of the primary point-prediction failure.
+  Recommendation: Separate distributional failure claims from contrast-skill explanations. Require a matched output-family intervention on the failing probed model to improve its contrast skill before attributing that failure to M1.
+- [high] Normalization can remove the capacity experiment's variance manipulation (proposal.md:200)
+  The proposal varies distractor variance while dividing targets by training standard deviations and scaling input channels. If these statistics are refitted per condition, scaling a distractor by A and then standardizing it cancels A. For a scalar predictable distractor with regression coefficient beta and variance v, its predictable variance changes from beta²v to beta² after standardization. H3n/H3b could thus test an absent or substantially different manipulation.
+  Recommendation: Freeze explicit shared scales across variance conditions, compute the post-normalization covariance spectrum, and separate raw-loss capacity experiments from parity-normalized remedy experiments.
+- [high] The deep-linear experiment violates the theorem it claims to reproduce (proposal.md:241)
+  Littwin's solved dynamics use the current encoder with stop-gradient targets, square weight matrices, specifically aligned initialization, and gradient flow. This experiment instead specifies an EMA target and widths that cannot hold every factor. Simultaneously diagonal data covariances and balanced initialization do not make those systems equivalent, so the cited learning-time expressions need not predict these runs. See [Equations 3–6 and Assumption 4.1](https://arxiv.org/html/2407.03475v1).
+  Recommendation: First reproduce the theorem's exact architecture, target update and initialization, checking convergence toward gradient flow. Treat EMA and bottleneck variants as empirical extensions unless their dynamics are separately derived.
+- [high] The controller rewards an incorrectly shrunk prediction (proposal.md:144)
+  By line 49, gamma = r/u = 2bκ and the impulse change is gamma*u. The proposed division by 2*gamma therefore delivers half the target even with an exact model. A model predicting half the true gain delivers the target exactly and beats the oracle. After correcting this factor, shrinkage causes over-commanding, not the claimed proportional shortfall. Inverting a posterior mean is also generally not the Bayes-optimal action under squared miss.
+  Recommendation: Use u = clip(target/gamma_hat) for the plug-in controller and define zero-gain handling. Use clip(target*E[gamma|history]/E[gamma²|history]) as the Bayes decision reference, and rederive the qualitative claims with clipping included.
+- [high] The primary memory comparison unnecessarily excludes snapshot storage (proposal.md:217)
+  B7 is excluded from the flag-free primary arm, although every episode uses a fixed probe pattern beginning at a known episode origin. A snapshot can trigger at that public schedule's endpoint without receiving a hold flag or hidden body information. The candidate could therefore win the primary comparison without beating the simplest available memory remedy.
+  Recommendation: Include a flag-free snapshot triggered by the known probe schedule, with all retained values counted toward storage. If phase detection is intended to be difficult, randomize probe termination and give every model identical observable timing information.
+- [high] The augmentation rule is invalid for walker observations (proposal.md:265)
+  Negating differential commands and swapping query labels is sufficient for the cart's even sensors, but the walker observes separately labeled left/right joint angles and velocities. Those channels must also exchange under reflection. Applying this table literally creates inconsistent walker histories and targets, potentially making B3 appear worse because its augmentation corrupts the data.
+  Recommendation: Define separate cart and walker transformations covering observations, actuator channels, noise and targets. Verify transformed simulated trajectories against simulations of reflected bodies and commands.
+- [medium] The reduced-rank formula requires centering or an intercept (proposal.md:71-73)
+  Proposition 2 specifies y_hat = Ws but uses centered covariances. Its formula requires centered variables or a separately fitted intercept. Here the hold-force statistic and branch sum have nonzero means. With known g, the branch sum is constant: its covariance contribution is zero, yet a no-intercept rank-constrained predictor must spend capacity fitting that potentially large constant. The stated boundary can therefore be wrong for the stated predictor.
+  Recommendation: Explicitly center the linear experiment's inputs and targets using population or training means, fit an unrestricted intercept outside the rank budget, and state nonsingularity assumptions or use a pseudoinverse.
+- [medium] Bayes normalization does not hold information effects constant (proposal.md:126)
+  The claim that changing available information affects the denominator but not the model's score contradicts the score definition. With R0=1 and unchanged model risk 0.2, reducing Bayes risk from 0.1 to 0 changes skill from 0.889 to 0.8. A declining skill curve outside the known-g condition can therefore arise without any worsening of the model's predictions.
+  Recommendation: Remove the invariance claim. Report raw model risk, Bayes risk and excess risk alongside skill; restrict causal forgetting claims to information-matched conditions or explicitly decompose the change.
+- [medium] The three statistical verdicts are not mutually exclusive (proposal.md:158)
+  An effect can be significantly different from zero and equivalent to a practically negligible effect simultaneously. For example, an adjusted interval [0.02, 0.04] with meaningful margin 0.1 satisfies both 'supported' and 'excluded' as defined. Holm adjustment does not resolve this overlap, leaving mechanism classification discretionary after results are observed.
+  Recommendation: Define support as evidence beyond the meaningful directional threshold and exclusion as equivalence within the negligible region, or report statistical direction and practical magnitude separately with a preregistered decision table.
+
+Next steps:
+- Correct the mathematical definitions and statistical decision rules before preregistration.
+- Strengthen SymPE, autoregressive-mixture and flag-free snapshot comparators, then isolate each mechanism on the same failing endpoint.
+- Freeze normalization, simulator transformations and an explicit fit-count/compute schedule before confirmation data are examined.
+exit: 0

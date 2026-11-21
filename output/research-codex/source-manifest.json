@@ -1,0 +1,30 @@
+{
+  "audit_date": "2026-10-23",
+  "note": "User-supplied filenames resolved to these existing absolute paths; source PDFs were read without modification. No raw training data or checkpoints were independently reproduced.",
+  "sources": [
+    {
+      "role": "original_proposal",
+      "path": "/Users/theodoremui/Downloads/hai/chirality-wm/chirality-world-models-adversarial-proposal.pdf",
+      "pages": 19,
+      "bytes": 902494,
+      "sha256": "2be054e8adeb2877ca1bb199954d19fca4cdcd359f51defaad2668193a27c664",
+      "relative_path": "chirality-world-models-adversarial-proposal.pdf"
+    },
+    {
+      "role": "jepa_asymmetry",
+      "path": "/Users/theodoremui/Downloads/hai/chirality-wm/jepa_asymmetry_paper.pdf",
+      "pages": 16,
+      "bytes": 409287,
+      "sha256": "50c68608ba5d7e425d082be8f65d3d0db8990171ab77f3bd0985c0c084f9123a",
+      "relative_path": "jepa_asymmetry_paper.pdf"
+    },
+    {
+      "role": "urtc_draft",
+      "path": "/Users/theodoremui/Downloads/hai/chirality-wm/jepa-writeups/URTC Paper Draft 2026 (6).pdf",
+      "pages": 5,
+      "bytes": 349202,
+      "sha256": "e57a82e372d50542f9eb10d493a5d067a80d70c4ce190adfa7c943a942a30b17",
+      "relative_path": "jepa-writeups/URTC Paper Draft 2026 (6).pdf"
+    }
+  ]
+}

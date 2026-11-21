@@ -1,0 +1,565 @@
+<title>Chirality Proposal Review</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+/* Layout: a 700px reading column on a cool, slightly blue ground; score tables and the episode diagram break out to 1040px and scroll inside their own frames. Plex Sans carries structure, Source Serif carries the argument, Plex Mono carries scores. Teal marks the even (kept) signal, ochre the odd (signed) one. */
+:root {
+  --bg: #f4f6f8;
+  --surface: #ffffff;
+  --band: #e8edf2;
+  --fg: #17202b;
+  --muted: #556172;
+  --rule: #d8dee6;
+  --accent: #0d6a6a;
+  --accent-soft: #e0efee;
+  --mark: #a8661a;
+  --mark-ink: #85500f;
+  --mark-soft: #f6ebdc;
+  --font-display: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-body: "Source Serif 4", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #10151b;
+    --surface: #161c24;
+    --band: #1b232d;
+    --fg: #e3e8ee;
+    --muted: #9ba7b6;
+    --rule: #2a333e;
+    --accent: #5fc4c0;
+    --accent-soft: #15302f;
+    --mark: #e2a654;
+    --mark-ink: #f0bf78;
+    --mark-soft: #33271a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #10151b;
+  --surface: #161c24;
+  --band: #1b232d;
+  --fg: #e3e8ee;
+  --muted: #9ba7b6;
+  --rule: #2a333e;
+  --accent: #5fc4c0;
+  --accent-soft: #15302f;
+  --mark: #e2a654;
+  --mark-ink: #f0bf78;
+  --mark-soft: #33271a;
+  color-scheme: dark;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.62;
+}
+
+.page {
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 56px 72px;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.block {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) min(700px, 100%) minmax(0, 1fr);
+  row-gap: 16px;
+}
+.block > * { grid-column: 2; min-width: 0; }
+.block > .wide {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: 100%;
+  max-width: 1040px;
+}
+
+p, ul, dl, dd, figure, h1, h2, h3 { margin: 0; }
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-wrap: balance;
+  color: var(--fg);
+}
+h1 {
+  font-size: clamp(1.85rem, 4.2vw, 2.6rem);
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+}
+h2 {
+  font-size: 1.42rem;
+  line-height: 1.25;
+}
+h3 {
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+.lede {
+  font-size: 1.12rem;
+  line-height: 1.55;
+}
+
+.meta {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.meta li { display: flex; align-items: center; gap: 8px; }
+.meta li::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex: none;
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.math { font-style: normal; white-space: nowrap; }
+.math i { font-style: italic; }
+
+/* Episode diagram */
+.figure { display: flex; flex-direction: column; gap: 12px; }
+.dg-wrap {
+  overflow-x: auto;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 12px 8px;
+}
+.dg { display: block; width: 100%; min-width: 600px; height: auto; }
+.dg-band { fill: var(--band); }
+.dg-axis { stroke: var(--rule); stroke-width: 1; fill: none; }
+.dg-sep { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 3 4; fill: none; opacity: 0.6; }
+.dg-sig { stroke: var(--accent); stroke-width: 2.25; fill: none; stroke-linejoin: round; }
+.dg-flat { stroke: var(--muted); stroke-width: 2.25; fill: none; }
+.dg-plus { stroke: var(--accent); stroke-width: 2.25; fill: none; stroke-linejoin: round; }
+.dg-minus { stroke: var(--mark); stroke-width: 2.25; fill: none; stroke-dasharray: 6 4; stroke-linejoin: round; }
+.dg-arrow { stroke: var(--muted); stroke-width: 1.5; fill: none; }
+.dg-head { fill: var(--muted); }
+.dg-label { fill: var(--fg); font-family: var(--font-display); font-size: 13px; font-weight: 600; }
+.dg-note { fill: var(--muted); font-family: var(--font-display); font-size: 12.5px; }
+.dg-strong { fill: var(--fg); font-weight: 500; }
+figcaption {
+  font-family: var(--font-display);
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--muted);
+  max-width: 700px;
+  margin-inline: auto;
+}
+
+/* Findings */
+.findings { display: flex; flex-direction: column; gap: 4px; }
+.finding {
+  display: grid;
+  grid-template-columns: 10.5rem minmax(0, 1fr);
+  gap: 6px 22px;
+  padding: 16px 0;
+  border-top: 1px solid var(--rule);
+}
+.finding.key {
+  background: var(--accent-soft);
+  border-top-color: transparent;
+  border-radius: 8px;
+  padding: 18px 20px;
+}
+.finding dt {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  padding-top: 4px;
+}
+.finding dd { min-width: 0; }
+
+/* Tables */
+.table-wrap {
+  overflow-x: auto;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+.scores { min-width: 860px; }
+.mech { min-width: 560px; }
+th, td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--rule);
+  text-align: left;
+  vertical-align: top;
+}
+thead th {
+  font-size: 0.74rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+tbody tr:last-child td { border-bottom: none; }
+tr.group th {
+  padding-top: 18px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--accent);
+  background: var(--bg);
+}
+td.ver { font-weight: 500; white-space: nowrap; }
+.num {
+  text-align: right;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+th.num { font-family: var(--font-display); }
+td.overall { font-weight: 600; color: var(--fg); }
+.tag {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  background: var(--mark-soft);
+  color: var(--mark-ink);
+  vertical-align: 1px;
+}
+.mech td:first-child { width: 15rem; font-weight: 500; }
+.mech tr.key td { background: var(--mark-soft); }
+
+.scale-note {
+  font-family: var(--font-display);
+  font-size: 0.84rem;
+  color: var(--muted);
+}
+
+/* Callout */
+.note {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.note p { font-size: 0.98rem; }
+
+/* Lists */
+.list {
+  padding-left: 1.15em;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.list li::marker { color: var(--accent); }
+.list strong {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.97em;
+}
+
+.question {
+  font-family: var(--font-display);
+  font-size: 1.28rem;
+  font-weight: 500;
+  line-height: 1.38;
+  text-wrap: balance;
+  background: var(--accent-soft);
+  border-radius: 8px;
+  padding: 20px 22px;
+}
+
+/* Sources */
+.sources h3 {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.sources ul {
+  padding-left: 1.1em;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.93rem;
+}
+.sources p { font-size: 0.93rem; color: var(--muted); }
+
+footer.block p {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  color: var(--muted);
+  border-top: 1px solid var(--rule);
+  padding-top: 18px;
+}
+
+@media (max-width: 640px) {
+  body { font-size: 16.5px; }
+  .page { padding-block: 32px 56px; gap: 48px; }
+  .finding { grid-template-columns: minmax(0, 1fr); }
+  .finding dt { padding-top: 0; }
+  .finding.key { padding: 16px; }
+}
+</style>
+
+<div class="page">
+
+  <header class="block">
+    <p class="eyebrow">Proposal review · 14 November 2026</p>
+    <h1>Which asymmetry proposals could teach the field something new?</h1>
+    <p class="lede">An independent evaluation of fourteen research proposals on whether predictive world models keep a body's hidden left–right asymmetry. They form two iterative chains of seven versions each, one drafted with Claude and one with Codex. Each version is judged as a plan for an ICML, ICLR or NeurIPS paper, with most weight on novelty, significance and the chance of producing a finding the field doesn't already have.</p>
+    <ul class="meta">
+      <li>14 proposals read in full</li>
+      <li>Scored before reading either chain's own scorecard</li>
+      <li>Literature spot-checks on 14 November 2026</li>
+      <li>No proposal has run an experiment yet</li>
+    </ul>
+  </header>
+
+  <section class="block" aria-labelledby="setup">
+    <h2 id="setup">The shared setup</h2>
+    <p>Both chains start from the same toy problem. A cart has a left motor with gain <span class="math"><i>g</i> + <i>b</i></span> and a right motor with gain <span class="math"><i>g</i> − <i>b</i></span>, so <i>b</i> is the asymmetry. The sensors report only total force, <span class="math"><i>F</i><sub>+</sub> = 2<i>ga</i> + <i>b</i>·<i>d</i>(<i>t</i>)</span>, where <i>d</i> is the difference between the two motors' activations. When the controller sends no differential command, <i>d</i> is zero and the sign of <i>b</i> cannot be seen.</p>
+    <figure class="figure wide">
+      <div class="dg-wrap">
+        <svg class="dg" viewBox="0 0 760 232" role="img" aria-labelledby="dg-title dg-desc">
+          <title id="dg-title">Probe, hold and query episode</title>
+          <desc id="dg-desc">The differential command over time: alternating pulses during a two-second probe, zero during the reset and hold, then two query branches at plus u and minus u from the same saved state.</desc>
+          <defs>
+            <marker id="dg-arrowhead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" class="dg-head"/>
+            </marker>
+          </defs>
+          <rect x="260" y="38" width="260" height="146" class="dg-band"/>
+          <line x1="260" y1="38" x2="260" y2="184" class="dg-sep"/>
+          <line x1="520" y1="38" x2="520" y2="184" class="dg-sep"/>
+          <text x="150" y="26" text-anchor="middle" class="dg-label">Probe · 2 s</text>
+          <text x="390" y="26" text-anchor="middle" class="dg-label">Reset and hold · 0–8 s</text>
+          <text x="620" y="26" text-anchor="middle" class="dg-label">Query · 0.5 s</text>
+          <line x1="40" y1="110" x2="720" y2="110" class="dg-axis"/>
+          <text x="30" y="114" text-anchor="end" class="dg-note">u</text>
+          <path d="M40 110 L40 92 L67.5 92 L67.5 110 L95 110 L95 128 L122.5 128 L122.5 110 L150 110 L150 70 L177.5 70 L177.5 110 L205 110 L205 150 L232.5 150 L232.5 110 L260 110" class="dg-sig"/>
+          <line x1="260" y1="110" x2="520" y2="110" class="dg-flat"/>
+          <text x="390" y="88" text-anchor="middle" class="dg-note">u = 0 after a full reset</text>
+          <text x="390" y="140" text-anchor="middle" class="dg-note">records identical for b and −b</text>
+          <path d="M520 110 L520 78 L714 78" class="dg-plus"/>
+          <path d="M520 110 L520 142 L714 142" class="dg-minus"/>
+          <text x="722" y="82" class="dg-note">+u</text>
+          <text x="722" y="146" class="dg-note">−u</text>
+          <text x="150" y="198" text-anchor="middle" class="dg-note">reveals the sign of b</text>
+          <text x="620" y="198" text-anchor="middle" class="dg-note">r = ½[J(+u) − J(−u)]</text>
+          <text x="390" y="200" text-anchor="middle" class="dg-note dg-strong">memory carries the sign of b</text>
+          <line x1="268" y1="214" x2="512" y2="214" class="dg-arrow" marker-end="url(#dg-arrowhead)"/>
+        </svg>
+      </div>
+      <figcaption>A probe of alternating differential pulses reveals the sign of <i>b</i>. A full reset and a hold then make the observations identical for <i>b</i> and −<i>b</i>, so only the model's memory can carry the answer. The query asks for the response to +<i>u</i> and −<i>u</i> from the same saved state; half the difference between the two impulses <i>J</i> isolates the part of the prediction that depends on the sign of <i>b</i>.</figcaption>
+    </figure>
+    <p>From there the chains split. The Codex chain narrows into one engineering comparison between memory designs. The Claude chain builds an explanation of why a world model would lose the asymmetry at all.</p>
+  </section>
+
+  <section class="block" aria-labelledby="bottom-line">
+    <h2 id="bottom-line">Bottom line</h2>
+    <dl class="findings">
+      <div class="finding key">
+        <dt>Strongest idea</dt>
+        <dd>Whether the training objective decides if a world model keeps a small latent that it observes only now and then but that matters later, comparing latent prediction (JEPA) with reconstruction. This is Claude's mechanism M2, introduced in v02 and refined into hypothesis H3 in v07. It is the only hypothesis in either chain whose outcome is truly uncertain, it rests on existing theory (<a href="https://arxiv.org/abs/2407.03475" target="_blank" rel="noopener">Littwin et al., 2024</a>), and it matters well beyond asymmetry.</dd>
+      </div>
+      <div class="finding">
+        <dt>Strongest supporting idea</dt>
+        <dd>The measurement design that makes the question answerable, from Claude v02 and v03. Each body is asymmetric while the population is symmetric, so the best predictor is equivariant. The paired ±<i>u</i> query isolates the signed part of a prediction made from mirror-even observations. Contrast skill scores each model against an exact Bayesian reference.</dd>
+      </div>
+      <div class="finding">
+        <dt>Best idea from the Codex chain</dt>
+        <dd>A hold can carry no information about <i>b</i> when the other body parameters are known, yet still be informative when they are unknown, because it sharpens a nuisance parameter that is correlated with <i>b</i> in the posterior (Codex v04). Any memory benchmark can fall into this trap. The Claude chain adopted it as its information audit.</dd>
+      </div>
+      <div class="finding">
+        <dt>Best single document</dt>
+        <dd>Claude v07. As written it holds two or three papers: four mechanisms, a remedy model, about fifteen baselines and four realism tiers, all in thirteen weeks. Most of its scientific value sits in H2 and H3, and most of its length sits elsewhere.</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="block" aria-labelledby="scores">
+    <h2 id="scores">Scores</h2>
+    <p>Each dimension is scored from 1 to 10. The overall score counts novelty, significance and discovery potential about twice as much as soundness and feasibility, because the question here is which ideas could add new knowledge. A flawless protocol for a predictable result scores low.</p>
+    <div class="table-wrap wide">
+      <table class="scores">
+        <thead>
+          <tr>
+            <th scope="col">Version</th>
+            <th scope="col">What it adds</th>
+            <th scope="col" class="num">Novelty</th>
+            <th scope="col" class="num">Significance</th>
+            <th scope="col" class="num">Soundness</th>
+            <th scope="col" class="num">Feasibility</th>
+            <th scope="col" class="num">Discovery</th>
+            <th scope="col" class="num">Overall</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="group"><th colspan="8" scope="colgroup">Codex chain</th></tr>
+          <tr><td class="ver">Codex v01</td><td>Identification versus retention; static two-actuator example</td><td class="num">3</td><td class="num">4</td><td class="num">4</td><td class="num">6</td><td class="num">3</td><td class="num overall">3.5</td></tr>
+          <tr><td class="ver">Codex v02</td><td>Cart with reset; delayed-query training; excess-risk lemma; observability audit</td><td class="num">3</td><td class="num">4</td><td class="num">7</td><td class="num">8</td><td class="num">3</td><td class="num overall">4.5</td></tr>
+          <tr><td class="ver">Codex v03</td><td>Gated context split into mirror-even and mirror-odd parts; nonlinear actuators</td><td class="num">3.5</td><td class="num">4</td><td class="num">6</td><td class="num">8</td><td class="num">3</td><td class="num overall">4.5</td></tr>
+          <tr><td class="ver">Codex v04</td><td>Exact and uncertain-nuisance regimes; nuisance-coupling insight; snapshot baselines <span class="tag">best idea in chain</span></td><td class="num">4</td><td class="num">4</td><td class="num">8</td><td class="num">8</td><td class="num">3.5</td><td class="num overall">5</td></tr>
+          <tr><td class="ver">Codex v05</td><td>Comparator registry; proper scores; delay-specific readouts; switched queries</td><td class="num">4</td><td class="num">4</td><td class="num">8</td><td class="num">7</td><td class="num">3.5</td><td class="num overall">5</td></tr>
+          <tr><td class="ver">Codex v06</td><td>Locked inference; failure accounting; walker replication gate</td><td class="num">4</td><td class="num">4.5</td><td class="num">8</td><td class="num">6</td><td class="num">3.5</td><td class="num overall">5</td></tr>
+          <tr><td class="ver">Codex v07</td><td>Integrated final version with walker replication</td><td class="num">4</td><td class="num">4.5</td><td class="num">8.5</td><td class="num">6</td><td class="num">3.5</td><td class="num overall">5</td></tr>
+          <tr class="group"><th colspan="8" scope="colgroup">Claude chain</th></tr>
+          <tr><td class="ver">Claude v01</td><td>Availability, retention and use; two-sided belief</td><td class="num">4</td><td class="num">5</td><td class="num">4</td><td class="num">6</td><td class="num">4</td><td class="num overall">4.5</td></tr>
+          <tr><td class="ver">Claude v02</td><td>Four failure mechanisms, each with a formal statement and its own control <span class="tag">ideas originate</span></td><td class="num">6</td><td class="num">7</td><td class="num">5</td><td class="num">5</td><td class="num">6</td><td class="num overall">6</td></tr>
+          <tr><td class="ver">Claude v03</td><td>Contrast skill; controls that hold information fixed; designed distractor spectrum; deep-linear test</td><td class="num">6.5</td><td class="num">7</td><td class="num">6.5</td><td class="num">5</td><td class="num">6.5</td><td class="num overall">6.5</td></tr>
+          <tr><td class="ver">Claude v04</td><td>Signed-belief model; SymPE, snapshot and VariBAD baselines</td><td class="num">6.5</td><td class="num">7</td><td class="num">7.5</td><td class="num">4.5</td><td class="num">6.5</td><td class="num overall">6.5</td></tr>
+          <tr><td class="ver">Claude v05</td><td>Data contract; preregistered analysis</td><td class="num">6.5</td><td class="num">7</td><td class="num">8</td><td class="num">4</td><td class="num">6.5</td><td class="num overall">6.5</td></tr>
+          <tr><td class="ver">Claude v06</td><td>Camera tier; pose re-analysis; full-state reset; varied queries</td><td class="num">6.5</td><td class="num">7.5</td><td class="num">7.5</td><td class="num">3</td><td class="num">7</td><td class="num overall">6.5</td></tr>
+          <tr><td class="ver">Claude v07</td><td>Related-work gap; refined H3; training seeds crossed with test bodies <span class="tag">best document</span></td><td class="num">6.5</td><td class="num">7.5</td><td class="num">8.5</td><td class="num">4</td><td class="num">7</td><td class="num overall">7</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="scale-note">Scale 1–10. On narrow screens the table scrolls sideways.</p>
+    <div class="note">
+      <h3>Why these scores differ from the chains' own scorecards</h3>
+      <p>The self-scorecards rate Claude v07 at 85.8 out of 100 and Codex v07 at 83.0, and both climb almost every round. Their rubrics reward leakage control, statistics and clarity, which did improve with each revision. Weighted toward discovery, the curves flatten early. Every major Claude idea was already present by v03, and the Codex chain's novelty never moved; its own rubric holds novelty at 2.5 out of 5 from v01 onward, which matches this review. The two rubrics also score Codex v07 at 59.9 and 83.0, so neither is a neutral judge.</p>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="codex">
+    <h2 id="codex">Codex chain: rigorous, with a low ceiling</h2>
+    <p>The primary question asks whether a gated persistent-context model cuts delayed-response error by 5% against the best recurrent or snapshot baseline. No outcome of that question teaches much. The candidate's key part is a context store that updates only during a publicly announced diagnosis window, which by construction sits very close to the snapshot baselines. The final version says as much: “gated copying remains conventional.”</p>
+    <ul class="list">
+      <li>In the exact condition the gate is correct by design, so a win is expected.</li>
+      <li>In the nonlinear condition the gate can discard useful nuisance evidence, so a loss is plausible.</li>
+      <li>The likeliest result is a tie with the snapshot, which says little.</li>
+    </ul>
+    <p>The chain also dropped the JEPA question, which is where most of the machine-learning interest in this topic lies. Its methods are still worth keeping: the split between availability, recoverability and usefulness, the nuisance-coupling insight, delay-specific readouts for representations that drift over time, switched-schedule queries, and its accounting for failed fits.</p>
+  </section>
+
+  <section class="block" aria-labelledby="claude">
+    <h2 id="claude">Claude chain: the right question, buried</h2>
+    <p>Version 2 is the big conceptual step. It names four ways a predictive model can lose a signed asymmetry and gives each a formal statement and its own experimental control. Version 3 makes them measurable. Versions 4 to 7 mostly harden and broaden the plan. Some of those fixes were essential: the full-state reset in v06 (in v05, leftover motor activation still leaked <i>b</i> during the hold), varied queries that block a linear shortcut, and statistics that cross training seeds with test bodies. None of them raises the chance of a discovery.</p>
+    <p>The four mechanisms are not equally strong.</p>
+    <div class="table-wrap wide">
+      <table class="mech">
+        <thead>
+          <tr><th scope="col">Mechanism</th><th scope="col">Verdict</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>M1 · the model must commit to one side and keep it</td>
+            <td>Largely known. Curie's principle for equivariant networks, SymPE (<a href="https://arxiv.org/abs/2503.21985" target="_blank" rel="noopener">Lawrence et al., 2025</a>) and sequence models with a latent drawn once per sequence (DSVAE; Li and Mandt, 2018) already cover it. It affects only distributional scores, and the energy score separates distribution shapes weakly (Pinson and Tastu, 2013), so the test risks low power.</td>
+          </tr>
+          <tr class="key">
+            <td>M2 · H2–H3 · capacity and objective</td>
+            <td>The real bet. Under a symmetric data process the mirror-even and mirror-odd directions separate exactly (Proposition 2), so the asymmetry competes only on its own variance. The JEPA-versus-reconstruction prediction comes from theory, and its outcome in nonlinear recurrent models is open.</td>
+          </tr>
+          <tr>
+            <td>M3 · nothing rewards the memory</td>
+            <td>Textbook (Bengio, Simard and Frasconi, 1994). The modern version, which separates memory length from credit-assignment length, is Ni et al. (NeurIPS 2023), and neither chain cites it.</td>
+          </tr>
+          <tr>
+            <td>M4 · the asymmetry must multiply the command</td>
+            <td>Version 4 already downgraded this to a question of how much data the model needs. Multiplicative interactions are known to help with exactly that (Jayakumar et al., ICLR 2020; FiLM).</td>
+          </tr>
+          <tr>
+            <td>Signed-belief remedy</td>
+            <td>Every part already exists, as the proposal says. The model will likely clear its 0.9 skill bar by design, and the comparison that could teach something, against the snapshot and SymPE baselines, will most likely end in a tie.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="gaps">
+    <h2 id="gaps">Problems in the strongest idea that neither review caught</h2>
+    <p>These matter because H3 is where the effort should go.</p>
+    <ul class="list">
+      <li><strong>Directly relevant prior work is missing.</strong> <a href="https://arxiv.org/pdf/2211.10831" target="_blank" rel="noopener">Sobal et al. (2022)</a> show that JEPA methods focus on slow features and fail when static distractors are present. The asymmetry never changes within an episode, which makes it the slowest feature there is, and v07's distractor coefficients of 0.95 and 0.3 are one-step autocorrelations, the same slowness axis. (v07 also calls the 0.3 channels slow-mixing, but an AR(1) process with coefficient 0.3 mixes quickly.) A <a href="https://arxiv.org/pdf/2603.14131" target="_blank" rel="noopener">March 2026 paper</a> finds that a gated autoencoder matches or beats JEPA on a linear dynamical system. Together these remove part of H3's novelty. What stays new is a latent that is constant within an episode but visible only now and then.</li>
+      <li><strong>The anti-collapse regularizer is a confound.</strong> VICReg's variance term and SIGReg both push each embedding direction toward unit variance, and that alone could rescue a low-variance direction. If the JEPA arm wins, two more arms are needed before crediting latent prediction: JEPA with only an EMA target or stop-gradient, and reconstruction with the same regularizer.</li>
+      <li><strong>The width levels may not straddle the capacity limit.</strong> The recurrent state must hold eight oscillating distractors at two dimensions each, the cart's own state, <i>g</i> and <i>b</i>. Width 16 is borderline for that load and width 64 is ample. If 16 is also ample, the H2 interaction cannot appear. The widths should come from a computed count of predictable dimensions, as they already do in the linear check.</li>
+      <li><strong>The hidden-parameter literature isn't positioned.</strong> Hidden-parameter MDPs (Doshi-Velez and Konidaris, 2016; Killian et al., 2017) and PEARL (Rakelly et al., 2019) are the established framing for per-instance hidden parameters under a shared population model. Gradient starvation (Pezeshki et al., 2021) is the closest nonlinear analogue of M2.</li>
+    </ul>
+  </section>
+
+  <section class="block" aria-labelledby="paper">
+    <h2 id="paper">The paper worth writing</h2>
+    <p>One paper, with asymmetry as the instrument and retention as the subject.</p>
+    <p class="question">Which training choices make a world model keep a small latent that it observes only now and then, and that matters later?</p>
+    <p>Mirror symmetry splits every quantity exactly into even and odd parts, and the cart supplies an exact Bayesian ceiling. Those two properties make the measurement unusually clean.</p>
+    <ul class="list">
+      <li><strong>Core experiment on the cart.</strong> Cross four objectives (reconstruction; JEPA with an EMA target only; JEPA with VICReg or SIGReg; reconstruction with the same regularizer) with distractor slowness and with widths chosen to straddle the computed capacity limit. As a one-line remedy, test a loss split into mirror-even and mirror-odd parts, each normalized by its own scale.</li>
+      <li><strong>Turn M3 into a new test.</strong> Sweep the KL weight in a Dreamer-style world model. The KL term discourages the latent from holding <a href="https://arxiv.org/html/2405.06263v2" target="_blank" rel="noopener">information the dynamics model can't predict</a>, so it may penalize writing down probe evidence that only pays off after the hold. The literature search found no measurement of this, so it remains a hypothesis.</li>
+      <li><strong>Realism tier.</strong> The walker seen through a camera, with v07's slowed and jittered video backgrounds. Use a faithful modern JEPA world model such as <a href="https://arxiv.org/html/2603.19312v1" target="_blank" rel="noopener">LeWorldModel</a> or <a href="https://icml.cc/virtual/2026/poster/61579" target="_blank" rel="noopener">VJEPA</a> instead of building one in-house.</li>
+      <li><strong>A cheap probe with high upside.</strong> DINOv2 training <a href="https://github.com/facebookresearch/dinov2/blob/main/dinov2/data/augmentations.py" target="_blank" rel="noopener">flips each view horizontally at random</a>, which pushes its global features toward mirror invariance. That is the invariant-encoder failure both chains keep only as a negative control, and world models built on frozen encoders, such as DINO-WM on DINOv2, inherit it. Patch tokens keep their spatial layout, so the effect may be partial. A quick check would show whether such a world model can tell a left-weak body from a right-weak one, and it ties back to why the earlier URTC gait study turned off mirror augmentation.</li>
+      <li><strong>What to demote or cut.</strong> The signed-belief model as the headline (keep the snapshot and SymPE as baselines), M4 and most of M1, the Codex gated-context candidate, and the pose re-analysis, which is worth doing for the earlier JEPA pose study as a separate piece.</li>
+    </ul>
+    <p>By v07's own per-fit costs, this comes to roughly 200 GPU-hours including the camera tier, well under its 400-hour cap. Every outcome of the objective-by-regularizer experiment would be informative enough to report.</p>
+  </section>
+
+  <section class="block sources" aria-labelledby="sources">
+    <h2 id="sources">Sources</h2>
+    <h3>Checked online for this review</h3>
+    <ul>
+      <li><a href="https://arxiv.org/pdf/2211.10831" target="_blank" rel="noopener">Sobal et al., Joint Embedding Predictive Architectures Focus on Slow Features</a></li>
+      <li><a href="https://arxiv.org/pdf/2603.14131" target="_blank" rel="noopener">Is the reconstruction loss culprit? An attempt to outperform JEPA</a></li>
+      <li><a href="https://icml.cc/virtual/2026/poster/61579" target="_blank" rel="noopener">VJEPA: Variational Joint Embedding Predictive Architectures as Probabilistic World Models (ICML 2026)</a></li>
+      <li><a href="https://arxiv.org/html/2603.19312v1" target="_blank" rel="noopener">LeWorldModel: Stable End-to-End Joint-Embedding Predictive Architecture from Pixels</a></li>
+      <li><a href="https://github.com/facebookresearch/dinov2/blob/main/dinov2/data/augmentations.py" target="_blank" rel="noopener">DINOv2 data augmentations, official repository</a></li>
+      <li><a href="https://arxiv.org/html/2405.06263v2" target="_blank" rel="noopener">Learning Latent Dynamic Robust Representations for World Models</a></li>
+    </ul>
+    <h3>Cited from the proposals or standard references, not re-checked</h3>
+    <p>Littwin et al. 2024 (NeurIPS); Lawrence et al. 2025, SymPE (ICLR); Ni et al. 2023 (NeurIPS); Jayakumar et al. 2020 (ICLR); Li and Mandt 2018 (ICML); Pinson and Tastu 2013; Doshi-Velez and Konidaris 2016 (IJCAI); Killian et al. 2017 (NeurIPS); Rakelly et al. 2019 (ICML); Pezeshki et al. 2021 (NeurIPS); Bengio, Simard and Frasconi 1994.</p>
+  </section>
+
+  <footer class="block">
+    <p>Scores are judgments of research plans. None of the fourteen proposals has run an experiment, and no score predicts a result or an acceptance decision. Source proposals: docs/ideas-claude and docs/ideas-codex in the chirality-wm repository.</p>
+  </footer>
+
+</div>

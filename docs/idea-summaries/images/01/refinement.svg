@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="292" viewBox="0 0 720 292" role="img" aria-labelledby="title desc">
+  <title id="title">A proposed training-time test for spending memory</title>
+  <desc id="desc">Find a pair of mirrored histories sharing one code. Estimate costs with independent rollouts from each history's posterior. If the gap is verified and slots are available, fit candidate signed codes and test their effect. Otherwise keep the shared code.</desc>
+  <rect width="720" height="292" rx="12" fill="#f6f8fa"/>
+  <g font-family="Arial, sans-serif" fill="#172b43">
+    <text x="24" y="36" font-size="23" font-weight="700">Which shared codes should split?</text>
+    <text x="24" y="63" font-size="16">Training only. The deployed model carries one discrete state between observations.</text>
+    <rect x="24" y="88" width="202" height="113" rx="8" fill="white" stroke="#c2cfda"/>
+    <rect x="256" y="88" width="217" height="113" rx="8" fill="white" stroke="#c2cfda"/>
+    <rect x="505" y="88" width="191" height="113" rx="8" fill="#d4eee9" stroke="#8bb9b2"/>
+    <g font-size="19" font-weight="700">
+      <text x="39" y="119">Find a collision</text>
+      <text x="271" y="119">Check the decision</text>
+      <text x="520" y="119">Test a split</text>
+    </g>
+    <g font-size="16">
+      <text x="39" y="148">Mirror histories share</text><text x="39" y="171">one memory state.</text>
+      <text x="271" y="148">Fresh rollouts estimate</text><text x="271" y="171">the cost of merging.</text>
+      <text x="520" y="148">With evidence and</text><text x="520" y="171">free slots, fit codes.</text>
+    </g>
+    <g stroke="#536776" stroke-width="2" fill="none">
+      <path d="M226 145 H252"/><path d="M473 145 H501"/><path d="M364 201 V224"/>
+    </g>
+    <g fill="#536776"><path d="M246 141 L253 145 L246 149Z"/><path d="M495 141 L502 145 L495 149Z"/><path d="M360 218 L364 225 L368 218Z"/></g>
+    <rect x="114" y="228" width="492" height="41" rx="7" fill="white" stroke="#c2cfda"/>
+    <text x="360" y="254" text-anchor="middle" font-size="17">Keep the shared code if evidence or capacity is insufficient.</text>
+  </g>
+</svg>

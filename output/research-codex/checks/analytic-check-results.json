@@ -1,0 +1,44 @@
+{
+  "status": "passed",
+  "scope": "algebra, numerical integration, and a toy Gaussian Monte Carlo check only; no trained models",
+  "random_seed": 20261023,
+  "randomized_algebra_cases": 1000,
+  "checks": [
+    "bilateral force identities",
+    "joint body/action reflection",
+    "finite-slope parity",
+    "sum/difference squared-error identity",
+    "even/odd product rules",
+    "same-query collapsed-memory excess MSE",
+    "Gaussian sign-error Monte Carlo",
+    "finite-horizon impulse versus independent RK4 integration"
+  ],
+  "dynamic_impulse_check": {
+    "cases": 12,
+    "max_absolute_error_N_s": 3.064215547965432e-14,
+    "integration_step_seconds": 0.001,
+    "horizon_seconds": 0.5
+  },
+  "gaussian_sign_error": {
+    "draws": 200000,
+    "b0": 0.2,
+    "delta": 0.25,
+    "sigma": 0.12,
+    "analytic_probability": 0.11929641465821769,
+    "monte_carlo_probability": 0.120385,
+    "binomial_standard_error_under_analytic_model": 0.0007247923154528898,
+    "difference_in_standard_errors": 1.5019272674022577
+  },
+  "collapse_bound": {
+    "assumptions": [
+      "two histories conditionally equally likely at the merged memory and fixed query",
+      "identical retained memory",
+      "same future query for both histories",
+      "squared-error loss",
+      "conditional outcome means m_plus and m_minus"
+    ],
+    "minimal_excess_mse": "(m_plus - m_minus)^2 / 4",
+    "toy_total_force_specialization": "4*b^2*u^2",
+    "qualification": "An elementary diagnostic identity. It neither proves learned-memory collapse nor applies to reflected queries as if they were identical."
+  }
+}

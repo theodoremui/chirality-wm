@@ -1,0 +1,150 @@
+[
+  {
+    "path": "docs/ideas-codex/v01_from_pose_restoration_to_mechanical_memory.md",
+    "sha256": "d309214f38a8f1a0a7f72f6fc8051c14678698263502de6a2e3fae497c5533e8"
+  },
+  {
+    "path": "docs/ideas-codex/v02_observability_before_memory.md",
+    "sha256": "ccd0b059c7685783ff87d5b9f1619320b72278a8647fa44f104d9bdcd1aab29a"
+  },
+  {
+    "path": "docs/ideas-codex/v03_a_parity_consistent_belief_that_can_remain_uncertain.md",
+    "sha256": "bf155fe532524b29cab60b39b89be445ff4b8019df3aa09e227a332825bfd562"
+  },
+  {
+    "path": "docs/ideas-codex/v04_auditable_dynamics_and_data_contract.md",
+    "sha256": "f80c13a6d08f86ad4064ccb4d557152ba1ec35dcd85445551bf6fe4bdadf9b4d"
+  },
+  {
+    "path": "docs/ideas-codex/v05_matched_objectives_and_defeating_baselines.md",
+    "sha256": "146cbd268d3af819e451e14384ebc6e643d8f33bdbb79088805c6dddaf39d126"
+  },
+  {
+    "path": "docs/ideas-codex/v06_locked_inference_and_generality_gates.md",
+    "sha256": "a1f308ed3c9282b4c674ad469c40a133d7236e126db7911818fdbeed6dd34272"
+  },
+  {
+    "path": "docs/ideas-codex/v07_predictive_memory_for_asymmetric_mechanics.md",
+    "sha256": "53140ea27f723743667a8281cbfb722012ad783e5de0cd4696a6ea7d2ee9126a"
+  },
+  {
+    "path": "output/research-codex/README.md",
+    "sha256": "32d924aeb5dd64bbad7c09ed376461340275b84b62bc66640fed70aad9f1a951"
+  },
+  {
+    "path": "output/research-codex/artifact-validation.json",
+    "sha256": "0931af972e60de682794bb2c595d561fbc6acb1be4466f06db56fb13d017228d"
+  },
+  {
+    "path": "output/research-codex/checks/README.md",
+    "sha256": "1fa404754f5d7f1fc8586b000ffbfd348d3d45137faff8287c57ba9143ebbcf6"
+  },
+  {
+    "path": "output/research-codex/checks/analytic-check-results.json",
+    "sha256": "0ce7e0deb6c885d5e1beb072a46913b1fda632163b565f2b718afe15adc45c89"
+  },
+  {
+    "path": "output/research-codex/checks/analytic_checks.py",
+    "sha256": "3a7f7652721dc6067b5079cbe24f3677cd19100f0dd82c2dbaa00be635b9142a"
+  },
+  {
+    "path": "output/research-codex/checks/validate_artifacts.py",
+    "sha256": "b8fd3598377e4115a3547c375048bc983a465165a12e596e149e20c9f1f444d6"
+  },
+  {
+    "path": "output/research-codex/data-fidelity-and-leakage-contract.md",
+    "sha256": "43cd5d4209bc1d6ac111f7147b686e21080ec267500e9742a27659032177cfc7"
+  },
+  {
+    "path": "output/research-codex/figures/training-pipeline-caption.md",
+    "sha256": "ee40a0bbddb6de130fce329f249bb5f846e272f13362c4e96b142583bf4746ee"
+  },
+  {
+    "path": "output/research-codex/figures/training-pipeline.png",
+    "sha256": "f0e83ca82d28518064706f349c3b251cc3b84ff0006af89cc1289a8e8618acae"
+  },
+  {
+    "path": "output/research-codex/figures/training-pipeline.svg",
+    "sha256": "830775a918ce47c63e56e9933d6800d465a953a7cae61a8c163a4e92d5ec13c1"
+  },
+  {
+    "path": "output/research-codex/final-theory-check.md",
+    "sha256": "0fedf39923e0a9bbd7adaa5b89184f1623dc2ba3ce4e4ea0ee128d8f04431e75"
+  },
+  {
+    "path": "output/research-codex/icml-positioning-and-selection.md",
+    "sha256": "cd021afb1bbad087034a901dbfb6a6d5b53756014830500981efd8730fc564d2"
+  },
+  {
+    "path": "output/research-codex/literature-audit.md",
+    "sha256": "98b785e32405bbfd84a716d5684cead3912e32f7d3912f2f2f81ead3ad1f31d8"
+  },
+  {
+    "path": "output/research-codex/mathematical-notes.md",
+    "sha256": "300083571394d4bffefb8afc4022fa3aefd1d173b9ff85cfc09c12062db9a2bc"
+  },
+  {
+    "path": "output/research-codex/review-protocol.md",
+    "sha256": "0587e64629d7aef64fd4b7d88bd1aec5155498665dcb99bc10a645c58dafe50f"
+  },
+  {
+    "path": "output/research-codex/review-snapshots/v07-before-final-review.md",
+    "sha256": "bf95910329bd0b6db09f6f956083f1856deaa54395e78dae09f9575722cb93db"
+  },
+  {
+    "path": "output/research-codex/review-v00-original.md",
+    "sha256": "2a624f2f11e13302d30605f95633073e836a0f3f06ec9de9a0c7b9ec2459f2d0"
+  },
+  {
+    "path": "output/research-codex/review-v01.md",
+    "sha256": "27ef0f8d4c7f66f23ecd0e3c388021259fb9e078384a24337f12c880430e4fbd"
+  },
+  {
+    "path": "output/research-codex/review-v02.md",
+    "sha256": "0362d0ae7f72c8279fa771a2d9ea31de65b0e96f2bbefe1d1ffc03f0f1fb7ee5"
+  },
+  {
+    "path": "output/research-codex/review-v03.md",
+    "sha256": "05b9dad7589f9b777bda7d716859bb8ba0058ed0424c94fe97b3c100f745ac8a"
+  },
+  {
+    "path": "output/research-codex/review-v04.md",
+    "sha256": "0ad64901adfe43a8772b71a9f8daec8a102f9aed5fe6bd852969397d9e961e97"
+  },
+  {
+    "path": "output/research-codex/review-v05.md",
+    "sha256": "03943635c4c2a81538fd05378017cb3857ae86d9215d47a6c6be814a78878ae1"
+  },
+  {
+    "path": "output/research-codex/review-v06.md",
+    "sha256": "b1532d6b334c601fb04fcbdef878bb2b90d758245a217c6a19814369f719a82b"
+  },
+  {
+    "path": "output/research-codex/review-v07.md",
+    "sha256": "4b0b5e29465251465da44efe3d07563b2da95d6a566bf689527cdb3abbd74fe1"
+  },
+  {
+    "path": "output/research-codex/revision-ledger.md",
+    "sha256": "d29af15c9f23053acc49e7d29efd84d94ca4146ceccd048966dcd64d29ba613e"
+  },
+  {
+    "path": "output/research-codex/scorecard.md",
+    "sha256": "9ba5c61f1409602801f6b2d82a51b00487b8f6ec6fecd50fec1d1e7ae260ec82"
+  },
+  {
+    "path": "output/research-codex/scores.json",
+    "sha256": "3b4b2bcc3cfaa88bed065e7d66469677079a080d3c6f2d2103485798c5e2ea43"
+  },
+  {
+    "path": "output/research-codex/source-evidence-audit.md",
+    "sha256": "35dfbed930824e1471c078310f89ae076c0a2213ed986e1867b71a6fadf58c2d"
+  },
+  {
+    "path": "output/research-codex/source-manifest.json",
+    "sha256": "4432236028cbabdb24d21816c7513ce7e9cac656d5c1cf02dede0181d80746d3"
+  },
+  {
+    "path": "output/research-codex/title-options.md",
+    "sha256": "07738db48ae55ea9e3386fa64636089050467ef538513aa72e4446c13c29e9df"
+  }
+]

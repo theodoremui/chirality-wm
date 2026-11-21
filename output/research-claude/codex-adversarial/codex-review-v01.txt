@@ -1,0 +1,74 @@
+[codex] Starting Codex task thread.
+[codex] Thread ready (01a16a23-1641-7813-bab2-d11e7812f87f).
+[codex] Turn started (01a16a23-18a3-7233-b98d-ba0616e39d90).
+[codex] Assistant message captured: I’m using the review skill to check the proposal’s formal claims, experimental controls, and ...
+[codex] Running command: /bin/zsh -lc "pwd && rg --files -g 'AGENTS.md' -g 'proposal.md' -g '*context*' -g '*review*' ...
+[codex] Command completed: /bin/zsh -lc "pwd && rg --files -g 'AGENTS.md' -g 'proposal.md' -g '*context*' -g '*review*' ... (exit 0)
+[codex] Running command: /bin/zsh -lc 'cat /Users/theodoremui/.codex/skills/gstack-review/SKILL.md'
+[codex] Command completed: /bin/zsh -lc 'cat /Users/theodoremui/.codex/skills/gstack-review/SKILL.md' (exit 0)
+[codex] Running command: /bin/zsh -lc 'ls -la && rg --files context && nl -ba proposal.md'
+[codex] Command completed: /bin/zsh -lc 'ls -la && rg --files context && nl -ba proposal.md' (exit 0)
+[codex] Running command: /bin/zsh -lc "cat /Users/theodoremui/.codex/skills/gstack/review/checklist.md; sed -n '430,72...
+[codex] Command completed: /bin/zsh -lc "cat /Users/theodoremui/.codex/skills/gstack/review/checklist.md; sed -n '430,72... (exit 0)
+[codex] Searching:
+[codex] Running command: /bin/zsh -lc 'cat README.md; cat context/prior-codex-v07.md'
+[codex] Command completed: /bin/zsh -lc 'cat README.md; cat context/prior-codex-v07.md' (exit 0)
+[codex] Running command: /bin/zsh -lc "rg -n 'zero|leak|train|test|mirror|asymmetr|augmentation|RMSE|baseline' context...
+[codex] Command completed: /bin/zsh -lc "rg -n 'zero|leak|train|test|mirror|asymmetr|augmentation|RMSE|baseline' context... (exit 0)
+[codex] Assistant message captured: The main concern is that the proposed results would not yet distinguish forgotten information...
+[codex] Searching:
+[codex] Searching:
+[codex] Running command: /bin/zsh -lc "sed -n '1,240p' context/original-proposal.txt; sed -n '292,350p' context/jepa-a...
+[codex] Command completed: /bin/zsh -lc "sed -n '1,240p' context/original-proposal.txt; sed -n '292,350p' context/jepa-a... (exit 0)
+[codex] Searching:
+[codex] Running command: /bin/zsh -lc "python3 -c 'm,k,c,tau=1.,2.,.4,.1 x=v=d=0. dt=0.0001 for i in range(85000): t=i...
+[codex] Command completed: /bin/zsh -lc "python3 -c 'm,k,c,tau=1.,2.,.4,.1 x=v=d=0. dt=0.0001 for i in range(85000): t=i... (exit 0)
+[codex] Assistant message captured: A numerical check confirms that the cart can retain a sign-dependent position and velocity ei...
+[codex] Running command: /bin/zsh -lc "sed -n '125,145p' context/urtc-draft.txt; sed -n '136,148p' proposal.md; rg -n ...
+[codex] Command completed: /bin/zsh -lc "sed -n '125,145p' context/urtc-draft.txt; sed -n '136,148p' proposal.md; rg -n ... (exit 0)
+[codex] Assistant message captured: { "verdict": "needs-attention", "summary": "Do not approve as an executable research plan yet...
+[codex] Turn completed.
+# Codex Adversarial Review
+
+Target: working tree diff
+Verdict: needs-attention
+
+Do not approve as an executable research plan yet. The benchmark does not establish that delayed prediction requires memory, the Bayesian reference is not exact as specified, and the evaluation cannot separate retention from predictive use. Several controls present in context/prior-codex-v07.md have been removed.
+
+Findings:
+- [high] Activation washout does not remove asymmetry from observed motion (proposal.md:80)
+  Equalizing motor activations does not equalize position and velocity. Probe-induced mechanical transients decay according to m, k and c, independently of the activation time constant. An allowed example with m=1, k=2, c=0.4 and tau=0.1 retains dx/db≈0.00318 and dv/db≈0.00659 eight seconds after alternating 0.25-second pulses, although activation imbalance is effectively zero. Only force is explicitly noisy here. A model could therefore infer asymmetry from recent motion instead of retaining the probe. A full-history Bayesian filter cannot isolate how much information remains in recent observations.
+  Recommendation: Restore the canonical physical-state reset from context/prior-codex-v07.md while preserving within-episode model memory. Alternatively, specify all parameter and sensor-noise ranges and require recent-window and no-probe references to establish negligible sign information at the primary delay.
+- [high] The claimed exact Bayesian reference omits randomized nuisance parameters (proposal.md:80)
+  The pipeline randomizes g, tau and m as well as b, but the reference integrates only over b. Conditional linearity does not make a single Kalman filter exact when its transition matrices contain unknown static tau or m. Supplying their true values instead would give the reference privileged information, so its success would not establish availability from the learned models' inputs. A finite grid is also an approximation to a continuous prior.
+  Recommendation: Use fixed, publicly known nuisance parameters for the exact diagnostic, or marginalize their joint posterior and report numerical convergence. Specify priors, initial-state distributions and noise laws. Label any reference receiving true nuisance parameters as privileged.
+- [high] The primary signed-response estimand is undefined (proposal.md:126)
+  The 'part' depending on sign has no operational definition. Comparing complete mirror twins does not recover it: total force satisfies F(b,u)=F(-b,-u), so that contrast is zero. Comparing opposite b at the same u instead requires matched nuisance parameters and a declared physical state; otherwise different probe-induced states contaminate the contrast. Different implementations could consequently test different scientific questions.
+  Recommendation: Define the endpoint mathematically, for example J_odd=[J(b,u;s0)-J(-b,u;s0)]/2 at a common canonical state and fixed query. Specify horizon, units, point estimator and error function. Keep all counterfactual branches in one family, clone origin memories independently, and prohibit updates from sibling-branch outcomes.
+- [high] Prediction metrics cannot establish information loss or causal use (proposal.md:58-60)
+  H2 claims that latent information disappears, but Section 8 measures prediction error and an unspecified sign accuracy. Worse predictions can arise from a deficient decoder, changed latent coordinates or rollout error while sign information remains recoverable. Conversely, accurate predictions can use current-state shortcuts rather than persistent context. The cited [Compact but Moving](https://arxiv.org/abs/2609.21787) explicitly demonstrates persistence in moving representation directions.
+  Recommendation: Restore frozen-state decoding at probe end and each delay, with common and delay-specific readouts fitted only on training families. Interpret failures as limits of tested readouts. Test use separately through matched-state context replacement or ablation, alongside full-history, recent-window and no-probe controls.
+- [high] The walker may continuously reveal asymmetry during the delay (proposal.md:82)
+  No walker observation restriction or delay-time information audit is specified. Ordinary alternating knee commands already excite the two actuators differently, and a compensating controller can encode the hidden gains in its command history. Freezing commands only during the query prevents future-feedback leakage but does not remove these ongoing identification channels. Successful delayed forecasts could therefore demonstrate ordinary adaptation rather than retention of a brief probe.
+  Recommendation: Specify observed channels and the controller's information access throughout the episode. Freeze controller training on separate families and audit recent-state, recent-action and no-probe prediction. Treat the walker as a retention replication only if those controls establish a genuine information gap; otherwise narrow its claim.
+- [high] The baseline set cannot isolate the proposed contribution (proposal.md:102-109)
+  Once the probe leaves its window, the RMA-style baseline is denied evidence available to the candidate by construction. No learned persistent-summary or full-history belief baseline tests whether simply storing the probe solves the task. Meanwhile the candidate adds persistence, a mixture distribution, equivariance and an explicit context-action product together. The cited [VariBAD](https://arxiv.org/html/1910.08348v2) already infers history-conditioned task uncertainty, but is omitted from the comparisons. A win would not establish a benefit specific to the two-sided representation.
+  Recommendation: Add a stored probe-summary baseline and a full-history persistent-context model. Factor persistence, symmetry, mixture uncertainty and the product decoder into explicit ablations with shared predictive heads. Label recent-window models as information-restricted references and narrow novelty claims if conventional context storage matches the candidate.
+- [high] The statistical plan cannot support the promised combined claim (proposal.md:126)
+  A family bootstrap supplies uncertainty estimates but does not define success. There is no minimum improvement, noninferiority margin for ordinary prediction, confidence level or sample-size calculation. A nonsignificant ordinary-prediction difference would not establish 'without a loss.' Family resampling also conditions on the fitted seeds; reporting seed variation separately does not turn those intervals into inference over training randomness.
+  Recommendation: Predeclare the primary contrast, meaningful improvement and ordinary-prediction noninferiority margins, confidence procedure and joint decision rule. Size independent families using separate pilot data. Explicitly condition inference on the five fits or use an appropriate crossed family/seed analysis, and predefine treatment of failed fits and nonfinite predictions.
+- [medium] The training protocol does not test H2 as written (proposal.md:94-98)
+  H2 concerns next-step-trained recurrence, but every learned model receives query supervision. That experiment tests recurrence under a different objective. Equal lambda and update counts also leave the decisive gradient path unspecified: truncation before the probe can prevent a recurrent baseline from learning delayed retention while the candidate's persistent path remains trainable.
+  Recommendation: Run a declared next-step-only arm for H2 and a shared query-supervised comparison for H3. Specify loss reductions, history coverage, backpropagation horizon and query-origin conditioning; ensure query targets cannot enter the rollout state. Match tuning opportunities and report actual compute.
+- [medium] Output invariance is incorrectly equated with latent-state collapse (proposal.md:46)
+  An invariant predictor need not have an invariant internal representation. The correct response f(b,u)=2bu is invariant under jointly reflecting b and u, yet predicts opposite responses when b changes at fixed u. The stated impossibility requires an invariant history encoder followed by the same unreflected query. Also, balanced signs alone do not imply an equivariant optimal predictor; the observation law, nuisance distribution and experimental policy must transform consistently.
+  Recommendation: Separate encoder invariance from predictor equivariance and state the collision argument at a fixed future query. Replace the balanced-population assertion with explicit symmetry assumptions on the complete data-generating process and loss.
+- [medium] The thirteen-week schedule has no measurable resource feasibility gate (proposal.md:130)
+  Five learned models across two simulators and five seeds already require at least 50 final fits, before tuning and unspecified ablations. The proposal gives no family count, sampling frequency, sequence length in steps, training-update count, hardware or accelerator-hour budget. Consequently neither computational feasibility nor statistical power can be checked, and walker feasibility is deferred until weeks 9–11.
+  Recommendation: Restore a numerical experiment inventory and resource cap, including pilot-based family counts and measured full-horizon training costs. Gate walker sensing, controller validity and runtime by week 2. Specify a reduced publication scope if these gates fail, before confirmation data are examined.
+
+Next steps:
+- Repair the physical diagnostic, Bayesian reference and signed-response definition before training.
+- Restore retention diagnostics, persistent-memory baselines and explicit mechanism ablations.
+- Freeze the statistical decision rule, leakage controls and measured resource budget before confirmation.
+exit: 0

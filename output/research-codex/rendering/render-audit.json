@@ -1,0 +1,523 @@
+{
+  "status": "passed",
+  "renderer": "Pandoc 3.10.2 HTML5 with embedded STIX fonts, native MathML, isolated Chromium PDF export",
+  "offline": true,
+  "versions": [
+    {
+      "version": 1,
+      "source": "docs/ideas-codex/v01_from_pose_restoration_to_mechanical_memory.md",
+      "html": "output/research-codex/rendered/v01_from_pose_restoration_to_mechanical_memory.html",
+      "pdf": "output/research-codex/rendered/v01_from_pose_restoration_to_mechanical_memory.pdf",
+      "source_sha256": "bcbd58de0796c6886deef4134c4e356cdbaec76d2c1bb9889b428cc4d7757bf5",
+      "browser_checks": {
+        "images": [],
+        "mathCount": 13,
+        "mathErrors": 0,
+        "tableRows": [],
+        "bodyOverflow": false,
+        "resourceDependencies": [],
+        "rawDollars": false,
+        "h1Count": 1,
+        "mobileBodyOverflow": false,
+        "mobileWideElements": [],
+        "browserErrors": []
+      },
+      "portable_pdf_local_links": 1,
+      "pdf_pages": [
+        {
+          "page": 1,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 3382,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v01-page-01.png"
+        },
+        {
+          "page": 2,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 3190,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v01-page-02.png"
+        },
+        {
+          "page": 3,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 2356,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v01-page-03.png"
+        }
+      ],
+      "contact_sheet": "output/research-codex/rendering/qa/v01-contact-sheet.png"
+    },
+    {
+      "version": 2,
+      "source": "docs/ideas-codex/v02_observability_before_memory.md",
+      "html": "output/research-codex/rendered/v02_observability_before_memory.html",
+      "pdf": "output/research-codex/rendered/v02_observability_before_memory.pdf",
+      "source_sha256": "54d6e0a973fbc4309343d0aff1bafc3b297e7e17e43119aecfc878c3ac30f55a",
+      "browser_checks": {
+        "images": [],
+        "mathCount": 30,
+        "mathErrors": 0,
+        "tableRows": [],
+        "bodyOverflow": false,
+        "resourceDependencies": [],
+        "rawDollars": false,
+        "h1Count": 1,
+        "mobileBodyOverflow": false,
+        "mobileWideElements": [],
+        "browserErrors": []
+      },
+      "portable_pdf_local_links": 3,
+      "pdf_pages": [
+        {
+          "page": 1,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 3024,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v02-page-01.png"
+        },
+        {
+          "page": 2,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 3524,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v02-page-02.png"
+        },
+        {
+          "page": 3,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 3791,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v02-page-03.png"
+        },
+        {
+          "page": 4,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 868,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v02-page-04.png"
+        }
+      ],
+      "contact_sheet": "output/research-codex/rendering/qa/v02-contact-sheet.png"
+    },
+    {
+      "version": 3,
+      "source": "docs/ideas-codex/v03_a_parity_consistent_belief_that_can_remain_uncertain.md",
+      "html": "output/research-codex/rendered/v03_a_parity_consistent_belief_that_can_remain_uncertain.html",
+      "pdf": "output/research-codex/rendered/v03_a_parity_consistent_belief_that_can_remain_uncertain.pdf",
+      "source_sha256": "f77117cb27b5ae08bdcc787877195fb1249aef3a9b5de88566ef503bef6b4854",
+      "browser_checks": {
+        "images": [],
+        "mathCount": 28,
+        "mathErrors": 0,
+        "tableRows": [],
+        "bodyOverflow": false,
+        "resourceDependencies": [],
+        "rawDollars": false,
+        "h1Count": 1,
+        "mobileBodyOverflow": false,
+        "mobileWideElements": [],
+        "browserErrors": []
+      },
+      "portable_pdf_local_links": 1,
+      "pdf_pages": [
+        {
+          "page": 1,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 3415,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v03-page-01.png"
+        },
+        {
+          "page": 2,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 3379,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v03-page-02.png"
+        },
+        {
+          "page": 3,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 3934,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v03-page-03.png"
+        },
+        {
+          "page": 4,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 1372,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v03-page-04.png"
+        }
+      ],
+      "contact_sheet": "output/research-codex/rendering/qa/v03-contact-sheet.png"
+    },
+    {
+      "version": 4,
+      "source": "docs/ideas-codex/v04_auditable_dynamics_and_data_contract.md",
+      "html": "output/research-codex/rendered/v04_auditable_dynamics_and_data_contract.html",
+      "pdf": "output/research-codex/rendered/v04_auditable_dynamics_and_data_contract.pdf",
+      "source_sha256": "57083b6515e7738b7e221719cf30bcef012792acdb0160afa4fd1ee4d0e27172",
+      "browser_checks": {
+        "images": [],
+        "mathCount": 57,
+        "mathErrors": 0,
+        "tableRows": [],
+        "bodyOverflow": false,
+        "resourceDependencies": [],
+        "rawDollars": false,
+        "h1Count": 1,
+        "mobileBodyOverflow": false,
+        "mobileWideElements": [],
+        "browserErrors": []
+      },
+      "portable_pdf_local_links": 2,
+      "pdf_pages": [
+        {
+          "page": 1,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 3273,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v04-page-01.png"
+        },
+        {
+          "page": 2,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 3836,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v04-page-02.png"
+        },
+        {
+          "page": 3,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 3862,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v04-page-03.png"
+        },
+        {
+          "page": 4,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 1843,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v04-page-04.png"
+        }
+      ],
+      "contact_sheet": "output/research-codex/rendering/qa/v04-contact-sheet.png"
+    },
+    {
+      "version": 5,
+      "source": "docs/ideas-codex/v05_matched_objectives_and_defeating_baselines.md",
+      "html": "output/research-codex/rendered/v05_matched_objectives_and_defeating_baselines.html",
+      "pdf": "output/research-codex/rendered/v05_matched_objectives_and_defeating_baselines.pdf",
+      "source_sha256": "d5846602b8858d94715a0d5669a337ac688972e685d2a193564c1493792a4400",
+      "browser_checks": {
+        "images": [],
+        "mathCount": 60,
+        "mathErrors": 0,
+        "tableRows": [
+          [
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3
+          ]
+        ],
+        "bodyOverflow": false,
+        "resourceDependencies": [],
+        "rawDollars": false,
+        "h1Count": 1,
+        "mobileBodyOverflow": false,
+        "mobileWideElements": [],
+        "browserErrors": []
+      },
+      "portable_pdf_local_links": 2,
+      "pdf_pages": [
+        {
+          "page": 1,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 3300,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v05-page-01.png"
+        },
+        {
+          "page": 2,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 3836,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v05-page-02.png"
+        },
+        {
+          "page": 3,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 3825,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v05-page-03.png"
+        },
+        {
+          "page": 4,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 2657,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v05-page-04.png"
+        },
+        {
+          "page": 5,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 2409,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v05-page-05.png"
+        }
+      ],
+      "contact_sheet": "output/research-codex/rendering/qa/v05-contact-sheet.png"
+    },
+    {
+      "version": 6,
+      "source": "docs/ideas-codex/v06_locked_inference_and_generality_gates.md",
+      "html": "output/research-codex/rendered/v06_locked_inference_and_generality_gates.html",
+      "pdf": "output/research-codex/rendered/v06_locked_inference_and_generality_gates.pdf",
+      "source_sha256": "daa16814c646955df1d8d60988b8e13d516a25c5a390c94011dcad6273294252",
+      "browser_checks": {
+        "images": [],
+        "mathCount": 68,
+        "mathErrors": 0,
+        "tableRows": [],
+        "bodyOverflow": false,
+        "resourceDependencies": [],
+        "rawDollars": false,
+        "h1Count": 1,
+        "mobileBodyOverflow": false,
+        "mobileWideElements": [],
+        "browserErrors": []
+      },
+      "portable_pdf_local_links": 2,
+      "pdf_pages": [
+        {
+          "page": 1,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 3287,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v06-page-01.png"
+        },
+        {
+          "page": 2,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 3983,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v06-page-02.png"
+        },
+        {
+          "page": 3,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 4331,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v06-page-03.png"
+        },
+        {
+          "page": 4,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 3729,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v06-page-04.png"
+        },
+        {
+          "page": 5,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 2542,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v06-page-05.png"
+        }
+      ],
+      "contact_sheet": "output/research-codex/rendering/qa/v06-contact-sheet.png"
+    },
+    {
+      "version": 7,
+      "source": "docs/ideas-codex/v07_predictive_memory_for_asymmetric_mechanics.md",
+      "html": "output/research-codex/rendered/v07_predictive_memory_for_asymmetric_mechanics.html",
+      "pdf": "output/research-codex/rendered/v07_predictive_memory_for_asymmetric_mechanics.pdf",
+      "source_sha256": "0f85f0f786dbfaa5a7240d4330a95c5636b720ff5e165011e4731c6656c065d8",
+      "browser_checks": {
+        "images": [
+          {
+            "loaded": true,
+            "embedded": true,
+            "width": 1600
+          }
+        ],
+        "mathCount": 64,
+        "mathErrors": 0,
+        "tableRows": [
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ]
+        ],
+        "bodyOverflow": false,
+        "resourceDependencies": [],
+        "rawDollars": false,
+        "h1Count": 1,
+        "mobileBodyOverflow": false,
+        "mobileWideElements": [],
+        "browserErrors": []
+      },
+      "portable_pdf_local_links": 4,
+      "pdf_pages": [
+        {
+          "page": 1,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 3389,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v07-page-01.png"
+        },
+        {
+          "page": 2,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 2339,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v07-page-02.png"
+        },
+        {
+          "page": 3,
+          "width_pt": 841.9,
+          "height_pt": 595.0,
+          "text_characters": 1511,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v07-page-03.png"
+        },
+        {
+          "page": 4,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 3222,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v07-page-04.png"
+        },
+        {
+          "page": 5,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 4081,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v07-page-05.png"
+        },
+        {
+          "page": 6,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 3780,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v07-page-06.png"
+        },
+        {
+          "page": 7,
+          "width_pt": 595.0,
+          "height_pt": 841.9,
+          "text_characters": 1377,
+          "replacement_characters": 0,
+          "out_of_page_spans": [],
+          "raster_images": 0,
+          "preview": "output/research-codex/rendering/qa/v07-page-07.png"
+        }
+      ],
+      "contact_sheet": "output/research-codex/rendering/qa/v07-contact-sheet.png"
+    }
+  ],
+  "failures": []
+}

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="274" viewBox="0 0 720 274" role="img" aria-labelledby="title desc">
+  <title id="title">Averaging two histories changes the best command</title>
+  <desc id="desc">For an illustrative equal-weight pair, the expected loss after a left or right pulse is 0.20 or 0.80 in history H and 0.80 or 0.20 in its mirror. Keeping the histories separate costs 0.20. A shared action costs 0.50.</desc>
+  <rect width="720" height="274" rx="12" fill="#f6f8fa"/>
+  <g font-family="Arial, sans-serif" fill="#172b43">
+    <text x="24" y="35" font-size="23" font-weight="700">When the better pulse changes sides</text>
+    <text x="24" y="62" font-size="16">Illustrative expected loss. Lower is better. Both histories are equally likely.</text>
+    <rect x="24" y="85" width="407" height="162" rx="8" fill="white" stroke="#c8d1da"/>
+    <rect x="137" y="133" width="128" height="41" rx="5" fill="#c9ece5"/>
+    <rect x="285" y="191" width="128" height="41" rx="5" fill="#c9ece5"/>
+    <path d="M25 125 H430 M25 182 H430" stroke="#d4dce4"/>
+    <g font-size="17" font-weight="700" text-anchor="middle">
+      <text x="200" y="111">Left pulse</text>
+      <text x="349" y="111">Right pulse</text>
+    </g>
+    <g font-size="17">
+      <text x="39" y="160">History H</text>
+      <text x="39" y="218">Mirror of H</text>
+    </g>
+    <g font-size="22" text-anchor="middle">
+      <text x="200" y="162" font-weight="700">0.20</text>
+      <text x="349" y="162">0.80</text>
+      <text x="200" y="220">0.80</text>
+      <text x="349" y="220" font-weight="700">0.20</text>
+    </g>
+    <path d="M449 91 V242" stroke="#c8d1da"/>
+    <g font-size="17">
+      <text x="473" y="110">Choose separately</text>
+      <text x="473" y="158">Choose one shared pulse</text>
+    </g>
+    <g font-size="22" font-weight="700">
+      <text x="473" y="134">0.20 mean loss</text>
+      <text x="473" y="182">0.50 mean loss</text>
+    </g>
+    <rect x="466" y="200" width="230" height="44" rx="6" fill="#173e55"/>
+    <text x="581" y="228" text-anchor="middle" fill="white" font-size="20" font-weight="700">Cost of merging 0.30</text>
+  </g>
+</svg>

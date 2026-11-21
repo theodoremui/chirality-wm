@@ -1,0 +1,11 @@
+# Analytical checks
+
+Run `python3 output/research-codex/checks/analytic_checks.py` from the repository root. The script uses only Python's standard library and rewrites `analytic-check-results.json` beside itself. The random seed is 20261023; the Gaussian verification uses 200,000 draws. Randomized algebra checks use 1,000 parameter settings.
+
+The checks verify the bilateral force identities, complete body/action reflection, parity of finite slopes, the equivalence of sum/difference and bilateral squared losses, even/odd multiplication, and the elementary excess-risk identity for collapsed memory. For two equally likely histories with different conditional means at the **same** future query, the best shared prediction is their midpoint. Its excess squared-error risk is one quarter of their squared mean separation. Independent outcome noise adds its variance to both risks and does not change this excess.
+
+The Monte Carlo result checks the sign error predicted by the toy Gaussian model. Its tolerance is five binomial standard errors; the numerical discrepancy and its scale are saved for inspection. These are algebra and software sanity checks. They do not validate any learned model, human-data claim, proposed method advantage, or real-system identifiability.
+
+For package consistency, run `python3 output/research-codex/checks/validate_artifacts.py`. It checks the seven canonical versions, eight proposal reviews, scoring arithmetic, local links, and the SVG's vector/accessibility structure, then writes `artifact-validation.json`. The source PDFs are not included; without them their hashes are reported as `not_checked`. To verify them too, add `--source-dir /path/to/source-directory`, with the URTC PDF under its `jepa-writeups` subdirectory. Missing or changed PDFs fail that check. It does not establish empirical correctness of the proposed models or verify every remote URL. The literature audit records source verification separately.
+
+The final proposal's half-second impulse formula is also checked against independent fourth-order Runge–Kutta integration of the activation ODE and accumulated force for 12 parameter/sign cases. This small numerical identity check is not an implementation of the proposed benchmark or evidence for a learned-model advantage.
