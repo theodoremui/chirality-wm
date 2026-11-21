@@ -10,7 +10,7 @@ The original proposal already makes many of these distinctions correctly. Its ma
 
 ## 1. Original proposal: what is established
 
-Source: [When Symmetry Hides the State: Learning Asymmetric Mechanics through Controlled Response](../../../../Downloads/hai/chirality-wm/chirality-world-models-adversarial-proposal.pdf), 19 PDF pages.
+Source: When Symmetry Hides the State: Learning Asymmetric Mechanics through Controlled Response, 19 PDF pages.
 
 The proposal explicitly distinguishes restoration from action-conditioned prediction (p. 1); invariance from equivariance (p. 4); physical interventions from observed future commands (pp. 10–11); and identifiable measurements from information retained in a representation (p. 2). These are substantial strengths that should survive every revision.
 
@@ -30,7 +30,7 @@ The chemistry discussion occupies substantial space without supplying a learning
 
 ## 2. JEPA asymmetry paper: completed evidence and its limits
 
-Source: [Evaluating JEPA-Inspired Motion Representations through Geometry and Gait Asymmetry](../../../../Downloads/hai/chirality-wm/jepa_asymmetry_paper.pdf), 16 PDF pages. This is the title in the supplied manuscript; the original proposal's reference to a differently named local file should be reconciled in future bibliographies.
+Source: Evaluating JEPA-Inspired Motion Representations through Geometry and Gait Asymmetry, 16 PDF pages. This is the title in the supplied manuscript; the original proposal's reference to a differently named local file should be reconciled in future bibliographies.
 
 ### Task and data
 
@@ -67,7 +67,7 @@ Preserve the anatomical and data-provenance checks, zero-response and direct-fit
 
 ## 3. URTC draft: useful feasibility work with decisive source leakage
 
-Source: [Learning Monocular Gait Representations through Neurologically Informed World Models](../../../../Downloads/hai/chirality-wm/jepa-writeups/URTC%20Paper%20Draft%202026%20%286%29.pdf), 5 PDF pages.
+Source: Learning Monocular Gait Representations through Neurologically Informed World Models, 5 PDF pages.
 
 The cohort contains 96 sequences from 18 source videos: 12 normal sequences from one video, nine Parkinson's sequences from two, 12 stroke sequences from three, 16 cerebral-palsy sequences from two, and 47 myopathic sequences from ten (p. 2, Table I). Some videos can contribute multiple categories, so these per-class video counts should not be added to infer a new total.
 

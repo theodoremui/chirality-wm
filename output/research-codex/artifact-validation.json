@@ -494,8 +494,8 @@
       ]
     }
   ],
-  "local_links_checked": 98,
-  "source_pdfs_unchanged": true,
+  "local_links_checked": 95,
+  "source_pdf_verification": "passed",
   "svg_is_original_vector_with_accessibility_metadata": true,
   "scope": "Document consistency and source hashes only. No neural model or human experiment was executed.",
   "errors": []

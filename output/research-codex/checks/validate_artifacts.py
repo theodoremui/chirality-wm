@@ -2,6 +2,7 @@
 """Validate research-package structure, arithmetic, local links and source integrity."""
 from pathlib import Path
 from urllib.parse import unquote
+import argparse
 import hashlib
 import json
 import re
@@ -11,7 +12,21 @@ ROOT = Path(__file__).resolve().parents[3]
 OUT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / 'docs/ideas-codex'
 
-def check():
+def check_sources(manifest, source_dir):
+    """Verify supplied PDFs only when their directory is explicitly provided."""
+    if source_dir is None:
+        return 'not_checked', []
+    errors = []
+    for source in manifest['sources']:
+        relative = Path(source['relative_path'])
+        path = source_dir / relative
+        if not path.is_file():
+            errors.append(f'Source missing: {relative}')
+        elif hashlib.sha256(path.read_bytes()).hexdigest() != source['sha256']:
+            errors.append(f'Source changed: {relative}')
+    return ('failed' if errors else 'passed'), errors
+
+def check(source_dir=None):
     errors, records, scores = [], [], []
     versions = sorted(DOCS.glob('v0[1-7]_*.md'))
     if len(versions) != 7:
@@ -81,16 +96,16 @@ def check():
         errors.append('Rendering audit failed or does not cover all seven versions')
     for rec in audit['versions']:
         source=ROOT/rec['source']
-        if hashlib.sha256(source.read_bytes()).hexdigest()!=rec['source_sha256']:
+        if not source.is_file():
+            errors.append(f'Rendered source missing: {source}')
+        elif hashlib.sha256(source.read_bytes()).hexdigest()!=rec['source_sha256']:
             errors.append(f'Rendered copy is stale: {source.name}')
         for field in ('html','pdf'):
             if not (ROOT/rec[field]).is_file():
                 errors.append(f'Missing rendered {field}: {source.name}')
     manifest=json.loads((OUT/'source-manifest.json').read_text())
-    for source in manifest['sources']:
-        p=Path(source['path'])
-        if hashlib.sha256(p.read_bytes()).hexdigest()!=source['sha256']:
-            errors.append(f'Source changed: {p.name}')
+    source_status, source_errors = check_sources(manifest, source_dir)
+    errors.extend(source_errors)
     svg=ET.parse(OUT/'figures/training-pipeline.svg')
     tags={e.tag.split('}')[-1] for e in svg.iter()}
     if not {'title','desc'} <= tags:
@@ -98,13 +113,15 @@ def check():
     if {'script','image','foreignObject'} & tags:
         errors.append('SVG includes script, raster image, or foreign content')
     result={'status':'passed' if not errors else 'failed','canonical_proposals':records,
-            'scores':scores,'local_links_checked':checked,'source_pdfs_unchanged':not any('Source changed' in x for x in errors),
+            'scores':scores,'local_links_checked':checked,'source_pdf_verification':source_status,
             'svg_is_original_vector_with_accessibility_metadata':not any('SVG' in x for x in errors),
             'scope':'Document consistency and source hashes only. No neural model or human experiment was executed.',
             'errors':errors}
     (OUT/'artifact-validation.json').write_text(json.dumps(result,indent=2)+'\n')
-    print(json.dumps({'status':result['status'],'versions':len(versions),'reviews':len(scores),'local_links':checked,'errors':errors},indent=2))
+    print(json.dumps({'status':result['status'],'versions':len(versions),'reviews':len(scores),'local_links':checked,'source_pdf_verification':source_status,'errors':errors},indent=2))
     return 1 if errors else 0
 
 if __name__=='__main__':
-    raise SystemExit(check())
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--source-dir', type=Path, help='directory containing the three supplied source PDFs')
+    raise SystemExit(check(parser.parse_args().source_dir))
