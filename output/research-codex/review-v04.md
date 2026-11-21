@@ -1,6 +1,6 @@
 # Independent adversarial review: version 4
 
-**Reviewed artifact:** [v04_auditable_dynamics_and_data_contract.md](../../docs/ideas-codex/v04_auditable_dynamics_and_data_contract.md).  
+**Reviewed artifact:** [v04_auditable_dynamics_and_data_contract.md](../../notes/archive/ideas-codex/v04_auditable_dynamics_and_data_contract.md).  
 **Sequence:** reviewed after version 4 was saved and before version 5 was written. Independent reviewer agent substitutes for the unavailable `codex:adversarial-review` capability.
 
 ## Assessment

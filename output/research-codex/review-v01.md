@@ -1,6 +1,6 @@
 # Independent adversarial review: version 1
 
-**Reviewed artifact:** [v01_from_pose_restoration_to_mechanical_memory.md](../../docs/ideas-codex/v01_from_pose_restoration_to_mechanical_memory.md).  
+**Reviewed artifact:** [v01_from_pose_restoration_to_mechanical_memory.md](../../notes/archive/ideas-codex/v01_from_pose_restoration_to_mechanical_memory.md).  
 **Provenance:** independent reviewer agent; substitute for the unavailable `codex:adversarial-review` capability. This review was performed after version 1 was saved and before version 2 was written.
 
 ## Assessment

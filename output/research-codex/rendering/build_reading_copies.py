@@ -13,7 +13,7 @@ OUT=ROOT/'output/research-codex'
 DEST=OUT/'rendered'
 QA=OUT/'rendering/qa'
 DEST.mkdir(exist_ok=True);QA.mkdir(exist_ok=True)
-PROPOSALS=sorted((ROOT/'docs/ideas-codex').glob('v0[1-7]_*.md'))
+PROPOSALS=sorted((ROOT/'notes/archive/ideas-codex').glob('v0[1-7]_*.md'))
 CSS=(Path(__file__).with_name('reader.css')).read_text()
 for token,path in [('__TEXT_FONT__','/System/Library/Fonts/Supplemental/STIXTwoText.ttf'),('__MATH_FONT__','/System/Library/Fonts/Supplemental/STIXTwoMath.otf')]:
  CSS=CSS.replace(token,'data:font/otf;base64,'+base64.b64encode(Path(path).read_bytes()).decode())

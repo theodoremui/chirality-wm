@@ -1,7 +1,7 @@
 # Keeping the Hidden Side: How Predictive World Models Lose, and Can Retain, Asymmetric Mechanics
 
 **Version 7 · Final research proposal · 23 October 2026**
-**Status:** a 13-week plan for the ICML 2027 submission; no models have been trained and no results are claimed. This version integrates six rounds of review (scores and critiques in [output/research-claude/](../../output/research-claude/README.md)), each including an independent Codex adversarial review. Protocol details that a reader does not need to follow the argument are in the appendices.
+**Status:** a 13-week plan for the ICML 2027 submission; no models have been trained and no results are claimed. This version integrates six rounds of review (scores and critiques in [output/research-claude/](../../../output/research-claude/README.md)), each including an independent Codex adversarial review. Protocol details that a reader does not need to follow the argument are in the appendices.
 
 ## Abstract
 
@@ -216,7 +216,7 @@ All stochastic models use the same number of samples for their predictive means.
 
 ## 9. The training and evaluation pipeline
 
-![Training and evaluation pipeline](../../output/research-claude/figures/training-pipeline.svg)
+![Training and evaluation pipeline](../../../output/research-claude/figures/training-pipeline.svg)
 
 *Figure 1. The pipeline from simulation to a locked test. Whole body families are split before any episode, window or mirror copy exists. Each stage keeps the time grid, units and left/right channel names; the strip under each stage states what it preserves and how it keeps test information out. The test split is scored once, against the exact Bayes predictor.*
 
@@ -447,7 +447,7 @@ Secondary knobs run at three seeds only if the pilot leaves budget under the 400
 
 **From the Codex review of the version 6 design** (applied before this version's own review). Output families on a deterministic encoder; optimization interventions and a frozen-readout trade-off for capacity; delay-specific readouts and an invertible contracting control for memory; a shared-backbone factorial for the objective; a privileged reference for images; recomputed mirrored pose labels; continuous magnitudes in the belief; a centered probe statistic; two-part verdicts; a walker replication family sized to the budget.
 
-**From the Codex review of the version 7 draft** ([snapshot before review](../../output/research-claude/review-snapshots/v07-before-codex-review.md)).
+**From the Codex review of the version 7 draft** ([snapshot before review](../../../output/research-claude/review-snapshots/v07-before-codex-review.md)).
 - H3's contrast is registered explicitly as $(S_{\text{latent,low}} - S_{\text{recon,low}}) - (S_{\text{latent,high}} - S_{\text{recon,high}})$, positive under the hypothesis, with its sign checked on a synthetic example.
 - Input and target timing is specified for both objectives. H3 uses distractors with a low but nonzero coefficient and large predictable variance, and independent noise becomes a control whose effects are attributed only to current-frame reconstruction.
 - The inventory crosses distractor coefficient with objective for H3, within the same budget.

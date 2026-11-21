@@ -1,7 +1,7 @@
 # From a Two-Motor Cart to Pixels and Real Motion: Testing Whether World Models Keep a Hidden Asymmetry
 
 **Version 6 · Research proposal · 23 October 2026**
-**Status:** plan only; no models have been trained. Revised after [Review 5](../../output/research-claude/review-v05.md) and its Codex adversarial review. Version 5 made the study's internal logic checkable. This version asks whether its conclusions can reach beyond low-dimensional simulation. It adds a pixel tier for the walker and a re-analysis of the user's JEPA pose encoders on a cohort they have never seen, gives the walker a second unknown parameter, and states in advance what the paper will claim under each pattern of results. It also repairs problems the Codex review found in version 5: a reset that left the motor activations carrying the asymmetry, baselines that were weaker than the published models they stand for, a fixed query that let a linear decoder fake the interaction, and confidence intervals that would under-cover with few training seeds. A change log is at the end.
+**Status:** plan only; no models have been trained. Revised after [Review 5](../../../output/research-claude/review-v05.md) and its Codex adversarial review. Version 5 made the study's internal logic checkable. This version asks whether its conclusions can reach beyond low-dimensional simulation. It adds a pixel tier for the walker and a re-analysis of the user's JEPA pose encoders on a cohort they have never seen, gives the walker a second unknown parameter, and states in advance what the paper will claim under each pattern of results. It also repairs problems the Codex review found in version 5: a reset that left the motor activations carrying the asymmetry, baselines that were weaker than the published models they stand for, a fixed query that let a linear decoder fake the interaction, and confidence intervals that would under-cover with few training seeds. A change log is at the end.
 
 ## Abstract
 
@@ -148,7 +148,7 @@ M1 is tested *within* the B4-OF ablations, so families differ only in their outp
 
 ## 8. The data contract
 
-![Training and evaluation pipeline](../../output/research-claude/figures/training-pipeline.svg)
+![Training and evaluation pipeline](../../../output/research-claude/figures/training-pipeline.svg)
 
 *Figure 1. Whole body families are split before any episode, window or mirror copy exists. Each stage keeps the time grid, units and left/right channel names; the strip under each stage names what it preserves and its leakage guard. The test split is scored once, against the exact Bayes predictor.*
 

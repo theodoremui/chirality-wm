@@ -1,6 +1,6 @@
 # Review 0: the source proposals
 
-**What was graded.** The original proposal *When Symmetry Hides the State: Learning Asymmetric Mechanics through Controlled Response* (PDF, 12 October 2026) and the seven Codex revisions in `docs/ideas-codex/` (v01–v07, 23 October 2026). The two supporting manuscripts, *Evaluating JEPA-Inspired Motion Representations through Geometry and Gait Asymmetry* and the URTC draft *Learning Monocular Gait Representations through Neurologically Informed World Models*, were read as evidence and are not graded. The rubric is in [scoring-rubric.md](scoring-rubric.md).
+**What was graded.** The original proposal *When Symmetry Hides the State: Learning Asymmetric Mechanics through Controlled Response* (PDF, 12 October 2026) and the seven Codex revisions in `notes/archive/ideas-codex/` (v01–v07, 23 October 2026). The two supporting manuscripts, *Evaluating JEPA-Inspired Motion Representations through Geometry and Gait Asymmetry* and the URTC draft *Learning Monocular Gait Representations through Neurologically Informed World Models*, were read as evidence and are not graded. The rubric is in [scoring-rubric.md](scoring-rubric.md).
 
 ## Scores
 

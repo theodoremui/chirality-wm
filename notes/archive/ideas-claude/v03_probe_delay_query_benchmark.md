@@ -1,7 +1,7 @@
 # Probe, Delay, Query: A Benchmark That Switches Each Way a World Model Can Lose Asymmetry
 
 **Version 3 · Research proposal · 23 October 2026**
-**Status:** plan only; no models have been trained. Revised after [Review 2](../../output/research-claude/review-v02.md) and its Codex adversarial review. The main changes are a primary endpoint that cannot reward amplified predictions, knobs that leave the available information fixed, capacity competition created by distractors with a known spectrum, losses written with explicit time masks, narrower and corrected formal statements, and an experimental plan organized as a sequence of decisions. A change log is at the end.
+**Status:** plan only; no models have been trained. Revised after [Review 2](../../../output/research-claude/review-v02.md) and its Codex adversarial review. The main changes are a primary endpoint that cannot reward amplified predictions, knobs that leave the available information fixed, capacity competition created by distractors with a known spectrum, losses written with explicit time masks, narrower and corrected formal statements, and an experimental plan organized as a sequence of decisions. A change log is at the end.
 
 ## Abstract
 

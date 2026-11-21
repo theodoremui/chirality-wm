@@ -1,6 +1,6 @@
 # Rendering repair and verification
 
-The seven proposals now have [formatted HTML and PDF reading editions](../rendered/index.html). The canonical Markdown files remain in `docs/ideas-codex/`. This repair changes presentation and file references; research designs, scores, and empirical claims are preserved.
+The seven proposals now have [formatted HTML and PDF reading editions](../rendered/index.html). The canonical Markdown files are in `notes/archive/ideas-codex/`. This repair changes presentation and file references; research designs, scores, and empirical claims are preserved.
 
 ## What was repaired
 

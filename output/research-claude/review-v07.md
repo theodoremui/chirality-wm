@@ -1,6 +1,6 @@
 # Review 7: *Keeping the Hidden Side* (v07, final)
 
-**Proposal:** [docs/ideas-claude/v07_keeping_the_hidden_side.md](../../docs/ideas-claude/v07_keeping_the_hidden_side.md)
+**Proposal:** [docs/ideas-claude/v07_keeping_the_hidden_side.md](../../notes/archive/ideas-claude/v07_keeping_the_hidden_side.md)
 **Pre-review snapshot:** [review-snapshots/v07-before-codex-review.md](review-snapshots/v07-before-codex-review.md)
 
 ## Scores before the Codex review

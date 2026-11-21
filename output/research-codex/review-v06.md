@@ -1,6 +1,6 @@
 # Independent adversarial review: version 6
 
-**Reviewed artifact:** [v06_locked_inference_and_generality_gates.md](../../docs/ideas-codex/v06_locked_inference_and_generality_gates.md).  
+**Reviewed artifact:** [v06_locked_inference_and_generality_gates.md](../../notes/archive/ideas-codex/v06_locked_inference_and_generality_gates.md).  
 **Sequence:** reviewed after version 6 was saved and before version 7 was written. Independent reviewer agent substitutes for the unavailable `codex:adversarial-review` capability.
 
 ## Assessment

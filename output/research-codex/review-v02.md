@@ -1,6 +1,6 @@
 # Independent adversarial review: version 2
 
-**Reviewed artifact:** [v02_observability_before_memory.md](../../docs/ideas-codex/v02_observability_before_memory.md).  
+**Reviewed artifact:** [v02_observability_before_memory.md](../../notes/archive/ideas-codex/v02_observability_before_memory.md).  
 **Sequence:** reviewed after version 2 was saved and before version 3 was written. Independent reviewer agent substitutes for the unavailable `codex:adversarial-review` capability.
 
 ## Assessment

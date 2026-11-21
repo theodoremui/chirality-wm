@@ -1,6 +1,6 @@
 # Independent adversarial review: version 3
 
-**Reviewed artifact:** [v03_a_parity_consistent_belief_that_can_remain_uncertain.md](../../docs/ideas-codex/v03_a_parity_consistent_belief_that_can_remain_uncertain.md).  
+**Reviewed artifact:** [v03_a_parity_consistent_belief_that_can_remain_uncertain.md](../../notes/archive/ideas-codex/v03_a_parity_consistent_belief_that_can_remain_uncertain.md).  
 **Sequence:** reviewed after version 3 was saved and before version 4 was written. Independent reviewer agent substitutes for the unavailable `codex:adversarial-review` capability.
 
 ## Assessment

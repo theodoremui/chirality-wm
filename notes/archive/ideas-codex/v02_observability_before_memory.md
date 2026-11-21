@@ -1,7 +1,7 @@
 # Remembering Mechanical Asymmetry After the Evidence Has Passed
 
 **Version 2 · Research proposal · 23 October 2026**  
-**Status:** proposed experiments; no new learned-model or human results. This version follows the independent [version 1 review](../../output/research-codex/review-v01.md).
+**Status:** proposed experiments; no new learned-model or human results. This version follows the independent [version 1 review](../../../output/research-codex/review-v01.md).
 
 ## Abstract
 
@@ -11,7 +11,7 @@ World models use past observations to predict physical responses to future input
 
 Suppose two motors move the same cart. Their combined force can remain unchanged when strength shifts from the left motor to the right. A command that increases one motor while decreasing the other exposes that difference. A world model is useful because a controller eventually needs a prediction for a new command, possibly long after the exposing interaction. Accurate prediction during intervening neutral motion may place little demand on remembering the stronger side.
 
-The supplied JEPA study restores observed pose windows and finds uncertain benefits from paired-feature objectives. The URTC study's classification split shares source videos across training and testing. Neither establishes a loss of mechanical information caused by equivariance. Their relevant lessons concern fair supervision, anatomical indexing, and independent evaluation; the [source audit](../../output/research-codex/source-evidence-audit.md) records these boundaries.
+The supplied JEPA study restores observed pose windows and finds uncertain benefits from paired-feature objectives. The URTC study's classification split shares source videos across training and testing. Neither establishes a loss of mechanical information caused by equivariance. Their relevant lessons concern fair supervision, anatomical indexing, and independent evaluation; the [source audit](../../../output/research-codex/source-evidence-audit.md) records these boundaries.
 
 **Within twelve weeks, can delayed-query training reduce body-averaged squared error in half-second total-force impulse by at least 5% relative to the strongest selected recurrent comparator, after an eight-second neutral delay, without worsening near-term impulse RMSE by more than 0.02 N·s?** The comparator receives identical histories and delayed targets. The 5% threshold is a proposed practical criterion, to be frozen with the pilot protocol before confirmation; it is not an expected result. The primary population is independently generated bilateral body families within the declared parameter support. Continuous-dynamics and shifted-support tests are secondary.
 
@@ -38,7 +38,7 @@ $$
 
 This identity provides an exact simulator check. The later query is fixed in anatomical coordinates when comparing the two signs. Reflecting both body and query would preserve the total-force outcome and answer a different question.
 
-If two equally likely diagnostic histories are compressed to the same memory and have conditional query means $m_+$ and $m_-$, their best shared squared-error prediction is the midpoint. Its excess risk over the separate means is $(m_+-m_-)^2/4$. Outcome noise adds the same irreducible variance to both risks. This elementary identity explains why collapsing useful history can matter; it does not prove that a trained network collapses or that a human gait contains the required information. The [analytical checks](../../output/research-codex/checks/README.md) verify the simpler force identities and this risk calculation.
+If two equally likely diagnostic histories are compressed to the same memory and have conditional query means $m_+$ and $m_-$, their best shared squared-error prediction is the midpoint. Its excess risk over the separate means is $(m_+-m_-)^2/4$. Outcome noise adds the same irreducible variance to both risks. This elementary identity explains why collapsing useful history can matter; it does not prove that a trained network collapses or that a human gait contains the required information. The [analytical checks](../../../output/research-codex/checks/README.md) verify the simpler force identities and this risk calculation.
 
 A second condition omits the reset. Residual motion can then reveal mechanics, so it is analyzed separately. If a recent-window estimator succeeds there, memory is less necessary in that condition. This limits the phenomenon rather than invalidating the estimator.
 

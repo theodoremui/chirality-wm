@@ -1,6 +1,6 @@
 # Review 2: *Four Ways to Lose the Hidden Side* (v02)
 
-**Proposal:** [docs/ideas-claude/v02_four_ways_to_lose_the_hidden_side.md](../../docs/ideas-claude/v02_four_ways_to_lose_the_hidden_side.md)
+**Proposal:** [docs/ideas-claude/v02_four_ways_to_lose_the_hidden_side.md](../../notes/archive/ideas-claude/v02_four_ways_to_lose_the_hidden_side.md)
 
 ## Scores
 
