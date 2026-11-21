@@ -1,6 +1,6 @@
 # Review 6: *From a Two-Motor Cart to Pixels and Real Motion* (v06)
 
-**Proposal:** [docs/ideas-claude/v06_from_cart_to_walker_pixels_and_real_motion.md](../../docs/ideas-claude/v06_from_cart_to_walker_pixels_and_real_motion.md)
+**Proposal:** [docs/ideas-claude/v06_from_cart_to_walker_pixels_and_real_motion.md](../../notes/archive/ideas-claude/v06_from_cart_to_walker_pixels_and_real_motion.md)
 
 ## Scores
 

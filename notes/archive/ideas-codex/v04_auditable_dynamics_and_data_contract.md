@@ -1,7 +1,7 @@
 # An Auditable Benchmark for Mechanical Memory
 
 **Version 4 · Research proposal · 23 October 2026**  
-**Status:** proposed experiments, revised after the [version 3 review](../../output/research-codex/review-v03.md).
+**Status:** proposed experiments, revised after the [version 3 review](../../../output/research-codex/review-v03.md).
 
 ## Abstract
 
@@ -11,7 +11,7 @@ Predicting a new physical input can require information that was visible only ea
 
 World models predict how observations change under inputs. Bilateral mechanics provide a simple test of what their internal state must retain: similar total motion can arise from a stronger left actuator or a stronger right actuator, yet the same later differential command can produce different responses. Asymmetry is useful here because it creates a signed physical distinction with a declared transformation law.
 
-The supplied JEPA paper studies pose restoration and reports unresolved incremental benefits. The URTC draft reports complete source-video overlap in its classifier split. Neither provides a completed mechanics-memory result. We retain their lessons about anatomical indexing, trivial controls, and independent experimental units, as documented in the [source audit](../../output/research-codex/source-evidence-audit.md).
+The supplied JEPA paper studies pose restoration and reports unresolved incremental benefits. The URTC draft reports complete source-video overlap in its classifier split. Neither provides a completed mechanics-memory result. We retain their lessons about anatomical indexing, trivial controls, and independent experimental units, as documented in the [source audit](../../../output/research-codex/source-evidence-audit.md).
 
 **Within twelve weeks, can a persistent-context model reduce nonlinear delayed-impulse MSE by a confidence-supported 5% against the strongest validation-selected recurrent or stored-summary comparator, while meeting near-term and uncertainty guardrails?** The fixed horizon is 0.5 seconds and the primary delay is eight seconds. The exact diagnostic validates the interpretation; the nonlinear condition is the main empirical comparison. All targets, schedules, memory budgets, and tuning access are shared. A null result remains evidence about when conventional identification or simple memory is sufficient.
 

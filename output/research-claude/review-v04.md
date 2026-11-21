@@ -1,6 +1,6 @@
 # Review 4: *A Signed-Belief World Model, and the Baselines That Could Explain It Away* (v04)
 
-**Proposal:** [docs/ideas-claude/v04_signed_belief_world_model.md](../../docs/ideas-claude/v04_signed_belief_world_model.md)
+**Proposal:** [docs/ideas-claude/v04_signed_belief_world_model.md](../../notes/archive/ideas-claude/v04_signed_belief_world_model.md)
 
 ## Scores
 

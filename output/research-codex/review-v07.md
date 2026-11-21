@@ -1,6 +1,6 @@
 # Independent adversarial review: version 7
 
-**Reviewed artifact:** [v07_predictive_memory_for_asymmetric_mechanics.md](../../docs/ideas-codex/v07_predictive_memory_for_asymmetric_mechanics.md).  
+**Reviewed artifact:** [v07_predictive_memory_for_asymmetric_mechanics.md](../../notes/archive/ideas-codex/v07_predictive_memory_for_asymmetric_mechanics.md).  
 **Preserved pre-review snapshot:** [v07-before-final-review.md](review-snapshots/v07-before-final-review.md).  
 **Sequence:** reviewed after version 7 was saved. The initial assessment below is preserved; any final corrections will receive an appended verification note. Independent reviewer agent substitutes for the unavailable `codex:adversarial-review` capability.
 

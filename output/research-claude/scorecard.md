@@ -18,7 +18,7 @@ All scores use the ten-dimension rubric in [scoring-rubric.md](scoring-rubric.md
 | Narrative arc (5) | 4 | 3 | 6 | 6 | 8 | 8 | 8 | 9 | 9 |
 | **Weighted total** | **51.5** | **59.9** | **59.1** | **66.8** | **69.8** | **70.8** | **72.2** | **75.2** | **85.8** |
 
-C-vNN denotes the Claude versions in [docs/ideas-claude/](../../docs/ideas-claude/). The full Codex series (v01–v07, 54.5 to 59.9) is graded in [Review 0](review-v00-sources.md).
+C-vNN denotes the Claude versions in [docs/ideas-claude/](../../notes/archive/ideas-claude/). The full Codex series (v01–v07, 54.5 to 59.9) is graded in [Review 0](review-v00-sources.md).
 
 ## How each version moved the score
 

@@ -1,7 +1,7 @@
 # Testing Whether World Models Keep a Hidden Asymmetry: A Leakage-Proof Pipeline and a Preregistered Analysis
 
 **Version 5 · Research proposal · 23 October 2026**
-**Status:** plan only; no models have been trained. Revised after [Review 4](../../output/research-claude/review-v04.md) and its Codex adversarial review. Version 4 fixed what each experiment measures. This version fixes how the data flow and how the results will be judged. Every array has a declared shape and parity. Every pipeline step names what it preserves, what keeps test information out of training, and which unit is independent. The analysis plan is frozen before the first model is trained. It also strengthens the baselines that could explain the remedy away (input-conditioned SymPE, autoregressive mixtures, a flag-free snapshot) and corrects the control task and the decision rules. The mechanism section is rewritten for reading, with the history of corrections moved to the change log.
+**Status:** plan only; no models have been trained. Revised after [Review 4](../../../output/research-claude/review-v04.md) and its Codex adversarial review. Version 4 fixed what each experiment measures. This version fixes how the data flow and how the results will be judged. Every array has a declared shape and parity. Every pipeline step names what it preserves, what keeps test information out of training, and which unit is independent. The analysis plan is frozen before the first model is trained. It also strengthens the baselines that could explain the remedy away (input-conditioned SymPE, autoregressive mixtures, a flag-free snapshot) and corrects the control task and the decision rules. The mechanism section is rewritten for reading, with the history of corrections moved to the change log.
 
 ## Abstract
 
@@ -149,7 +149,7 @@ estimated as a ratio of sums over test episodes. $S = 1$ is as good as the data 
 
 The study's conclusions depend on two properties of the data: that no information about a test body reaches training, and that every transformation keeps the arrays' shapes, units and reflection rules intact. This section states both as checkable rules.
 
-![Training and evaluation pipeline](../../output/research-claude/figures/training-pipeline.svg)
+![Training and evaluation pipeline](../../../output/research-claude/figures/training-pipeline.svg)
 
 *Figure 1. Whole body families are split before any episode, window or mirror copy exists. Each stage keeps the time grid, units and left/right channel names; the strip under each stage names what it preserves and its leakage guard. The test split is scored once, against the exact Bayes predictor.*
 

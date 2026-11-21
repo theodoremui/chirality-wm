@@ -1,7 +1,7 @@
 # A Controlled Test of Signed Mechanical Memory in World Models
 
 **Version 3 · Research proposal · 23 October 2026**  
-**Status:** proposed work following the [version 2 review](../../output/research-codex/review-v02.md). No learned-model advantage has been measured.
+**Status:** proposed work following the [version 2 review](../../../output/research-codex/review-v02.md). No learned-model advantage has been measured.
 
 ## Abstract
 

@@ -1,7 +1,7 @@
 # A Signed-Belief World Model, and the Baselines That Could Explain It Away
 
 **Version 4 · Research proposal · 23 October 2026**
-**Status:** plan only; no models have been trained. Revised after [Review 3](../../output/research-claude/review-v03.md) and its Codex adversarial review. Version 3 defined the benchmark and four mechanisms. This version specifies the remedy model completely and adds the strongest competing remedies as baselines, with every budget matched. It also corrects several mechanism tests that could not identify what they claimed: symmetry now concerns the family and persistence of the predictive distribution, capacity is tested by an exact linear experiment, memory is tested with every arm's response readout trained equally, and coupling is tested through sample efficiency. Each hypothesis now has three possible outcomes. A change log is at the end.
+**Status:** plan only; no models have been trained. Revised after [Review 3](../../../output/research-claude/review-v03.md) and its Codex adversarial review. Version 3 defined the benchmark and four mechanisms. This version specifies the remedy model completely and adds the strongest competing remedies as baselines, with every budget matched. It also corrects several mechanism tests that could not identify what they claimed: symmetry now concerns the family and persistence of the predictive distribution, capacity is tested by an exact linear experiment, memory is tested with every arm's response readout trained equally, and coupling is tested through sample efficiency. Each hypothesis now has three possible outcomes. A change log is at the end.
 
 ## Abstract
 

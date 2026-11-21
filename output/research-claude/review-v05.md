@@ -1,6 +1,6 @@
 # Review 5: *A Leakage-Proof Pipeline and a Preregistered Analysis* (v05)
 
-**Proposal:** [docs/ideas-claude/v05_leakage_proof_pipeline_and_preregistered_analysis.md](../../docs/ideas-claude/v05_leakage_proof_pipeline_and_preregistered_analysis.md)
+**Proposal:** [docs/ideas-claude/v05_leakage_proof_pipeline_and_preregistered_analysis.md](../../notes/archive/ideas-claude/v05_leakage_proof_pipeline_and_preregistered_analysis.md)
 
 ## Scores
 

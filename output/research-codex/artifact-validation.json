@@ -3,45 +3,45 @@
   "canonical_proposals": [
     {
       "version": 1,
-      "path": "docs/ideas-codex/v01_from_pose_restoration_to_mechanical_memory.md",
+      "path": "notes/archive/ideas-codex/v01_from_pose_restoration_to_mechanical_memory.md",
       "word_count": 1204,
-      "sha256": "bcbd58de0796c6886deef4134c4e356cdbaec76d2c1bb9889b428cc4d7757bf5"
+      "sha256": "7c16919a25855bca907bedc3c369ad9286834011acaccfc5462f619886a60308"
     },
     {
       "version": 2,
-      "path": "docs/ideas-codex/v02_observability_before_memory.md",
+      "path": "notes/archive/ideas-codex/v02_observability_before_memory.md",
       "word_count": 1567,
-      "sha256": "54d6e0a973fbc4309343d0aff1bafc3b297e7e17e43119aecfc878c3ac30f55a"
+      "sha256": "ef732728d9020f5245bfc8014867ef9a659712ff6987829b9ffdb051c998172d"
     },
     {
       "version": 3,
-      "path": "docs/ideas-codex/v03_a_parity_consistent_belief_that_can_remain_uncertain.md",
+      "path": "notes/archive/ideas-codex/v03_a_parity_consistent_belief_that_can_remain_uncertain.md",
       "word_count": 1656,
-      "sha256": "f77117cb27b5ae08bdcc787877195fb1249aef3a9b5de88566ef503bef6b4854"
+      "sha256": "43d1e670efe14ba1dfa85145100eb8b5a6f7d824dba6466589d229c26a473846"
     },
     {
       "version": 4,
-      "path": "docs/ideas-codex/v04_auditable_dynamics_and_data_contract.md",
+      "path": "notes/archive/ideas-codex/v04_auditable_dynamics_and_data_contract.md",
       "word_count": 1793,
-      "sha256": "57083b6515e7738b7e221719cf30bcef012792acdb0160afa4fd1ee4d0e27172"
+      "sha256": "5c46f57e0d0361c98ce8d9b37ad789102ae2012da64dc19eba43c707c19f3867"
     },
     {
       "version": 5,
-      "path": "docs/ideas-codex/v05_matched_objectives_and_defeating_baselines.md",
+      "path": "notes/archive/ideas-codex/v05_matched_objectives_and_defeating_baselines.md",
       "word_count": 2275,
-      "sha256": "d5846602b8858d94715a0d5669a337ac688972e685d2a193564c1493792a4400"
+      "sha256": "c655c53b21d366bb6fa35ca7510323a5897021bbe3fc89b02a7cd30130deface"
     },
     {
       "version": 6,
-      "path": "docs/ideas-codex/v06_locked_inference_and_generality_gates.md",
+      "path": "notes/archive/ideas-codex/v06_locked_inference_and_generality_gates.md",
       "word_count": 2539,
-      "sha256": "daa16814c646955df1d8d60988b8e13d516a25c5a390c94011dcad6273294252"
+      "sha256": "4d81232dd4e538ec98c9bc9e84e6da9075625891632ca6de7cb89bd856e48d45"
     },
     {
       "version": 7,
-      "path": "docs/ideas-codex/v07_predictive_memory_for_asymmetric_mechanics.md",
+      "path": "notes/archive/ideas-codex/v07_predictive_memory_for_asymmetric_mechanics.md",
       "word_count": 2448,
-      "sha256": "0f85f0f786dbfaa5a7240d4330a95c5636b720ff5e165011e4731c6656c065d8"
+      "sha256": "5d8b4768c92a8f8b564efea23d4d329b1e9e57a4a6b53d45ae175223ee5ca86d"
     }
   ],
   "scores": [

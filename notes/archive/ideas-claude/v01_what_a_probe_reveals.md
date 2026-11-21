@@ -1,7 +1,7 @@
 # What a Probe Reveals: Do World Models Keep a Body's Hidden Asymmetry?
 
 **Version 1 · Research proposal · 23 October 2026**
-**Status:** plan only; no models have been trained. This version responds to [Review 0](../../output/research-claude/review-v00-sources.md) of the original proposal and the Codex revisions.
+**Status:** plan only; no models have been trained. This version responds to [Review 0](../../../output/research-claude/review-v00-sources.md) of the original proposal and the Codex revisions.
 
 ## Abstract
 

@@ -1,7 +1,7 @@
 # Predictive Memory for Asymmetric Mechanics
 
 **Version 7 · Final research proposal · 23 October 2026**  
-**Status:** a prospective twelve-week study, revised after the independent [version 6 review](../../output/research-codex/review-v06.md). No new neural-training or human-data result is claimed.
+**Status:** a prospective twelve-week study, revised after the independent [version 6 review](../../../output/research-codex/review-v06.md). No new neural-training or human-data result is claimed.
 
 ## Abstract
 
@@ -11,7 +11,7 @@ Similar motion can arise from different left–right mechanics, yet those differ
 
 Two actuators can move a cart similarly while contributing different forces. An input that increases one actuator and decreases the other reveals their imbalance. Later, a controller may need to predict a different command after the revealing measurements have passed. A sign classifier only identifies a side; a world model predicts the response to a specified input sequence and expresses uncertainty when the available history leaves alternatives unresolved.
 
-The supplied JEPA paper restores observed pose windows, with uncertain incremental benefits and a strong zero-response control. The URTC draft explicitly reports overlapping source videos between training and testing. These studies motivate separate checks of geometry, anatomy, supervision, and provenance; they do not establish that JEPA or equivariance erased mechanics. Their evidence is documented in the [source audit](../../output/research-codex/source-evidence-audit.md).
+The supplied JEPA paper restores observed pose windows, with uncertain incremental benefits and a strong zero-response control. The URTC draft explicitly reports overlapping source videos between training and testing. These studies motivate separate checks of geometry, anatomy, supervision, and provenance; they do not establish that JEPA or equivariance erased mechanics. Their evidence is documented in the [source audit](../../../output/research-codex/source-evidence-audit.md).
 
 **Within twelve weeks, can persistent context reduce mean squared error in delayed nonlinear force impulse by a confidence-supported 5% against a validation-selected strong memory baseline, while meeting near-term and uncertainty guardrails?** Impulse means force accumulated over time. The forecast lasts half a second after an eight-second delay. A broader learning-method claim requires supporting evidence from a structurally different contact system; a cart-only finding remains a controlled diagnostic result.
 
@@ -34,15 +34,15 @@ J=2gaH+2bu[H-\tau (1-\exp (-H/\tau ))]
 $$
 
 
-Two equally likely histories compressed to identical memory incur minimum excess squared error $\frac{(m_+-m_-)^2}{4}$ when their means differ at the **same** future query. Jointly reflecting body and query answers a different question. This elementary identity diagnoses the cost of a collapsed distinction; it does not prove learned collapse. See the [mathematical notes](../../output/research-codex/mathematical-notes.md).
+Two equally likely histories compressed to identical memory incur minimum excess squared error $\frac{(m_+-m_-)^2}{4}$ when their means differ at the **same** future query. Jointly reflecting body and query answers a different question. This elementary identity diagnoses the cost of a collapsed distinction; it does not prove learned collapse. See the [mathematical notes](../../../output/research-codex/mathematical-notes.md).
 
 The nonlinear condition uses $\phi_\alpha(v)=\frac{\tanh(\alpha v)}{\tanh(\alpha)}$ and unknown $g,\tau ,\alpha ,m$. Keep $k=2 \mathrm{N/m},c=0.4 \mathrm{N\,s/m}$; diagnosis starts and physical resets use $x=\dot x=0,q_L=q_R=\phi _\alpha (a)$. Neutral observations remain sign-independent at fixed nuisances but can refine nuisance uncertainty and thereby improve the imbalance posterior. An all-observations identifier checks this; freezing context may discard useful evidence. A separate continuous, no-reset condition tests how current motion changes the memory requirement.
 
 ## Causal data and training pipeline
 
-![Training and evaluation pipeline](../../output/research-codex/figures/training-pipeline.png)
+![Training and evaluation pipeline](../../../output/research-codex/figures/training-pipeline.png)
 
-[Editable vector figure (SVG)](../../output/research-codex/figures/training-pipeline.svg).
+[Editable vector figure (SVG)](../../../output/research-codex/figures/training-pipeline.svg).
 
 *Split source families before derived records, retain time and channel identity, and reserve confirmation targets for scoring. The concrete cart and walker shapes are specified here.*
 

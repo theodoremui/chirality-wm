@@ -1,7 +1,7 @@
 # Four Ways to Lose the Hidden Side: Asymmetric Mechanics in Predictive World Models
 
 **Version 2 · Research proposal · 23 October 2026**
-**Status:** plan only; no models have been trained. Revised after [Review 1](../../output/research-claude/review-v01.md), which found that version 1 had no account of why a world model would lose an asymmetry, no measure separating forgetting from missing data, and no role for JEPA-style training. Its Codex adversarial review also showed that the cart's motion kept revealing the asymmetry during the delay, that the Bayesian reference was not exact, and that the main endpoint was undefined. Section numbers in brackets, such as [X1], point to the findings each change answers.
+**Status:** plan only; no models have been trained. Revised after [Review 1](../../../output/research-claude/review-v01.md), which found that version 1 had no account of why a world model would lose an asymmetry, no measure separating forgetting from missing data, and no role for JEPA-style training. Its Codex adversarial review also showed that the cart's motion kept revealing the asymmetry during the delay, that the Bayesian reference was not exact, and that the main endpoint was undefined. Section numbers in brackets, such as [X1], point to the findings each change answers.
 
 ## Abstract
 

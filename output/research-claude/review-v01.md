@@ -1,6 +1,6 @@
 # Review 1: *What a Probe Reveals* (v01)
 
-**Proposal:** [docs/ideas-claude/v01_what_a_probe_reveals.md](../../docs/ideas-claude/v01_what_a_probe_reveals.md)
+**Proposal:** [docs/ideas-claude/v01_what_a_probe_reveals.md](../../notes/archive/ideas-claude/v01_what_a_probe_reveals.md)
 **Rubric:** [scoring-rubric.md](scoring-rubric.md)
 
 ## Scores

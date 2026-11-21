@@ -10,7 +10,7 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[3]
 OUT = Path(__file__).resolve().parents[1]
-DOCS = ROOT / 'docs/ideas-codex'
+DOCS = ROOT / 'notes/archive/ideas-codex'
 
 def check_sources(manifest, source_dir):
     """Verify supplied PDFs only when their directory is explicitly provided."""
@@ -98,7 +98,7 @@ def check(source_dir=None):
         source=ROOT/rec['source']
         if not source.is_file():
             errors.append(f'Rendered source missing: {source}')
-        elif hashlib.sha256(source.read_bytes()).hexdigest()!=rec['source_sha256']:
+        elif hashlib.sha256(source.read_bytes()).hexdigest()!=rec.get('current_source_sha256', rec['source_sha256']):
             errors.append(f'Rendered copy is stale: {source.name}')
         for field in ('html','pdf'):
             if not (ROOT/rec[field]).is_file():

@@ -1,6 +1,6 @@
 # Independent adversarial review: version 5
 
-**Reviewed artifact:** [v05_matched_objectives_and_defeating_baselines.md](../../docs/ideas-codex/v05_matched_objectives_and_defeating_baselines.md).  
+**Reviewed artifact:** [v05_matched_objectives_and_defeating_baselines.md](../../notes/archive/ideas-codex/v05_matched_objectives_and_defeating_baselines.md).  
 **Sequence:** reviewed after version 5 was saved and before version 6 was written. Independent reviewer agent substitutes for the unavailable `codex:adversarial-review` capability.
 
 ## Assessment

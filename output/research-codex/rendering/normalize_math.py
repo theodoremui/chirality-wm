@@ -36,7 +36,7 @@ def mathify(s):
  return s.replace(r't_\{k+1\}',r't_{k+1}').strip()
 
 changes=[]
-for p in sorted((ROOT/'docs/ideas-codex').glob('v*.md')):
+for p in sorted((ROOT/'notes/archive/ideas-codex').glob('v*.md')):
  src=p.read_text(); s=src
  s=re.sub(r'\\\[(.*?)\\\]',lambda m:'$$'+m[1]+'$$',s,flags=re.S)
  s=re.sub(r'\\\((.*?)\\\)',lambda m:'$'+m[1]+'$',s,flags=re.S)

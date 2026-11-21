@@ -1,6 +1,6 @@
 # Review 3: *Probe, Delay, Query* (v03)
 
-**Proposal:** [docs/ideas-claude/v03_probe_delay_query_benchmark.md](../../docs/ideas-claude/v03_probe_delay_query_benchmark.md)
+**Proposal:** [docs/ideas-claude/v03_probe_delay_query_benchmark.md](../../notes/archive/ideas-claude/v03_probe_delay_query_benchmark.md)
 
 ## Scores
 
